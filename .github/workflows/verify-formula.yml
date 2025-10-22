@@ -1,0 +1,46 @@
+name: Verify Homebrew Formula
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  verify-installation:
+    name: Test Homebrew Installation
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [macos-latest, ubuntu-latest]
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Homebrew (Ubuntu)
+        if: runner.os == 'Linux'
+        run: |
+          /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+          echo "/home/linuxbrew/.linuxbrew/bin" >> $GITHUB_PATH
+
+      - name: Install k3d-local from tap
+        run: |
+          brew tap gautampachnanda101/tap
+          brew install k3d-local
+
+      - name: Verify installation
+        run: |
+          which k3d-local
+          k3d-local --version
+
+      - name: Test basic functionality
+        run: |
+          k3d-local --help
+          k3d-local version
+
+      - name: Uninstall
+        run: |
+          brew uninstall k3d-local
+          brew untap gautampachnanda101/tap
