@@ -5,7 +5,7 @@
 class K3dLocal < Formula
   desc "Cross-platform CLI for managing local k3d Kubernetes clusters with pre-configured components"
   homepage "https://github.com/gautampachnanda101/local-cluster-k3d"
-  version "1.1.0"
+  version "1.2.0"
   license "MIT"
 
   depends_on "docker" => :optional
@@ -15,16 +15,16 @@ class K3dLocal < Formula
 
   on_macos do
     on_intel do
-      url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v1.1.0/k3d-local_1.1.0_Darwin_x86_64.tar.gz"
-      sha256 "257e431fe6f570541da51aa79ffcd9baab479c069d7b309dc15ffc850e0be6c5"
+      url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v1.2.0/k3d-local_1.2.0_Darwin_x86_64.tar.gz"
+      sha256 "70646bb6eb56592fd84e34ec08ccb5288d7d1d674bd11c1e23a5193fdc0cc72c"
 
       def install
         bin.install "k3d-local"
       end
     end
     on_arm do
-      url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v1.1.0/k3d-local_1.1.0_Darwin_arm64.tar.gz"
-      sha256 "185ff0084ff52989df68ddd9fea9cbcd8a2d8b919fa1cc885c7b20811de9b916"
+      url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v1.2.0/k3d-local_1.2.0_Darwin_arm64.tar.gz"
+      sha256 "a1e054072be5da8572e365104f41b99cbbe6726835bbf9a4c81c96e343cc6a8d"
 
       def install
         bin.install "k3d-local"
@@ -35,8 +35,8 @@ class K3dLocal < Formula
   on_linux do
     on_intel do
       if Hardware::CPU.is_64_bit?
-        url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v1.1.0/k3d-local_1.1.0_Linux_x86_64.tar.gz"
-        sha256 "be9cbee39261e2fd859c2aa15e840d3ce37e83a3fb7a54876919cb801b345dab"
+        url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v1.2.0/k3d-local_1.2.0_Linux_x86_64.tar.gz"
+        sha256 "f7d59c7e3f0776d00e0a7d676d0b6823c8a7bd3f9e6ca006d2933a4969f572a4"
 
         def install
           bin.install "k3d-local"
@@ -45,8 +45,8 @@ class K3dLocal < Formula
     end
     on_arm do
       if Hardware::CPU.is_64_bit?
-        url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v1.1.0/k3d-local_1.1.0_Linux_arm64.tar.gz"
-        sha256 "fb7f190e5c01995c8af793b7d71c0daf4fad486f113e8789499e54e7902fa747"
+        url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v1.2.0/k3d-local_1.2.0_Linux_arm64.tar.gz"
+        sha256 "11e160fa850287b35d7363e8f1aeed7c2a712738f85edca149c0e710ed959ecf"
 
         def install
           bin.install "k3d-local"
