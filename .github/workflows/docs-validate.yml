@@ -1,0 +1,134 @@
+name: Validate Documentation
+
+on:
+  push:
+    branches: [main, develop]
+    paths:
+      - 'docs/**'
+      - 'scripts/**'
+      - 'Makefile'
+      - 'mkdocs.yml'
+      - '.github/workflows/docs-validate.yml'
+  pull_request:
+    branches: [main, develop]
+    paths:
+      - 'docs/**'
+      - 'scripts/**'
+      - 'Makefile'
+      - 'mkdocs.yml'
+      - '.github/workflows/docs-validate.yml'
+
+jobs:
+  validate-docs:
+    runs-on: ubuntu-latest
+    name: Validate Documentation
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install mkdocs mkdocs-material pymdown-extensions
+
+      - name: Validate MkDocs configuration
+        run: |
+          if [ ! -f mkdocs.yml ]; then
+            echo "❌ mkdocs.yml not found"
+            exit 1
+          fi
+          echo "✓ mkdocs.yml found"
+
+      - name: Build documentation
+        run: |
+          echo "Building documentation..."
+          mkdocs build --strict
+          echo "✓ Documentation built successfully"
+
+      - name: Validate documentation structure
+        run: |
+          echo "Validating documentation structure..."
+          python scripts/validate-docs.py
+          echo "✓ Documentation structure valid"
+
+      - name: Validate markdown syntax
+        run: |
+          echo "Linting markdown files..."
+          python scripts/lint-markdown.py
+          echo "✓ Markdown linting passed"
+
+      - name: Validate code examples
+        run: |
+          echo "Validating code examples..."
+          python scripts/validate-code-examples.py
+          echo "✓ Code examples validated"
+
+      - name: Check for dead links
+        run: |
+          echo "Checking for broken internal links..."
+          python scripts/check-links.py
+          echo "✓ Link validation passed"
+
+      - name: Generate documentation summary
+        if: success()
+        run: |
+          echo "## ✅ Documentation Validation Passed" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "- MkDocs configuration: ✓" >> $GITHUB_STEP_SUMMARY
+          echo "- Documentation build: ✓" >> $GITHUB_STEP_SUMMARY
+          echo "- Structure validation: ✓" >> $GITHUB_STEP_SUMMARY
+          echo "- Markdown syntax: ✓" >> $GITHUB_STEP_SUMMARY
+          echo "- Code examples: ✓" >> $GITHUB_STEP_SUMMARY
+          echo "- Internal links: ✓" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "Ready for publication!" >> $GITHUB_STEP_SUMMARY
+
+      - name: Upload build artifacts
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: documentation-site
+          path: site/
+          retention-days: 7
+
+  lint-yaml:
+    runs-on: ubuntu-latest
+    name: Lint YAML in Examples
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Install yamllint
+        run: pip install yamllint
+
+      - name: Validate YAML in documentation
+        run: |
+          echo "Validating YAML in documentation examples..."
+          python scripts/validate-yaml.py
+          echo "✓ YAML validation passed"
+
+  spell-check:
+    runs-on: ubuntu-latest
+    name: Spell Check Documentation
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Run spell checker
+        uses: crate-ci/typos@v1
+        with:
+          files: ./docs

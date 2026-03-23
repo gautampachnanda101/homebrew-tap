@@ -1,0 +1,35 @@
+site_name: Homebrew Tap
+site_description: Official Homebrew tap for cross-platform development tools
+site_url: https://github.com/gautampachnanda101/homebrew-tap
+repo_url: https://github.com/gautampachnanda101/homebrew-tap
+repo_name: gautampachnanda101/homebrew-tap
+
+theme:
+  name: material
+  icon:
+    repo: fontawesome/brands/github
+
+nav:
+  - Home: index.md
+  - Getting Started: getting-started.md
+  - Installation: installation.md
+  - Usage: usage.md
+  - Advanced:
+    - Helm Deployment: helm-deployment.md
+    - Customization: customization.md
+    - Git Workflows: git-workflows.md
+  - Troubleshooting: troubleshooting.md
+  - Reference:
+    - Commands: reference/commands.md
+
+plugins:
+  - search
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - toc:
+      permalink: true
