@@ -1,0 +1,24 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: argocd
+
+resources:
+  # Install official ArgoCD
+  - https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+  - certificate.yaml
+  - ingress.yaml
+
+# Patch argocd-server to run in insecure mode (TLS handled by Traefik)
+patches:
+  - target:
+      kind: Deployment
+      name: argocd-server
+    patch: |-
+      - op: add
+        path: /spec/template/spec/containers/0/command/-
+        value: --insecure
+
+# Common labels
+commonLabels:
+  app.kubernetes.io/part-of: argocd

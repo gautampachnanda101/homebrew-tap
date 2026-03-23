@@ -1,0 +1,16 @@
+# ArgoCD base manifests
+# Install official ArgoCD resources
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: argocd
+---
+# Reference official ArgoCD installation
+# This ensures we always use the latest stable version
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: argocd-install-source
+  namespace: argocd
+data:
+  url: https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml

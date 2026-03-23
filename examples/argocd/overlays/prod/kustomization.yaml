@@ -1,0 +1,101 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: argocd
+
+resources:
+  - ../../base
+
+# Production configuration with Let's Encrypt
+# Override domain by setting: kubectl apply -k . --dry-run=client -o yaml | sed 's/DOMAIN/yourdomain.com/g' | kubectl apply -f -
+
+patches:
+  # Patch certificate to use letsencrypt-prod
+  - target:
+      kind: Certificate
+      name: argocd-server-cert
+    patch: |-
+      - op: replace
+        path: /spec/issuerRef/name
+        value: letsencrypt-prod
+      - op: replace
+        path: /spec/dnsNames/0
+        value: argocd.DOMAIN.PLACEHOLDER
+
+  # Patch IngressRoute
+  - target:
+      kind: IngressRoute
+      name: argocd-server
+    patch: |-
+      - op: replace
+        path: /spec/routes/0/match
+        value: Host(`argocd.DOMAIN.PLACEHOLDER`)
+
+  # Patch GRPC IngressRoute
+  - target:
+      kind: IngressRoute
+      name: argocd-server-grpc
+    patch: |-
+      - op: replace
+        path: /spec/routes/0/match
+        value: Host(`argocd.DOMAIN.PLACEHOLDER`) && Headers(`Content-Type`, `application/grpc`)
+
+  # High availability for production
+  - target:
+      kind: Deployment
+      name: argocd-server
+    patch: |-
+      - op: replace
+        path: /spec/replicas
+        value: 2
+
+  - target:
+      kind: Deployment
+      name: argocd-repo-server
+    patch: |-
+      - op: replace
+        path: /spec/replicas
+        value: 2
+
+  # Add resource limits for production
+  - target:
+      kind: Deployment
+      name: argocd-server
+    patch: |-
+      - op: add
+        path: /spec/template/spec/containers/0/resources
+        value:
+          limits:
+            cpu: 500m
+            memory: 512Mi
+          requests:
+            cpu: 250m
+            memory: 256Mi
+
+  - target:
+      kind: Deployment
+      name: argocd-repo-server
+    patch: |-
+      - op: add
+        path: /spec/template/spec/containers/0/resources
+        value:
+          limits:
+            cpu: 500m
+            memory: 512Mi
+          requests:
+            cpu: 250m
+            memory: 256Mi
+
+  - target:
+      kind: StatefulSet
+      name: argocd-application-controller
+    patch: |-
+      - op: add
+        path: /spec/template/spec/containers/0/resources
+        value:
+          limits:
+            cpu: 1000m
+            memory: 1Gi
+          requests:
+            cpu: 500m
+            memory: 512Mi

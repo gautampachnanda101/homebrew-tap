@@ -1,0 +1,63 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: argocd
+
+resources:
+  - ../../base
+
+patches:
+  # Patch certificate to use local-dev-ca-issuer and sslip.io domain
+  - target:
+      kind: Certificate
+      name: argocd-server-cert
+    patch: |-
+      - op: replace
+        path: /spec/issuerRef/name
+        value: local-dev-ca-issuer
+      - op: replace
+        path: /spec/dnsNames/0
+        value: argocd.127.0.0.1.sslip.io
+
+  # Patch IngressRoute to use sslip.io domain
+  - target:
+      kind: IngressRoute
+      name: argocd-server
+    patch: |-
+      - op: replace
+        path: /spec/routes/0/match
+        value: Host(`argocd.127.0.0.1.sslip.io`)
+
+  # Patch GRPC IngressRoute
+  - target:
+      kind: IngressRoute
+      name: argocd-server-grpc
+    patch: |-
+      - op: replace
+        path: /spec/routes/0/match
+        value: Host(`argocd.127.0.0.1.sslip.io`) && Headers(`Content-Type`, `application/grpc`)
+
+  # Scale down for local development (single replicas)
+  - target:
+      kind: Deployment
+      name: argocd-server
+    patch: |-
+      - op: replace
+        path: /spec/replicas
+        value: 1
+
+  - target:
+      kind: Deployment
+      name: argocd-repo-server
+    patch: |-
+      - op: replace
+        path: /spec/replicas
+        value: 1
+
+  - target:
+      kind: StatefulSet
+      name: argocd-application-controller
+    patch: |-
+      - op: replace
+        path: /spec/replicas
+        value: 1

@@ -62,6 +62,15 @@ k3d-local delete
 - [Upstream Project Docs](https://github.com/gautampachnanda101/local-cluster-k3d/tree/main/docs)
 - [Releases](https://github.com/gautampachnanda101/local-cluster-k3d/releases)
 
+## Examples & Recipes
+
+Ready-to-use Kustomize recipes for extending your k3d-local cluster:
+
+- **[ArgoCD](examples/argocd/)** - GitOps continuous delivery with proper TLS
+- More recipes coming soon (Vault, Harbor, GitLab Runner, etc.)
+
+[View all examples →](examples/README.md)
+
 ## Documentation
 
 - Start here: [docs/index.md](docs/index.md)

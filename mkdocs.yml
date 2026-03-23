@@ -14,6 +14,7 @@ nav:
   - Getting Started: getting-started.md
   - Installation: installation.md
   - Usage: usage.md
+  - Examples & Recipes: examples.md
   - Advanced:
     - Helm Deployment: helm-deployment.md
     - Customization: customization.md
