@@ -56,6 +56,12 @@ jobs:
           python scripts/check-links.py
           echo "✓ All validations passed"
 
+      - name: Build documentation
+        run: |
+          echo "Building documentation for deployment..."
+          mkdocs build
+          echo "✓ Documentation built successfully"
+
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
 
