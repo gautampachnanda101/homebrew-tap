@@ -9,6 +9,7 @@ Production-ready Kustomize recipes for extending your k3d-local cluster with add
 Install ArgoCD with proper TLS support for managing your Kubernetes applications using GitOps principles.
 
 **Features:**
+
 - ✅ Works with both self-signed (local) and Let's Encrypt (production) certificates
 - ✅ Traefik ingress integration with HTTP and gRPC support
 - ✅ One-command installation via script or kubectl
@@ -29,6 +30,7 @@ cd homebrew-tap/examples/argocd
 ```
 
 **Access:**
+
 - Local: https://argocd.127.0.0.1.sslip.io
 - Production: https://argocd.yourdomain.com
 
@@ -43,8 +45,6 @@ We're working on additional recipes for popular cloud-native tools:
 - **GitLab Runner** - CI/CD pipeline execution
 - **Keycloak** - Identity and access management
 - **Backstage** - Developer portal and service catalog
-- **Prometheus Stack** - Enhanced monitoring and alerting
-- **OpenTelemetry** - Distributed tracing and observability
 
 ## Recipe Structure
 
@@ -194,6 +194,7 @@ For production with Let's Encrypt:
    ```
 
 **Requirements:**
+
 - Domain must resolve to cluster's public IP
 - Port 80 accessible for HTTP-01 challenge
 - Port 443 for HTTPS traffic
@@ -209,6 +210,7 @@ We welcome recipe contributions! If you've created a useful recipe:
 5. Submit a pull request
 
 **Guidelines:**
+
 - Use Kustomize for all configuration
 - Support both local and production environments
 - Include installation and uninstall scripts
