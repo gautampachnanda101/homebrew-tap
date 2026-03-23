@@ -12,6 +12,7 @@ This directory contains production-ready recipes and examples for extending your
   - [Keycloak](#keycloak)
   - [Authentik](#authentik)
 - [Quality Assurance](#quality-assurance)
+- [What k3d-local Already Includes](#what-k3d-local-already-includes)
 - [Recipe Structure](#recipe-structure)
 - [Contributing Recipes](#contributing-recipes)
 - [Requirements](#requirements)
@@ -73,7 +74,14 @@ Install and configure Harbor as a cloud-native container registry with vulnerabi
 - ✅ Kustomize-based for easy customization
 
 **Quick Start:**
+```bash
+# Same prerequisites as ArgoCD above
+
+# Install Harbor
+cd homebrew-tap/examples/harbor
+./install.sh
 ```
+
 ### [GitLab Runner](./gitlab-runner/)
 Install GitLab Runner with Kubernetes executor for CI/CD pipelines.
 
@@ -146,12 +154,27 @@ All examples are automatically tested in CI:
 
 View the latest test results in the [GitHub Actions](https://github.com/gautampachnanda101/homebrew-tap/actions/workflows/test-examples.yml) workflow.
 
+## What k3d-local Already Includes
+
+The following capabilities are already built into k3d-local and should not be duplicated as standalone examples:
+
+- Cluster lifecycle and local Kubernetes bootstrap (k3d)
+- Traefik ingress with HTTP/HTTPS routing
+- cert-manager integration for local CA and Let's Encrypt flows
+- Optional telemetry stack via `--with-telemetry` (Grafana, Loki, Mimir, Tempo, Alloy)
+- Optional core data stack via `--with-core` (PostgreSQL, ScyllaDB, NATS, Kafka, SeaweedFS)
+- Sample app deployment via `--with-apps`
+
+Net-new examples should focus on platform services and workflows layered on top of these built-ins.
+
 ## Coming Soon
 
-- **Harbor** - Container registry
-- **GitLab Runner** - CI/CD integration
-- **Keycloak** - Identity and access management
-- **Backstage** - Developer portal
+- **Backstage** - Developer portal and service catalog
+- **External Secrets Operator** - Sync secrets from Vault into Kubernetes
+- **RabbitMQ** - Message broker for async workloads
+- **Kyverno** - Kubernetes policy-as-code and admission controls
+- **SpiceDB** - Fine-grained authorization service
+- **OpenFGA** - Relationship-based authorization engine
 
 ## Recipe Structure
 
@@ -159,12 +182,17 @@ Each recipe follows this structure:
 
 ```
 recipe-name/
-├── README.md                    # Detailed setup guide
+├── README.md                    # Setup and operations guide
 ├── install.sh                   # One-command installation script
-├── values-local.yaml           # Helm values for local development
-├── values-prod.yaml            # Helm values for production
-└── manifests/                  # Optional raw Kubernetes manifests
-    └── *.yaml
+├── uninstall.sh                 # Teardown script
+├── base/                        # Shared Kustomize base
+│   ├── kustomization.yaml
+│   └── *.yaml
+└── overlays/
+  ├── local/                   # Local development overlay
+  │   └── kustomization.yaml
+  └── prod/                    # Production overlay
+    └── kustomization.yaml
 ```
 
 ## Contributing Recipes

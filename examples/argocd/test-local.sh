@@ -282,7 +282,8 @@ display_success() {
 
 # Main execution
 main() {
-    clear
+    # Avoid failing in non-interactive environments where TERM may be unset.
+    clear 2>/dev/null || true
     log_section "ArgoCD Local Test Suite"
     
     # Set up trap for cleanup on exit
@@ -301,9 +302,15 @@ main() {
     
     display_success
     
-    # Ask if user wants to keep the cluster
-    echo -ne "${CYAN}Keep cluster running for manual testing? [y/N]:${NC} "
-    read -r response
+    # Ask if user wants to keep the cluster only in interactive mode.
+    # In CI/non-interactive runs, default to cleanup.
+    local response=""
+    if [ -t 0 ]; then
+        echo -ne "${CYAN}Keep cluster running for manual testing? [y/N]:${NC} "
+        read -r response || response=""
+    else
+        response="n"
+    fi
     if [[ "$response" =~ ^[Yy]$ ]]; then
         trap - EXIT INT TERM
         echo ""

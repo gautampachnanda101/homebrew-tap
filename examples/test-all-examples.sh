@@ -41,12 +41,41 @@ log_error() {
 declare -a PASSED_TESTS=()
 declare -a FAILED_TESTS=()
 
+discover_examples() {
+    local dir
+    for dir in "$SCRIPT_DIR"/*; do
+        if [ -d "$dir" ] && [ -f "$dir/install.sh" ]; then
+            basename "$dir"
+        fi
+    done
+}
+
+test_base_syntax() {
+    local example=$1
+    local base_dir="$SCRIPT_DIR/$example/base"
+
+    if [ ! -d "$base_dir" ]; then
+        log_warn "$example: base directory missing, skipping"
+        return 0
+    fi
+
+    log_step "Testing $example base..."
+    if kustomize build "$base_dir" > /dev/null 2>&1; then
+        log_info "$example base: Syntax valid"
+        PASSED_TESTS+=("$example-base-syntax")
+        return 0
+    else
+        log_error "$example base: Syntax invalid"
+        FAILED_TESTS+=("$example-base-syntax")
+        return 1
+    fi
+}
+
 test_kustomize_syntax() {
     local example=$1
     local overlay=$2
     
     log_step "Testing $example $overlay overlay..."
-    brew install kustomize || true
     if kustomize build "$SCRIPT_DIR/$example/overlays/$overlay" > /dev/null 2>&1; then
         log_info "$example $overlay: Syntax valid"
         PASSED_TESTS+=("$example-$overlay-syntax")
@@ -144,13 +173,33 @@ main() {
     
     # Test kustomize syntax for all examples and overlays
     log_section "Kustomize Syntax Validation"
-    
-    for example in argocd vault harbor gitlab-runner keycloak authentik; do
-        if [ -d "$SCRIPT_DIR/$example" ]; then
-            test_kustomize_syntax "$example" "local" || true
-            test_kustomize_syntax "$example" "prod" || true
+
+    local examples=()
+    while IFS= read -r example; do
+        examples+=("$example")
+    done < <(discover_examples)
+
+    if [ ${#examples[@]} -eq 0 ]; then
+        log_error "No examples found"
+        exit 1
+    fi
+
+    log_info "Discovered examples: ${examples[*]}"
+
+    for example in "${examples[@]}"; do
+        test_base_syntax "$example" || true
+
+        local overlays_dir="$SCRIPT_DIR/$example/overlays"
+        if [ -d "$overlays_dir" ]; then
+            local overlay
+            for overlay_path in "$overlays_dir"/*; do
+                if [ -d "$overlay_path" ]; then
+                    overlay="$(basename "$overlay_path")"
+                    test_kustomize_syntax "$example" "$overlay" || true
+                fi
+            done
         else
-            log_warn "Example $example not found, skipping"
+            log_warn "$example: overlays directory missing, skipping overlay checks"
         fi
     done
     
