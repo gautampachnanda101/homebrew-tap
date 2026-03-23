@@ -28,6 +28,17 @@ cd homebrew-tap/examples/argocd
 ./install.sh
 ```
 
+## Quality Assurance
+
+All examples are automatically tested in CI:
+
+- ✅ **Kustomize Syntax Validation** - Ensures all overlays build correctly
+- ✅ **Integration Testing** - Deploys to real k3d clusters in GitHub Actions
+- ✅ **Health Checks** - Verifies deployments reach ready state
+- ✅ **Ingress Testing** - Confirms TLS certificates and routing work
+
+View the latest test results in the [GitHub Actions](https://github.com/gautampachnanda101/homebrew-tap/actions/workflows/test-examples.yml) workflow.
+
 ## Coming Soon
 
 - **Vault** - Secrets management

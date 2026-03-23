@@ -39,6 +39,8 @@ cd homebrew-tap/examples/argocd
 - ✅ **GitOps-ready** configuration
 - ✅ **Kustomize-based** for easy customization
 
+> **CI Tested:** This recipe is automatically tested in GitHub Actions. See the [test workflow](https://github.com/gautampachnanda101/homebrew-tap/actions/workflows/test-examples.yml) for validation status.
+
 ## Recipe Structure
 
 ```
