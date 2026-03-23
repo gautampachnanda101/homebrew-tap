@@ -112,11 +112,11 @@ install_argocd() {
         fi
         
         log_info "Using domain: $DOMAIN"
-        kubectl apply -k "$overlay_path" --dry-run=client -o yaml | \
+        kubectl apply -k "$overlay_path" --server-side --dry-run=client -o yaml | \
             sed "s/DOMAIN\.PLACEHOLDER/$DOMAIN/g" | \
-            kubectl apply -f -
+            kubectl apply --server-side -f -
     else
-        kubectl apply -k "$overlay_path"
+        kubectl apply -k "$overlay_path" --server-side
     fi
 }
 
