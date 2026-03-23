@@ -1,6 +1,29 @@
 # Homebrew Tap by @gautampachnanda101
 
+[![Verify Formula](https://github.com/gautampachnanda101/homebrew-tap/actions/workflows/verify-formula.yml/badge.svg)](https://github.com/gautampachnanda101/homebrew-tap/actions/workflows/verify-formula.yml)
+[![Validate Documentation](https://github.com/gautampachnanda101/homebrew-tap/actions/workflows/docs-validate.yml/badge.svg)](https://github.com/gautampachnanda101/homebrew-tap/actions/workflows/docs-validate.yml)
+[![Publish Documentation](https://github.com/gautampachnanda101/homebrew-tap/actions/workflows/docs-publish.yml/badge.svg)](https://github.com/gautampachnanda101/homebrew-tap/actions/workflows/docs-publish.yml)
+
 Official Homebrew tap for various cross-platform development tools and utilities.
+
+Public docs (GitHub Pages): https://gautampachnanda101.github.io/homebrew-tap/
+
+## Table of Contents
+
+- [Overview](#overview)
+- [Available Packages](#available-packages)
+	- [k3d-local](#k3d-local)
+- [Documentation](#documentation)
+- [General Usage](#general-usage)
+	- [List Available Packages](#list-available-packages)
+	- [Update Packages](#update-packages)
+	- [Uninstall](#uninstall)
+- [About](#about)
+- [Contributing](#contributing)
+
+## Overview
+
+This tap provides installable formulas and end-user documentation for local development tooling.
 
 ## Available Packages
 
@@ -34,8 +57,22 @@ k3d-local delete
 
 **Links:**
 - [Repository](https://github.com/gautampachnanda101/local-cluster-k3d)
-- [Documentation](https://github.com/gautampachnanda101/local-cluster-k3d/tree/main/docs)
+- [Tap Documentation](docs/index.md)
+- [Public Docs Site](https://gautampachnanda101.github.io/homebrew-tap/)
+- [Upstream Project Docs](https://github.com/gautampachnanda101/local-cluster-k3d/tree/main/docs)
 - [Releases](https://github.com/gautampachnanda101/local-cluster-k3d/releases)
+
+## Documentation
+
+- Start here: [docs/index.md](docs/index.md)
+- Quick start: [docs/getting-started.md](docs/getting-started.md)
+- Install guide: [docs/installation.md](docs/installation.md)
+- Usage guide: [docs/usage.md](docs/usage.md)
+- Helm guide: [docs/helm-deployment.md](docs/helm-deployment.md)
+- Customization: [docs/customization.md](docs/customization.md)
+- Git workflows: [docs/git-workflows.md](docs/git-workflows.md)
+- Troubleshooting: [docs/troubleshooting.md](docs/troubleshooting.md)
+- Command reference: [docs/reference/commands.md](docs/reference/commands.md)
 
 ---
 
