@@ -1,0 +1,19 @@
+[default]
+extend-ignore-re = [
+  # Allow proper company/product names
+  "HashiCorp",
+  "GitLab",
+  "ArgoCD",
+  "kubectl",
+  "kustomize",
+  "Kustomize",
+]
+
+[default.extend-words]
+# Allow technical terms and proper names
+Hashi = "Hashi"
+GitLab = "GitLab"
+ArgoCD = "ArgoCD"
+kubectl = "kubectl"
+kustomize = "kustomize"
+Kustomize = "Kustomize"
