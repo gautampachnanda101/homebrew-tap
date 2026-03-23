@@ -68,19 +68,30 @@ jobs:
 
       - name: Wait for ArgoCD pods to be ready
         run: |
-          echo "Waiting for ArgoCD namespace to exist..."
-          kubectl wait --for=condition=Ready --timeout=30s namespace/argocd || true
+          echo "Checking ArgoCD namespace..."
+          if ! kubectl get namespace argocd; then
+            echo "❌ ArgoCD namespace not found"
+            exit 1
+          fi
           
-          echo "Waiting for ArgoCD deployments..."
+          echo "Waiting for ArgoCD deployments to be created..."
+          timeout 60s bash -c 'until kubectl get deployment argocd-server -n argocd 2>/dev/null; do echo "Waiting for argocd-server deployment..."; sleep 2; done'
+          
+          echo "Current deployments:"
           kubectl get deployments -n argocd
           
           echo "Waiting for argocd-server (timeout: 300s)..."
           kubectl wait --for=condition=available --timeout=300s deployment/argocd-server -n argocd || {
-            echo "ArgoCD server deployment failed to become available"
+            echo "❌ ArgoCD server deployment failed to become available"
+            echo ""
             echo "Pod status:"
-            kubectl get pods -n argocd
+            kubectl get pods -n argocd -o wide
+            echo ""
+            echo "Pod descriptions:"
+            kubectl describe pods -n argocd | grep -A 10 "Events:" || true
+            echo ""
             echo "Pod logs (argocd-server):"
-            kubectl logs -n argocd -l app.kubernetes.io/name=argocd-server --tail=50 || true
+            kubectl logs -n argocd -l app.kubernetes.io/name=argocd-server --tail=100 || true
             exit 1
           }
           
