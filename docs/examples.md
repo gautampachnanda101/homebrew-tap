@@ -224,7 +224,7 @@ We welcome recipe contributions! If you've created a useful recipe:
 
 ## Related Resources
 
-- [k3d-local Documentation](../index.md)
+- [k3d-local Documentation](index.md)
 - [Kustomize Documentation](https://kustomize.io/)
 - [cert-manager Documentation](https://cert-manager.io/docs/)
 - [Traefik Documentation](https://doc.traefik.io/traefik/)
