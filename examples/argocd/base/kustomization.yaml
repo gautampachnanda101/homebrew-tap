@@ -15,10 +15,20 @@ patches:
       kind: Deployment
       name: argocd-server
     patch: |-
-      - op: add
-        path: /spec/template/spec/containers/0/command/-
-        value: --insecure
+      apiVersion: apps/v1
+      kind: Deployment
+      metadata:
+        name: argocd-server
+      spec:
+        template:
+          spec:
+            containers:
+              - name: argocd-server
+                command:
+                  - argocd-server
+                  - --insecure
 
 # Common labels
-commonLabels:
-  app.kubernetes.io/part-of: argocd
+labels:
+  - pairs:
+      app.kubernetes.io/part-of: argocd
