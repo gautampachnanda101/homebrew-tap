@@ -11,6 +11,12 @@ This directory contains production-ready recipes and examples for extending your
   - [GitLab Runner](#gitlab-runner)
   - [Keycloak](#keycloak)
   - [Authentik](#authentik)
+  - [Backstage](#backstage)
+  - [External Secrets Operator](#external-secrets-operator)
+  - [RabbitMQ](#rabbitmq)
+  - [Kyverno](#kyverno)
+  - [SpiceDB](#spicedb)
+  - [OpenFGA](#openfga)
 - [Quality Assurance](#quality-assurance)
 - [What k3d-local Already Includes](#what-k3d-local-already-includes)
 - [Recipe Structure](#recipe-structure)
@@ -143,6 +149,66 @@ cd homebrew-tap/examples/authentik
 ./install.sh
 ```
 
+### [Backstage](./backstage/)
+Backstage starter recipe for developer portal setup.
+
+**Quick Start:**
+```bash
+k3d-local create --with-traefik
+cd homebrew-tap/examples/backstage
+./install.sh
+```
+
+### [External Secrets Operator](./external-secrets-operator/)
+External Secrets starter with Vault integration examples.
+
+**Quick Start:**
+```bash
+k3d-local create --with-traefik
+cd homebrew-tap/examples/external-secrets-operator
+./install.sh
+```
+
+### [RabbitMQ](./rabbitmq/)
+RabbitMQ starter recipe for local messaging workloads.
+
+**Quick Start:**
+```bash
+k3d-local create --with-traefik
+cd homebrew-tap/examples/rabbitmq
+./install.sh
+```
+
+### [Kyverno](./kyverno/)
+Kyverno starter recipe for policy-as-code.
+
+**Quick Start:**
+```bash
+k3d-local create --with-traefik
+cd homebrew-tap/examples/kyverno
+./install.sh
+```
+
+### [SpiceDB](./spicedb/)
+SpiceDB starter recipe for relationship-based authorization.
+
+**Quick Start:**
+```bash
+k3d-local create --with-traefik
+cd homebrew-tap/examples/spicedb
+./install.sh
+```
+
+### [OpenFGA](./openfga/)
+OpenFGA starter recipe for fine-grained authorization models.
+
+**Quick Start:**
+```bash
+k3d-local create --with-traefik
+cd homebrew-tap/examples/openfga
+./install.sh
+```
+
 ## Quality Assurance
 
 All examples are automatically tested in CI:
@@ -169,12 +235,15 @@ Net-new examples should focus on platform services and workflows layered on top 
 
 ## Coming Soon
 
-- **Backstage** - Developer portal and service catalog
-- **External Secrets Operator** - Sync secrets from Vault into Kubernetes
-- **RabbitMQ** - Message broker for async workloads
-- **Kyverno** - Kubernetes policy-as-code and admission controls
-- **SpiceDB** - Fine-grained authorization service
-- **OpenFGA** - Relationship-based authorization engine
+- **Calico (Tigera)** - Advanced CNI networking and policy
+- **Octopus Deploy** - Release orchestration and deployment automation
+- **Istio** - Service mesh and traffic management
+- **Linkerd** - Lightweight service mesh
+- **Consul** - Service discovery and mesh
+- **Falco** - Runtime security monitoring
+- **kube-hunter** - Kubernetes penetration testing checks
+- **Trivy** - Vulnerability and config scanning
+- **OPA/Gatekeeper** - Policy enforcement using OPA constraints
 
 ## Recipe Structure
 
