@@ -44,7 +44,7 @@ jobs:
 
       - name: Create k3d cluster with Traefik
         run: |
-          k3d-local create dev --with-traefik --wait
+          k3d-local create --name dev --with-traefik
           kubectl cluster-info
           kubectl get nodes
 
@@ -106,7 +106,7 @@ jobs:
       - name: Cleanup cluster
         if: always()
         run: |
-          k3d cluster delete dev || true
+          k3d-local delete --name dev || true
 
   test-kustomize-syntax:
     name: Validate Kustomize Syntax
