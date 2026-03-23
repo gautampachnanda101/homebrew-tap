@@ -19,11 +19,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup Homebrew (Ubuntu)
-        if: runner.os == 'Linux'
-        run: |
-          /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-          echo "/home/linuxbrew/.linuxbrew/bin" >> $GITHUB_PATH
+      - name: Setup Homebrew
+        uses: Homebrew/actions/setup-homebrew@master
 
       - name: Install k3d-local from tap
         run: |
@@ -38,7 +35,7 @@ jobs:
       - name: Test basic functionality
         run: |
           k3d-local --help
-          k3d-local version
+          k3d-local --version
 
       - name: Uninstall
         run: |

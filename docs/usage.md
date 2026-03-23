@@ -150,8 +150,8 @@ Shows:
 Create a cluster with custom settings:
 
 ```bash
-# Create with specific k3d version
-k3d-local create --k3d-version 5.8.3
+# Create with custom node sizing and ports
+k3d-local create --servers 2 --agents 3 --http-port 8081 --https-port 8444
 
 # Add custom k3d arguments
 k3d-local create -- --volume /host/path:/container/path@all

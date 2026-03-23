@@ -46,7 +46,7 @@ Similarly, Intel 64-bit binaries are automatically selected.
 ### Verify Installation
 
 ```bash
-k3d-local version
+k3d-local --version
 ```
 
 ## Linux
@@ -84,7 +84,7 @@ sudo mv k3d-local /usr/local/bin/
 chmod +x /usr/local/bin/k3d-local
 
 # Verify
-k3d-local version
+k3d-local --version
 ```
 
 ## Dependencies
@@ -171,7 +171,7 @@ Check installed version:
 
 ```bash
 brew list k3d-local
-k3d-local version
+k3d-local --version
 ```
 
 To install a specific version:

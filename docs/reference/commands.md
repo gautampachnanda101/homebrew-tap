@@ -1,319 +1,165 @@
 # Command Reference
 
-Complete reference for k3d-local CLI commands.
+Complete reference for the `k3d-local` CLI as verified against the installed Homebrew package.
 
-## Cluster Management
+## Top-Level Commands
 
-### create
+- `create`: Create and set up a k3d cluster.
+- `delete`: Delete the k3d cluster.
+- `install`: Install optional components into an existing cluster.
+- `k3d`: Pass-through mode for raw `k3d` commands.
+- `start`: Start a stopped cluster.
+- `status`: Show cluster status.
+- `stop`: Stop a running cluster.
+- `validate`: Validate cluster installation and HTTPS setup.
+- `help`: Show help.
+
+## Global Flags
+
+- `-h, --help`: Show help.
+- `-v, --verbose`: Enable verbose output.
+- `--debug`: Enable debug output (includes verbose).
+- `--version`: Print version information.
+
+## create
 
 Create a new k3d cluster with optional components.
 
-**Syntax:**
+Syntax:
+
 ```bash
-k3d-local create [OPTIONS]
+k3d-local create [flags]
 ```
 
-**Options:**
+Key flags:
 
-| Option | Description | Default |
-|--------|-------------|---------|
-| `--name` | Cluster name | k3d-local |
-| `--servers` | Number of server nodes | 1 |
-| `--agents` | Number of agent nodes | 2 |
-| `--with-traefik` | Install Traefik ingress controller | disabled |
-| `--with-apps` | Deploy sample applications | disabled |
-| `--with-telemetry` | Deploy observability stack (Grafana LGTM) | disabled |
-| `--with-core` | Install core components only | disabled |
-| `--auto-install` | Auto-install missing prerequisites | disabled |
-| `--k3d-version` | Specific k3d version | latest |
-| `--verbose` | Enable verbose output | disabled |
+- `--name` (default: `local-dev`)
+- `--servers` (default: `1`)
+- `--agents` (default: `2`)
+- `--api-port` (default: `6550`)
+- `--http-port` (default: `8080`)
+- `--https-port` (default: `8443`)
+- `--timeout` (default: `600` seconds)
+- `--with-traefik`
+- `--with-apps`
+- `--with-core`
+- `--with-telemetry`
+- `--auto-install`
 
-**Examples:**
+Examples:
 
 ```bash
-# Minimal cluster
 k3d-local create
-
-# Full-featured cluster
 k3d-local create --with-traefik --with-apps
-
-# With observability
-k3d-local create --with-traefik --with-apps --with-telemetry
-
-# Auto-install dependencies
-k3d-local create --auto-install --with-traefik --with-apps
-
-# Custom cluster size
-k3d-local create --servers 3 --agents 4
-
-# Specific k3d version
-k3d-local create --k3d-version 5.8.3
+k3d-local create --with-traefik --with-core --with-telemetry --with-apps
+k3d-local create --auto-install
 ```
 
-### status
+## install
 
-Display current cluster status and health information.
+Install components into an existing cluster.
 
-**Syntax:**
+Syntax:
+
 ```bash
-k3d-local status [OPTIONS]
+k3d-local install [command]
 ```
 
-**Options:**
+Subcommands:
 
-| Option | Description |
-|--------|-------------|
-| `--name` | Cluster name (if not using default) |
-| `--verbose` | Show detailed information |
+- `k3d-local install traefik`
+- `k3d-local install apps`
+- `k3d-local install core`
+- `k3d-local install telemetry`
 
-**Output includes:**
-- Node status (Ready/NotReady)
-- Running containers
-- Port mappings
-- Service URLs
-- Component health
+Optional flag:
 
-**Example:**
+- `--name` (default: `local-dev`)
+
+## status
+
+Show cluster status.
+
+Syntax:
+
 ```bash
-k3d-local status
+k3d-local status [flags]
 ```
 
-### delete
+Optional flag:
 
-Remove cluster and clean up resources.
+- `--name` (default: `local-dev`)
 
-**Syntax:**
+## start
+
+Start a stopped cluster.
+
+Syntax:
+
 ```bash
-k3d-local delete [OPTIONS]
+k3d-local start [flags]
 ```
 
-**Options:**
+Optional flag:
 
-| Option | Description |
-|--------|-------------|
-| `--name` | Cluster name |
-| `--verbose` | Show detailed deletion steps |
+- `--name` (default: `local-dev`)
 
-!!! warning
-    This permanently removes cluster data.
+## stop
 
-**Example:**
+Stop a running cluster.
+
+Syntax:
+
 ```bash
-k3d-local delete
+k3d-local stop [flags]
 ```
 
-## Component Management
+Optional flag:
 
-### setup-traefik
+- `--name` (default: `local-dev`)
 
-Install or upgrade Traefik ingress controller.
+## delete
 
-**Syntax:**
+Delete a cluster and its resources.
+
+Syntax:
+
 ```bash
-k3d-local setup-traefik [OPTIONS]
+k3d-local delete [flags]
 ```
 
-**Includes:**
-- Traefik v3 controller
-- Dashboard configuration
-- SSL/TLS support
+Optional flag:
 
-### setup-apps
+- `--name` (default: `local-dev`)
 
-Deploy sample applications.
+## validate
 
-**Syntax:**
+Validate cluster readiness, certificates, and HTTPS wiring.
+
+Syntax:
+
 ```bash
-k3d-local setup-apps [OPTIONS]
+k3d-local validate [flags]
 ```
 
-**Deploys:**
-- Sample hello-world application
-- Ingress configuration
-- Service endpoints
+Optional flag:
 
-### setup-telemetry
+- `--ci` (skip platform-specific keychain checks)
 
-Deploy Grafana LGTM observability stack.
+## Version and Help
 
-**Syntax:**
+Version:
+
 ```bash
-k3d-local setup-telemetry [OPTIONS]
+k3d-local --version
 ```
 
-**Includes:**
-- Grafana
-- Loki (logs)
-- Mimir (metrics)
-- Tempo (traces)
-- Alloy (data collection)
+Help:
 
-**Credentials:** `admin` / `admin`
-
-## Utility Commands
-
-### version
-
-Show k3d-local version.
-
-**Syntax:**
 ```bash
-k3d-local version
-```
-
-**Output:**
-```
-k3d-local v1.0.3
-```
-
-### help
-
-Display help information.
-
-**Syntax:**
-```bash
-k3d-local help
-k3d-local <command> --help
-```
-
-**Examples:**
-```bash
-k3d-local help
+k3d-local --help
 k3d-local create --help
 ```
-
-## Combined Operations
-
-### Quick Setups
-
-**Full development environment (recommended):**
-```bash
-k3d-local create --with-traefik --with-apps
-```
-
-**With observability:**
-```bash
-k3d-local create --with-traefik --with-apps --with-telemetry
-```
-
-**Auto-install dependencies:**
-```bash
-k3d-local create --auto-install --with-traefik --with-apps
-```
-
-## Docker & Kubernetes Integration
-
-### Using kubectl
-
-k3d-local automatically configures kubectl:
-
-```bash
-# Get cluster info
-kubectl cluster-info
-
-# List nodes
-kubectl get nodes
-
-# Get all resources
-kubectl get all --all-namespaces
-
-# View logs
-kubectl logs -f deployment/app-name
-
-# Port forward
-kubectl port-forward svc/app-name 3000:3000
-```
-
-### Using docker
-
-Access cluster containers directly:
-
-```bash
-# List cluster containers
-docker ps | grep k3d
-
-# View kube-system namespace
-docker ps | grep k3d-local-server
-
-# Inspect node
-docker logs k3d-local-server-0
-```
-
-## Configuration
-
-### Environment Variables
-
-Control k3d-local behavior via environment variables:
-
-```bash
-# Number of agent nodes
-export K3D_AGENTS=3
-
-# Memory per node
-export K3D_MEMORY=4g
-
-# K3s version
-export K3S_VERSION=v1.31.5
-
-k3d-local create
-```
-
-### Network Configuration
-
-### Service Access
-
-Access services via Traefik:
-
-```bash
-# HTTP
-http://service-name.127.0.0.1.sslip.io:8080
-
-# HTTPS (if enabled)
-https://service-name.127.0.0.1.sslip.io:8443
-```
-
-### Port Mappings
-
-| Service | Port | Protocol |
-|---------|------|----------|
-| Traefik HTTP | 8080 | HTTP |
-| Traefik HTTPS | 8443 | HTTPS |
-| kube-apiserver | 6443 | HTTPS (internal) |
-| kubelet | 10250 | HTTPS (internal) |
-| etcd | 2379-2380 | HTTPS (internal) |
-
-## Exit Codes
-
-| Code | Meaning |
-|------|---------|
-| 0 | Success |
-| 1 | General error |
-| 2 | Usage error (invalid flags/arguments) |
-| 127 | Command not found |
-
-## Tips
-
-### Check Command Syntax
-
-```bash
-k3d-local <command> --help
-```
-
-### Verbose Debugging
-
-```bash
-k3d-local create --verbose
-```
-
-Detailed output helps troubleshoot issues.
-
-### Dry Run (if supported)
-
-```bash
-k3d-local create --dry-run
-```
-
-Show what would be executed without making changes.
 
 ## See Also
 
