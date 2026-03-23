@@ -1,0 +1,64 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: harbor
+
+resources:
+  - ../../base
+
+patches:
+  - target:
+      kind: Certificate
+      name: harbor-tls
+    patch: |-
+      apiVersion: cert-manager.io/v1
+      kind: Certificate
+      metadata:
+        name: harbor-tls
+      spec:
+        issuerRef:
+          name: letsencrypt-prod
+          kind: ClusterIssuer
+        dnsNames:
+          - DOMAIN.PLACEHOLDER
+  
+  - target:
+      kind: IngressRoute
+      name: harbor
+    patch: |-
+      apiVersion: traefik.io/v1alpha1
+      kind: IngressRoute
+      metadata:
+        name: harbor
+      spec:
+        routes:
+          - match: Host(`DOMAIN.PLACEHOLDER`)
+            kind: Rule
+            services:
+              - name: harbor-portal
+                port: 8080
+  
+  - target:
+      kind: Deployment
+      name: harbor-core
+    patch: |-
+      apiVersion: apps/v1
+      kind: Deployment
+      metadata:
+        name: harbor-core
+      spec:
+        replicas: 2
+        template:
+          spec:
+            containers:
+            - name: core
+              env:
+              - name: EXT_ENDPOINT
+                value: "https://DOMAIN.PLACEHOLDER"
+              resources:
+                requests:
+                  memory: "256Mi"
+                  cpu: "200m"
+                limits:
+                  memory: "512Mi"
+                  cpu: "500m"

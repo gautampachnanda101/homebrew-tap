@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: harbor-portal
+  namespace: harbor
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: harbor-portal
+  template:
+    metadata:
+      labels:
+        app: harbor-portal
+    spec:
+      containers:
+      - name: portal
+        image: goharbor/harbor-portal:v2.10.0
+        ports:
+        - containerPort: 8080
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "50m"
+          limits:
+            memory: "128Mi"
+            cpu: "100m"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: harbor-portal
+  namespace: harbor
+spec:
+  ports:
+  - port: 8080
+    targetPort: 8080
+  selector:
+    app: harbor-portal

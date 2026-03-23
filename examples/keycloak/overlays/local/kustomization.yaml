@@ -1,0 +1,56 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: keycloak
+
+resources:
+  - ../../base
+
+patches:
+  - target:
+      kind: Certificate
+      name: keycloak-tls
+    patch: |-
+      apiVersion: cert-manager.io/v1
+      kind: Certificate
+      metadata:
+        name: keycloak-tls
+      spec:
+        issuerRef:
+          name: local-dev-ca-issuer
+          kind: ClusterIssuer
+        dnsNames:
+          - keycloak.127.0.0.1.sslip.io
+  
+  - target:
+      kind: IngressRoute
+      name: keycloak
+    patch: |-
+      apiVersion: traefik.io/v1alpha1
+      kind: IngressRoute
+      metadata:
+        name: keycloak
+      spec:
+        routes:
+          - match: Host(`keycloak.127.0.0.1.sslip.io`)
+            kind: Rule
+            services:
+              - name: keycloak
+                port: 8080
+  
+  - target:
+      kind: Deployment
+      name: keycloak
+    patch: |-
+      apiVersion: apps/v1
+      kind: Deployment
+      metadata:
+        name: keycloak
+      spec:
+        template:
+          spec:
+            containers:
+            - name: keycloak
+              env:
+              - name: KC_HOSTNAME_URL
+                value: "https://keycloak.127.0.0.1.sslip.io"

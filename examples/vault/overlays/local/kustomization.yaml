@@ -1,0 +1,53 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: vault
+
+resources:
+  - ../../base
+
+patches:
+  # Use self-signed certificate for local development
+  - target:
+      kind: Certificate
+      name: vault-tls
+    patch: |-
+      apiVersion: cert-manager.io/v1
+      kind: Certificate
+      metadata:
+        name: vault-tls
+      spec:
+        issuerRef:
+          name: local-dev-ca-issuer
+          kind: ClusterIssuer
+        dnsNames:
+          - vault.127.0.0.1.sslip.io
+  
+  # Update ingress for local domain
+  - target:
+      kind: IngressRoute
+      name: vault
+    patch: |-
+      apiVersion: traefik.io/v1alpha1
+      kind: IngressRoute
+      metadata:
+        name: vault
+      spec:
+        routes:
+          - match: Host(`vault.127.0.0.1.sslip.io`)
+            kind: Rule
+            services:
+              - name: vault
+                port: 8200
+  
+  # Single replica for local dev
+  - target:
+      kind: Deployment
+      name: vault
+    patch: |-
+      apiVersion: apps/v1
+      kind: Deployment
+      metadata:
+        name: vault
+      spec:
+        replicas: 1

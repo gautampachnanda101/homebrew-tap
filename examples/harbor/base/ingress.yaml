@@ -1,0 +1,16 @@
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: harbor
+  namespace: harbor
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`DOMAIN.PLACEHOLDER`)
+      kind: Rule
+      services:
+        - name: harbor-portal
+          port: 8080
+  tls:
+    secretName: harbor-tls

@@ -1,0 +1,71 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: vault
+
+resources:
+  - ../../base
+
+patches:
+  # Use Let's Encrypt for production
+  - target:
+      kind: Certificate
+      name: vault-tls
+    patch: |-
+      apiVersion: cert-manager.io/v1
+      kind: Certificate
+      metadata:
+        name: vault-tls
+      spec:
+        issuerRef:
+          name: letsencrypt-prod
+          kind: ClusterIssuer
+        dnsNames:
+          - DOMAIN.PLACEHOLDER
+  
+  # Update ingress for production domain
+  - target:
+      kind: IngressRoute
+      name: vault
+    patch: |-
+      apiVersion: traefik.io/v1alpha1
+      kind: IngressRoute
+      metadata:
+        name: vault
+      spec:
+        routes:
+          - match: Host(`DOMAIN.PLACEHOLDER`)
+            kind: Rule
+            services:
+              - name: vault
+                port: 8200
+  
+  # Production deployment settings (NOT dev mode - use proper storage)
+  - target:
+      kind: Deployment
+      name: vault
+    patch: |-
+      apiVersion: apps/v1
+      kind: Deployment
+      metadata:
+        name: vault
+      spec:
+        replicas: 1
+        template:
+          spec:
+            containers:
+            - name: vault
+              image: hashicorp/vault:1.15
+              args:
+              - server
+              - -config=/vault/config/vault.hcl
+              env:
+              - name: VAULT_ADDR
+                value: "http://127.0.0.1:8200"
+              resources:
+                requests:
+                  memory: "256Mi"
+                  cpu: "200m"
+                limits:
+                  memory: "512Mi"
+                  cpu: "500m"

@@ -2,6 +2,21 @@
 
 This directory contains production-ready recipes and examples for extending your k3d-local cluster with additional tools and services.
 
+## Table of Contents
+
+- [Available Recipes](#available-recipes)
+  - [ArgoCD](#argocd)
+  - [HashiCorp Vault](#hashicorp-vault)
+  - [Harbor](#harbor)
+  - [GitLab Runner](#gitlab-runner)
+  - [Keycloak](#keycloak)
+  - [Authentik](#authentik)
+- [Quality Assurance](#quality-assurance)
+- [Recipe Structure](#recipe-structure)
+- [Contributing Recipes](#contributing-recipes)
+- [Requirements](#requirements)
+- [Support](#support)
+
 ## Available Recipes
 
 ### [ArgoCD](./argocd/)
@@ -28,6 +43,98 @@ cd homebrew-tap/examples/argocd
 ./install.sh
 ```
 
+### [HashiCorp Vault](./vault/)
+Install and configure Vault for secrets management and encryption.
+
+**Features:**
+- ✅ Works with both self-signed (local) and Let's Encrypt (production) certificates
+- ✅ Traefik ingress integration
+- ✅ Dev mode for local development (auto-unsealed)
+- ✅ Production-ready configuration with proper storage
+- ✅ Kustomize-based for easy customization
+
+**Quick Start:**
+```bash
+# Same prerequisites as ArgoCD above
+
+# Install Vault
+cd homebrew-tap/examples/vault
+./install.sh
+```
+
+### [Harbor](./harbor/)
+Install and configure Harbor as a cloud-native container registry with vulnerability scanning.
+
+**Features:**
+- ✅ Works with both self-signed (local) and Let's Encrypt (production) certificates
+- ✅ Traefik ingress integration
+- ✅ PostgreSQL and Redis for persistence
+- ✅ Complete registry with portal, core, and registry components
+- ✅ Kustomize-based for easy customization
+
+**Quick Start:**
+```
+### [GitLab Runner](./gitlab-runner/)
+Install GitLab Runner with Kubernetes executor for CI/CD pipelines.
+
+**Features:**
+- ✅ Kubernetes executor for native pod-based builds
+- ✅ RBAC configuration included
+- ✅ Configurable runner token and GitLab URL
+- ✅ Support for both GitLab.com and self-hosted instances
+- ✅ Kustomize-based for easy customization
+
+**Quick Start:**
+```bash
+# Same prerequisites as ArgoCD above
+
+# Install GitLab Runner
+cd homebrew-tap/examples/gitlab-runner
+# Set your token and GitLab URL first
+export GITLAB_RUNNER_TOKEN="your-runner-token"
+export GITLAB_URL="https://gitlab.com"
+./install.sh
+```
+
+### [Keycloak](./keycloak/)
+Install Keycloak for identity and access management (IAM).
+
+**Features:**
+- ✅ Works with both self-signed (local) and Let's Encrypt (production) certificates
+- ✅ Traefik ingress integration
+- ✅ PostgreSQL backend for production
+- ✅ Admin console for managing realms and users
+- ✅ Kustomize-based for easy customization
+
+**Quick Start:**
+```bash
+# Same prerequisites as ArgoCD above
+
+# Install Keycloak
+cd homebrew-tap/examples/keycloak
+./install.sh
+```
+
+### [Authentik](./authentik/)
+Install Authentik as an alternative open-source identity provider (IDP).
+
+**Features:**
+- ✅ Works with both self-signed (local) and Let's Encrypt (production) certificates
+- ✅ Traefik ingress integration
+- ✅ PostgreSQL and Redis backends
+- ✅ Server/worker architecture for scalability
+- ✅ Modern UI with flow-based configuration
+- ✅ Kustomize-based for easy customization
+
+**Quick Start:**
+```bash
+# Same prerequisites as ArgoCD above
+
+# Install Authentik
+cd homebrew-tap/examples/authentik
+./install.sh
+```
+
 ## Quality Assurance
 
 All examples are automatically tested in CI:
@@ -41,12 +148,10 @@ View the latest test results in the [GitHub Actions](https://github.com/gautampa
 
 ## Coming Soon
 
-- **Vault** - Secrets management
-- **Prometheus/Grafana** - Enhanced monitoring
-- **Backstage** - Developer portal
 - **Harbor** - Container registry
 - **GitLab Runner** - CI/CD integration
 - **Keycloak** - Identity and access management
+- **Backstage** - Developer portal
 
 ## Recipe Structure
 

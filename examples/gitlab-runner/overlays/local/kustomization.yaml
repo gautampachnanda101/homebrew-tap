@@ -1,0 +1,32 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: gitlab-runner
+
+resources:
+  - ../../base
+
+patches:
+  - target:
+      kind: ConfigMap
+      name: gitlab-runner-config
+    patch: |-
+      apiVersion: v1
+      kind: ConfigMap
+      metadata:
+        name: gitlab-runner-config
+      data:
+        config.toml: |
+          concurrent = 5
+          check_interval = 3
+          
+          [[runners]]
+            name = "k3d-local-dev-runner"
+            url = "GITLAB_URL_PLACEHOLDER"
+            token = "RUNNER_TOKEN_PLACEHOLDER"
+            executor = "kubernetes"
+            
+            [runners.kubernetes]
+              namespace = "gitlab-runner"
+              image = "alpine:latest"
+              privileged = false

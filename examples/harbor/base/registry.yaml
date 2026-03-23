@@ -1,0 +1,53 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: registry
+  namespace: harbor
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: registry
+  template:
+    metadata:
+      labels:
+        app: registry
+    spec:
+      containers:
+      - name: registry
+        image: goharbor/registry-photon:v2.10.0
+        ports:
+        - containerPort: 5000
+        - containerPort: 5001
+        volumeMounts:
+        - name: storage
+          mountPath: /storage
+        env:
+        - name: REGISTRY_HTTP_SECRET
+          value: "not-a-secure-secret"
+        resources:
+          requests:
+            memory: "128Mi"
+            cpu: "100m"
+          limits:
+            memory: "256Mi"
+            cpu: "200m"
+      volumes:
+      - name: storage
+        emptyDir: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: registry
+  namespace: harbor
+spec:
+  ports:
+  - name: registry
+    port: 5000
+    targetPort: 5000
+  - name: debug
+    port: 5001
+    targetPort: 5001
+  selector:
+    app: registry

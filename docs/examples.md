@@ -2,6 +2,29 @@
 
 Production-ready Kustomize recipes for extending your k3d-local cluster with additional tools and services.
 
+## Table of Contents
+
+- [Available Recipes](#available-recipes)
+  - [ArgoCD - GitOps Continuous Delivery](#argocd-gitops-continuous-delivery)
+  - [HashiCorp Vault - Secrets Management](#hashicorp-vault-secrets-management)
+  - [Harbor - Container Registry](#harbor-container-registry)
+  - [GitLab Runner - CI/CD Executor](#gitlab-runner-cicd-executor)
+  - [Keycloak - Identity and Access Management](#keycloak-identity-and-access-management)
+  - [Authentik - Open Source IDP](#authentik-open-source-idp)
+- [Recipe Structure](#recipe-structure)
+- [Using Recipes](#using-recipes)
+  - [Prerequisites](#prerequisites)
+  - [Installation Methods](#installation-methods)
+- [Customizing Recipes](#customizing-recipes)
+  - [Using Kustomize Overlays](#using-kustomize-overlays)
+  - [Common Customizations](#common-customizations)
+- [TLS Configuration](#tls-configuration)
+  - [Local Development](#local-development)
+  - [Production](#production)
+- [Contributing Recipes](#contributing-recipes)
+- [Support](#support)
+- [Related Resources](#related-resources)
+
 ## Available Recipes
 
 ### ArgoCD - GitOps Continuous Delivery
@@ -36,15 +59,175 @@ cd homebrew-tap/examples/argocd
 
 [View ArgoCD Recipe →](https://github.com/gautampachnanda101/homebrew-tap/tree/main/examples/argocd)
 
-## Coming Soon
+### HashiCorp Vault - Secrets Management
 
-We're working on additional recipes for popular cloud-native tools:
+Install HashiCorp Vault for secure secrets management, encryption, and identity-based access.
 
-- **HashiCorp Vault** - Secrets management and encryption
-- **Harbor** - Container registry with vulnerability scanning
-- **GitLab Runner** - CI/CD pipeline execution
-- **Keycloak** - Identity and access management
-- **Backstage** - Developer portal and service catalog
+**Features:**
+
+- ✅ Works with both self-signed (local) and Let's Encrypt (production) certificates
+- ✅ Traefik ingress integration
+- ✅ Dev mode for local development (auto-unsealed with root token)
+- ✅ Production-ready configuration with sealed storage
+- ✅ Kustomize overlays for easy customization
+
+**Quick Start:**
+```bash
+# Clone or download the examples
+git clone https://github.com/gautampachnanda101/homebrew-tap.git
+cd homebrew-tap/examples/vault
+
+# Install for local development
+./install.sh
+
+# Or for production with Let's Encrypt
+./install.sh --environment prod --domain vault.yourdomain.com
+```
+
+**Access:**
+
+- Local: https://vault.127.0.0.1.sslip.io
+- Root Token (dev mode): `root`
+- Production: https://vault.yourdomain.com
+
+[View Vault Recipe →](https://github.com/gautampachnanda101/homebrew-tap/tree/main/examples/vault)
+
+### Harbor - Container Registry
+
+Install Harbor as a cloud-native container registry with vulnerability scanning, image signing, and replication.
+
+**Features:**
+
+- ✅ Works with both self-signed (local) and Let's Encrypt (production) certificates
+- ✅ Traefik ingress integration
+- ✅ PostgreSQL and Redis backends for scalability
+- ✅ Complete registry stack: portal, core, registry, jobservice
+- ✅ Kustomize overlays for easy customization
+
+**Quick Start:**
+```bash
+# Clone or download the examples
+git clone https://github.com/gautampachnanda101/homebrew-tap.git
+cd homebrew-tap/examples/harbor
+
+# Install for local development
+./install.sh
+
+# Or for production with Let's Encrypt
+./install.sh --environment prod --domain harbor.yourdomain.com
+```
+
+**Access:**
+
+- Local: https://harbor.127.0.0.1.sslip.io
+- Default credentials: admin / Harbor12345
+- Production: https://harbor.yourdomain.com
+
+[View Harbor Recipe →](https://github.com/gautampachnanda101/homebrew-tap/tree/main/examples/harbor)
+
+### GitLab Runner - CI/CD Executor
+
+Install GitLab Runner with Kubernetes executor for running CI/CD pipelines in your cluster.
+
+**Features:**
+
+- ✅ Kubernetes executor for native pod-based builds
+- ✅ RBAC configuration included
+- ✅ Works with GitLab.com and self-hosted instances
+- ✅ Configurable runner token and GitLab URL
+- ✅ Kustomize overlays for easy customization
+
+**Quick Start:**
+```bash
+# Clone or download the examples
+git clone https://github.com/gautampachnanda101/homebrew-tap.git
+cd homebrew-tap/examples/gitlab-runner
+
+# Set your GitLab Runner token and URL
+export GITLAB_RUNNER_TOKEN="your-registration-token"
+export GITLAB_URL="https://gitlab.com"
+
+# Install
+./install.sh
+```
+
+**Configuration:**
+
+- Get runner token from GitLab: Settings → CI/CD → Runners
+- Runner will auto-register with your GitLab instance
+- Default executor: Kubernetes (builds run in pods)
+
+[View GitLab Runner Recipe →](https://github.com/gautampachnanda101/homebrew-tap/tree/main/examples/gitlab-runner)
+
+### Keycloak - Identity and Access Management
+
+Install Keycloak for comprehensive identity and access management (IAM) with OpenID Connect and SAML support.
+
+**Features:**
+
+- ✅ Works with both self-signed (local) and Let's Encrypt (production) certificates
+- ✅ Traefik ingress integration
+- ✅ PostgreSQL backend for production
+- ✅ Admin console for managing realms, users, and clients
+- ✅ OpenID Connect and SAML protocols
+- ✅ Kustomize overlays for easy customization
+
+**Quick Start:**
+```bash
+# Clone or download the examples
+git clone https://github.com/gautampachnanda101/homebrew-tap.git
+cd homebrew-tap/examples/keycloak
+
+# Install for local development
+./install.sh
+
+# Or for production with Let's Encrypt
+./install.sh --environment prod --domain keycloak.yourdomain.com
+```
+
+**Access:**
+
+- Local: https://keycloak.127.0.0.1.sslip.io
+- Admin credentials: Use get-password.sh script
+- Production: https://keycloak.yourdomain.com
+
+[View Keycloak Recipe →](https://github.com/gautampachnanda101/homebrew-tap/tree/main/examples/keycloak)
+
+### Authentik - Open Source IDP
+
+Install Authentik as a modern, flexible identity provider with flow-based authentication and powerful policy engine.
+
+**Features:**
+
+- ✅ Works with both self-signed (local) and Let's Encrypt (production) certificates
+- ✅ Traefik ingress integration  
+- ✅ PostgreSQL and Redis backends
+- ✅ Server/worker architecture for scalability
+- ✅ Modern UI with flow-based configuration
+- ✅ OpenID Connect, SAML, LDAP support
+- ✅ Kustomize overlays for easy customization
+
+**Quick Start:**
+```bash
+# Clone or download the examples
+git clone https://github.com/gautampachnanda101/homebrew-tap.git
+cd homebrew-tap/examples/authentik
+
+# Install for local development
+./install.sh
+
+# Or for production with Let's Encrypt
+./install.sh --environment prod --domain auth.yourdomain.com
+```
+
+**Access:**
+
+- Local: https://authentik.127.0.0.1.sslip.io/if/flow/initial-setup/
+- First-time: Visit URL above to create admin account
+- Admin interface: https://authentik.127.0.0.1.sslip.io/if/admin/
+- Production: https://auth.yourdomain.com
+
+[View Authentik Recipe →](https://github.com/gautampachnanda101/homebrew-tap/tree/main/examples/authentik)
 
 ## Recipe Structure
 
