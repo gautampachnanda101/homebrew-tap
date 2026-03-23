@@ -16,7 +16,7 @@ class K3dLocal < Formula
   on_macos do
     on_intel do
       url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v1.0.4/k3d-local_1.0.4_Darwin_x86_64.tar.gz"
-      sha256 "4a05e2ef4934def6723115cb367ee4b831dc4982d23abff91e5e630e776114e8"
+      sha256 "c56b75f7b9349503b2d7a8c029399f6ceea9cfca492547202f9cdbc5efa74315"
 
       def install
         bin.install "k3d-local"
@@ -24,7 +24,7 @@ class K3dLocal < Formula
     end
     on_arm do
       url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v1.0.4/k3d-local_1.0.4_Darwin_arm64.tar.gz"
-      sha256 "fe019f0c6df8bf4eeddaa16c49c9563cf73c334a540ffc52773f0696371a2905"
+      sha256 "76796e142ed129cb95009cfa2e72ea1f5ede3d6abe2c7ac430addf9deeb9c141"
 
       def install
         bin.install "k3d-local"
@@ -36,7 +36,7 @@ class K3dLocal < Formula
     on_intel do
       if Hardware::CPU.is_64_bit?
         url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v1.0.4/k3d-local_1.0.4_Linux_x86_64.tar.gz"
-        sha256 "45b5c5709c0bc47da557c381892a93b5e170dcc7320babc3b59d83b2715b03ed"
+        sha256 "4552eef153c8189cffbc7bb45e619ea7f9dbf17693b83dc5ffee68aabaaa51e4"
 
         def install
           bin.install "k3d-local"
@@ -46,7 +46,7 @@ class K3dLocal < Formula
     on_arm do
       if Hardware::CPU.is_64_bit?
         url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v1.0.4/k3d-local_1.0.4_Linux_arm64.tar.gz"
-        sha256 "76200ea12393b842ec3bd7c21fecf0f51150f387641dd9c89a2770f373bc3d85"
+        sha256 "0bef84355d04cdf8c1395de75952b586ac0d59a9f040964c39ccc857ad4840f2"
 
         def install
           bin.install "k3d-local"
