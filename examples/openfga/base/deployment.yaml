@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: openfga
+  namespace: openfga
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: openfga
+  template:
+    metadata:
+      labels:
+        app: openfga
+    spec:
+      containers:
+        - name: openfga
+          image: openfga/openfga:latest
+          args:
+            - run
+          ports:
+            - containerPort: 8080
+            - containerPort: 3000

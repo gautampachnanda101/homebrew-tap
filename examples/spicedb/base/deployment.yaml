@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: spicedb
+  namespace: spicedb
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: spicedb
+  template:
+    metadata:
+      labels:
+        app: spicedb
+    spec:
+      containers:
+        - name: spicedb
+          image: authzed/spicedb:v1.35.3
+          args:
+            - serve
+            - --grpc-preshared-key=dev-key
+            - --datastore-engine=memory
+          ports:
+            - containerPort: 50051
