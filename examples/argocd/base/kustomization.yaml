@@ -4,6 +4,8 @@ kind: Kustomization
 namespace: argocd
 
 resources:
+  # Create namespace first
+  - namespace.yaml
   # Install official ArgoCD
   - https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
   - certificate.yaml
