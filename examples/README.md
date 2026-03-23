@@ -11,16 +11,20 @@ Install and configure ArgoCD with proper TLS support for GitOps workflows.
 - ✅ Works with both self-signed (local) and Let's Encrypt (production) certificates
 - ✅ Traefik ingress integration
 - ✅ One-command installation
-- ✅ Helm values for different environments
+- ✅ Kustomize-based for easy customization
 
 **Quick Start:**
 ```bash
-# Install k3d-local first
-brew install gautampachnanda101/tap/k3d-local
+# 1. Install k3d-local (if you haven't already)
+brew tap gautampachnanda101/tap
+brew install k3d-local
+
+# 2. Create cluster with Traefik (required!)
 k3d-local create --with-traefik
 
-# Install ArgoCD
-cd examples/argocd
+# 3. Install ArgoCD
+git clone https://github.com/gautampachnanda101/homebrew-tap.git
+cd homebrew-tap/examples/argocd
 ./install.sh
 ```
 

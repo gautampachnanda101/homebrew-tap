@@ -5,17 +5,30 @@ Production-ready ArgoCD installation using **Kustomize overlays** for your k3d-l
 ## Quick Start
 
 ```bash
-# 1. Create k3d-local cluster with Traefik
+# 1. Install k3d-local (if you haven't already)
+brew tap gautampachnanda101/tap
+brew install k3d-local
+
+# 2. Create k3d-local cluster with Traefik (required for ingress)
 k3d-local create --with-traefik
 
-# 2. Install ArgoCD (local development with self-signed certs)
+# 3. Clone this repo and navigate to the ArgoCD recipe
+git clone https://github.com/gautampachnanda101/homebrew-tap.git
+cd homebrew-tap/examples/argocd
+
+# 4. Install ArgoCD (local development with self-signed certs)
 ./install.sh
 
-# Access ArgoCD
+# 5. Access ArgoCD
 # URL: https://argocd.127.0.0.1.sslip.io
 # Username: admin
 # Password: Run ./get-password.sh
 ```
+
+**Prerequisites:**
+- Docker running
+- k3d-local cluster created with `--with-traefik` flag
+- kubectl configured
 
 ## What You Get
 
