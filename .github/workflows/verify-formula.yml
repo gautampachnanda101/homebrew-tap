@@ -17,7 +17,7 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Setup Homebrew
         uses: Homebrew/actions/setup-homebrew@master
@@ -40,4 +40,3 @@ jobs:
       - name: Uninstall
         run: |
           brew uninstall k3d-local
-          brew untap gautampachnanda101/tap

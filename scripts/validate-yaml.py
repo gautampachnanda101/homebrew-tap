@@ -33,7 +33,7 @@ def validate_yaml_syntax(yaml_string):
         return []
     
     try:
-        yaml.safe_load(yaml_string)
+        list(yaml.safe_load_all(yaml_string))
         return []
     except yaml.YAMLError as e:
         return [str(e)]
