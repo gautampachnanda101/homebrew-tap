@@ -157,9 +157,49 @@ jobs:
           grep -q "replicas: 2" /tmp/argocd-prod.yaml
           echo "✓ Prod patches applied correctly"
 
+      - name: Validate Vault overlays
+        run: |
+          echo "Validating Vault..."
+          kustomize build examples/vault/base > /tmp/vault-base.yaml
+          kustomize build examples/vault/overlays/local > /tmp/vault-local.yaml
+          kustomize build examples/vault/overlays/prod > /tmp/vault-prod.yaml
+          echo "✓ Vault validated"
+
+      - name: Validate Harbor overlays
+        run: |
+          echo "Validating Harbor..."
+          kustomize build examples/harbor/base > /tmp/harbor-base.yaml
+          kustomize build examples/harbor/overlays/local > /tmp/harbor-local.yaml
+          kustomize build examples/harbor/overlays/prod > /tmp/harbor-prod.yaml
+          echo "✓ Harbor validated"
+
+      - name: Validate GitLab Runner overlays
+        run: |
+          echo "Validating GitLab Runner..."
+          kustomize build examples/gitlab-runner/base > /tmp/gitlab-runner-base.yaml
+          kustomize build examples/gitlab-runner/overlays/local > /tmp/gitlab-runner-local.yaml
+          kustomize build examples/gitlab-runner/overlays/prod > /tmp/gitlab-runner-prod.yaml
+          echo "✓ GitLab Runner validated"
+
+      - name: Validate Keycloak overlays
+        run: |
+          echo "Validating Keycloak..."
+          kustomize build examples/keycloak/base > /tmp/keycloak-base.yaml
+          kustomize build examples/keycloak/overlays/local > /tmp/keycloak-local.yaml
+          kustomize build examples/keycloak/overlays/prod > /tmp/keycloak-prod.yaml
+          echo "✓ Keycloak validated"
+
+      - name: Validate Authentik overlays
+        run: |
+          echo "Validating Authentik..."
+          kustomize build examples/authentik/base > /tmp/authentik-base.yaml
+          kustomize build examples/authentik/overlays/local > /tmp/authentik-local.yaml
+          kustomize build examples/authentik/overlays/prod > /tmp/authentik-prod.yaml
+          echo "✓ Authentik validated"
+
       - name: Check for deprecated commonLabels
         run: |
-          if grep -r "commonLabels:" examples/argocd/; then
+          if grep -r "commonLabels:" examples/; then
             echo "❌ Found deprecated commonLabels - use 'labels' instead"
             exit 1
           fi
