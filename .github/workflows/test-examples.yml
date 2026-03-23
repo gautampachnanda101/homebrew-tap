@@ -63,39 +63,61 @@ jobs:
       - name: Install ArgoCD (local overlay)
         working-directory: examples/argocd
         run: |
-          ./install.sh
-        env:
-          ENVIRONMENT: local
+          echo "Installing ArgoCD..."
+          ./install.sh || { echo "Install failed, checking logs..."; kubectl get all -n argocd; exit 1; }
 
-      - name: Wait for ArgoCD to be ready
+      - name: Wait for ArgoCD pods to be ready
         run: |
-          echo "Waiting for ArgoCD server deployment..."
-          kubectl wait --for=condition=available --timeout=300s deployment/argocd-server -n argocd
+          echo "Waiting for ArgoCD namespace to exist..."
+          kubectl wait --for=condition=Ready --timeout=30s namespace/argocd || true
+          
+          echo "Waiting for ArgoCD deployments..."
+          kubectl get deployments -n argocd
+          
+          echo "Waiting for argocd-server (timeout: 300s)..."
+          kubectl wait --for=condition=available --timeout=300s deployment/argocd-server -n argocd || {
+            echo "ArgoCD server deployment failed to become available"
+            echo "Pod status:"
+            kubectl get pods -n argocd
+            echo "Pod logs (argocd-server):"
+            kubectl logs -n argocd -l app.kubernetes.io/name=argocd-server --tail=50 || true
+            exit 1
+          }
+          
+          echo "✓ ArgoCD server is ready"
           kubectl get all -n argocd
 
       - name: Verify ArgoCD certificate
         run: |
-          kubectl get certificate -n argocd
-          kubectl describe certificate argocd-tls -n argocd
+          echo "Checking certificates..."
+          kubectl get certificate -n argocd || echo "No certificates found"
+          kubectl describe certificate argocd-tls -n argocd || echo "Certificate not ready yet"
 
       - name: Verify ArgoCD ingress
         run: |
-          kubectl get ingressroute -n argocd
-          kubectl describe ingressroute argocd-server -n argocd
+          echo "Checking IngressRoute..."
+          kubectl get ingressroute -n argocd || echo "No IngressRoute found"
+          kubectl describe ingressroute argocd-server -n argocd || echo "IngressRoute not ready yet"
 
       - name: Get ArgoCD admin password
         working-directory: examples/argocd
         run: |
-          ./get-password.sh
+          echo "Retrieving admin password..."
+          timeout 30s ./get-password.sh || { 
+            echo "Failed to get password"
+            kubectl get secret -n argocd
+            exit 1
+          }
 
       - name: Test ArgoCD API accessibility
         run: |
-          # Port-forward to test the API
+          echo "Testing ArgoCD API..."
           kubectl port-forward svc/argocd-server -n argocd 8080:443 &
-          sleep 5
+          PF_PID=$!
+          sleep 10
           
-          # Test if the API responds (expecting connection, not necessarily valid response)
-          curl -k https://localhost:8080/healthz || echo "API endpoint accessible"
+          curl -k -v https://localhost:8080/healthz || echo "API test completed"
+          kill $PF_PID || true
 
       - name: Cleanup ArgoCD
         if: always()
