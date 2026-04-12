@@ -4,12 +4,12 @@
 class Promptx < Formula
   desc "Local-first prompt intelligence connector for AI coding assistants"
   homepage "https://github.com/gautampachnanda101/prompt-detective"
-  version "0.1.0-rc38"
+  version "0.1.0-rc40"
 
   on_macos do
     on_intel do
-      url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.1.0-rc38/promptx_Darwin_x86_64.tar.gz"
-      sha256 "c48f701afd549a0153a76ecf7a12ddb3e6ab32ee008b55b97c4d62e7a57474f1"
+      url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.1.0-rc40/promptx_Darwin_x86_64.tar.gz"
+      sha256 "27c154219185ad5557407a8ad33fd62a0feb8315bdbefa2be127c94e9713563f"
 
       def install
         bin.install "promptx"
@@ -18,8 +18,8 @@ class Promptx < Formula
     end
 
     on_arm do
-      url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.1.0-rc38/promptx_Darwin_arm64.tar.gz"
-      sha256 "af4a140e79fd42bcdfaed74959633d80f2951d528344aa5402b82947c41900e5"
+      url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.1.0-rc40/promptx_Darwin_arm64.tar.gz"
+      sha256 "7792b14a54729d960c92946d7b2e7e8ce17421d0a5fde99a0a46759b2061fa28"
 
       def install
         bin.install "promptx"
@@ -31,8 +31,8 @@ class Promptx < Formula
   on_linux do
     on_intel do
       if Hardware::CPU.is_64_bit?
-        url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.1.0-rc38/promptx_Linux_x86_64.tar.gz"
-        sha256 "fbbc1ac74daed66d8bba052df80c3ce24e79ac135e2d655b443cbd2830001d88"
+        url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.1.0-rc40/promptx_Linux_x86_64.tar.gz"
+        sha256 "e184b57caab98d98ffc766394c7d75ecf53a38955b5d0012380c5de45e31851d"
 
         def install
           bin.install "promptx"
@@ -43,8 +43,8 @@ class Promptx < Formula
 
     on_arm do
       if Hardware::CPU.is_64_bit?
-        url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.1.0-rc38/promptx_Linux_arm64.tar.gz"
-        sha256 "0d18f282e03ae65586b51d5de1967febdae209bd64ad9bf17bd63701ae9bfbd2"
+        url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.1.0-rc40/promptx_Linux_arm64.tar.gz"
+        sha256 "886dfe5e6dfb6315d5b5ad119a984b7a1eb6100d6763f2d5bf88d6df20d9698a"
 
         def install
           bin.install "promptx"
