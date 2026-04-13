@@ -1,4 +1,145 @@
-# Contributing to Homebrew Tap Documentation
+# Contributing to Homebrew Tap
+
+Thank you for your interest in improving the Homebrew Tap!
+
+## How You Can Help
+
+### ✅ Ways to Contribute (Tap Repository)
+
+This repository welcomes contributions in these areas:
+
+1. **Examples** - Add or improve Kustomize recipes for deploying services into k3d clusters
+2. **Documentation** - Enhance guides, tutorials, and reference materials
+3. **Issue Reports** - Report bugs or request features for the tap itself
+4. **Suggestions** - Propose improvements or new examples
+
+### ⚠️ Package Formulas (Auto-Generated)
+
+The formulas in `Formula/` are **automatically generated** from upstream releases:
+- `k3d-local.rb` - Generated from [local-cluster-k3d releases](https://github.com/gautampachnanda101/local-cluster-k3d/releases)
+- `promptx.rb` - Generated from [prompt-detective releases](https://github.com/gautampachnanda101/prompt-detective/releases)
+
+**For package-specific issues or features:**
+- These upstream projects are **private repositories**
+- Issues related to k3d-local or Promptx packages should be reported **here** in the homebrew-tap repository
+- The tap maintainer will coordinate with upstream as needed
+
+---
+
+## Contributing Examples to k3d-local
+
+k3d-local examples are production-ready Kustomize recipes for deploying services into your k3d cluster.
+
+### Add a New Example
+
+1. **Create example directory:**
+   ```bash
+   mkdir -p examples/myservice/{base,overlays/{local,prod}}
+   ```
+
+2. **Create Kustomize structure:**
+   ```bash
+   # base/kustomization.yaml
+   cat > examples/myservice/base/kustomization.yaml << 'EOF'
+   apiVersion: kustomize.config.k8s.io/v1beta1
+   kind: Kustomization
+   
+   resources:
+   - namespace.yaml
+   - deployment.yaml
+   - service.yaml
+   EOF
+
+   # base/namespace.yaml, deployment.yaml, service.yaml
+   # Create your manifests...
+
+   # overlays/local/kustomization.yaml
+   cat > examples/myservice/overlays/local/kustomization.yaml << 'EOF'
+   apiVersion: kustomize.config.k8s.io/v1beta1
+   kind: Kustomization
+   
+   bases:
+   - ../../base
+   EOF
+   ```
+
+3. **Create install script:**
+   ```bash
+   cat > examples/myservice/install.sh << 'EOF'
+   #!/usr/bin/env bash
+   set -euo pipefail
+   
+   ENVIRONMENT="local"
+   NAMESPACE="myservice"
+   
+   echo "Installing MyService into k3d cluster..."
+   kubectl apply -k overlays/${ENVIRONMENT}
+   echo "MyService installed successfully!"
+   EOF
+   chmod +x examples/myservice/install.sh
+   ```
+
+4. **Add uninstall script:**
+   ```bash
+   cat > examples/myservice/uninstall.sh << 'EOF'
+   #!/usr/bin/env bash
+   set -euo pipefail
+   
+   kubectl delete namespace myservice
+   echo "MyService uninstalled."
+   EOF
+   chmod +x examples/myservice/uninstall.sh
+   ```
+
+5. **Write README.md:**
+   ```markdown
+   # MyService
+   
+   Brief description of what this service does.
+   
+   ## Quick Start
+   
+   Prerequisites:
+   - k3d-local cluster running
+   - Traefik installed
+   
+   Install:
+   \`\`\`bash
+   ./install.sh
+   \`\`\`
+   ```
+
+6. **Test your example:**
+   ```bash
+   # Create test cluster
+   k3d-local create --with-traefik
+   
+   # Install your example
+   cd examples/myservice
+   ./install.sh
+   
+   # Verify
+   kubectl get pods -n myservice
+   
+   # Uninstall
+   ./uninstall.sh
+   
+   # Cleanup
+   k3d-local delete
+   ```
+
+7. **Update examples/README.md:**
+   Add your example to the list of available recipes
+
+8. **Submit PR:**
+   - Clear description of the service
+   - Why it's useful for k3d users
+   - Testing instructions
+   - Links to upstream project documentation
+
+---
+
+# Contributing to Documentation
 
 Thank you for your interest in improving the documentation for the Homebrew Tap!
 
@@ -289,12 +430,23 @@ Need assistance?
 
 ## Recognition
 
-Thank you for improving the documentation! Contributors are recognized by GitHub automatically in the repository.
+Thank you for improving the Homebrew Tap! Contributors are recognized by GitHub automatically in the repository.
+
+### Contribution Types
+
+| Type | Repository | Level of Help |
+|------|-----------|---------------|
+| **Documentation** | This repo (homebrew-tap) | 📖 Easy - Start here! |
+| **Examples/Recipes** | This repo (homebrew-tap) | 🎯 Moderate - Requires k3d knowledge |
+| **Package Features** | Private upstream repos | 🔒 Contact maintainer |
+| **Bug Reports** | This repo (homebrew-tap) | 🐛 All levels welcome |
 
 ---
 
-**Ready to contribute?** 
-1. Fork the repository
-2. Make your changes
-3. Run `make test-docs`
-4. Submit a pull request!
+## Code of Conduct
+
+- Be respectful and inclusive
+- Provide constructive feedback
+- Help others learn
+- Report issues professionally
+- No harassment or discrimination
