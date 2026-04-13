@@ -1,6 +1,19 @@
 # Usage Guide
 
-Common workflows and usage patterns for k3d-local.
+Common workflows and usage patterns for k3d-local and Promptx.
+
+## Understanding k3d-local + Examples
+
+**k3d-local** creates a local Kubernetes cluster using k3d. Once your cluster is running, you can deploy additional tools and services into it using the [examples](../examples/).
+
+**Workflow:**
+1. Create cluster with k3d-local
+2. Deploy examples into that cluster (using kubectl + Kustomize)
+3. Manage the cluster and running services
+
+All examples in this repository are designed to work seamlessly with k3d clusters created by k3d-local.
+
+## k3d-local Workflows
 
 ## Basic Cluster Operations
 
@@ -293,3 +306,270 @@ k3d-local create
 - Explore [Command Reference](reference/commands.md)
 - Check [Troubleshooting Guide](troubleshooting.md)
 - Visit [k3d-local repository](https://github.com/gautampachnanda101/local-cluster-k3d)
+
+---
+
+## Promptx Workflows
+
+Promptx helps you capture, organize, and retrieve AI coding interactions with encrypted memory.
+
+### Initial Setup
+
+After installation:
+
+```bash
+# Initialize vault with passkey
+promptx setup
+
+# Start capturing interactions
+promptx memory-watch --repo . --interval 5 --force-store
+
+# Verify everything is working
+promptx doctor
+```
+
+### Daily Memory Capture
+
+**Continuously capture interactions:**
+
+```bash
+promptx memory-watch --repo . \
+  --interval 5 \
+  --watch-git \
+  --watch-chats \
+  --flush-interval 15 \
+  --flush-batch 20 \
+  --force-store
+```
+
+This watches for:
+- Git commits
+- IDE chat interactions
+- Code changes
+
+### Querying Your Memory
+
+**Find information from past interactions:**
+
+```bash
+# Full-text search
+promptx search "connection timeout" --repo . --limit 10
+
+# Fuzzy search with semantic similarity
+promptx fuzzy-search "database queries" --repo . --limit 5
+
+# Natural language questions
+promptx ask "what changed in authentication?" --repo . --limit 6
+```
+
+### Evidence-Based Execution
+
+Get grounded answers backed by codebase context:
+
+```bash
+promptx executor "how do we handle errors?" --repo . --limit 8 --min-score 0.25
+```
+
+Options:
+- `--limit` – Max history items to reference
+- `--min-score` – Threshold (0-1) for confidence
+- `--repo` – Repository path
+
+### Generating Prompts
+
+Use local AI to generate prompts:
+
+```bash
+promptx generate "build a rust CLI for file compression"
+promptx generate "refactor auth module with MFA support"
+```
+
+### Recording Decisions
+
+Write important decisions to memory:
+
+```bash
+promptx memory-write "Decision: migrate from UUID to Ulid for IDs" \
+  --repo . \
+  --type decision \
+  --tags architecture,database \
+  --force-store
+```
+
+### Git Integration
+
+**View commits linked to AI interactions:**
+
+```bash
+promptx commits --repo . --limit 20 --pretty --group-by-assistant
+```
+
+**Visualize chat-code relationships:**
+
+```bash
+promptx graph --repo . --window 200 --json
+```
+
+### VS Code Integration
+
+**Using in Copilot Chat:**
+
+```
+@promptx What changed in the build system?
+@promptx /timeline
+@promptx /record start   # Begin recording
+@promptx /record stop    # Stop recording
+```
+
+**Commands available:**
+- `Promptx: Show Timeline` – Git commits with chat annotations
+- `Promptx: Query Memory` – Search encrypted history
+- `Promptx: Show Insights` – Memory and session graphs
+- `Promptx: Resume / Handoff` – Transfer context between tools
+
+### Multi-Repository Setup
+
+Monitor multiple projects:
+
+```bash
+# Watch repo-a
+promptx memory-watch --repo ~/work/project-a --interval 5 --force-store
+
+# Watch repo-b (parallel terminal)
+promptx memory-watch --repo ~/work/project-b --interval 5 --force-store
+```
+
+Query across repos:
+
+```bash
+promptx memory-query "authentication patterns" --repo ~/work/project-a --limit 5
+```
+
+### Cross-Tool Handoff
+
+Seamlessly transfer context between tools:
+
+```bash
+# Create a handoff pack
+promptx switch
+
+# Later, resume in another tool (Claude, vs Code, etc.)
+promptx resume
+```
+
+### MCP Server Integration
+
+Run Promptx as an MCP client for Claude, Cline, or custom tools:
+
+```bash
+# Start MCP server
+promptx mcp
+
+# In another terminal, use it with MCP-compatible tools
+```
+
+Keep MCP running with auto-restart:
+
+```bash
+promptx mcp-guard
+```
+
+### CI/CD Integration
+
+Capture interactions in automated workflows:
+
+```bash
+# One-time capture
+promptx memory-watch --repo . --once --ingest-existing --force-store
+
+# Analyze build history
+promptx executor "recent build failures" --repo . --min-score 0.5
+```
+
+### Learning from Outcomes
+
+Analyze executor performance over time:
+
+```bash
+promptx benchmark-executor "what changed in api?" \
+  --repo . \
+  --limit 20 \
+  --iterations 5
+```
+
+Shows P50/P95/P99 latencies and evidence quality.
+
+### Viewing Recent Interactions
+
+**Decrypt and view recent logs:**
+
+```bash
+promptx logs --limit 50
+
+# Show a single turn interactively
+promptx quicklog
+
+# Wrap output from another tool
+some-command | promptx wrap "description of what happened"
+```
+
+### Exporting Context
+
+**Create a context pack for sharing:**
+
+```bash
+promptx context-pack --repo . --window 100 > my-context.md
+```
+
+Share the markdown with teammates or paste into chat.
+
+### Troubleshooting
+
+**Health checks:**
+
+```bash
+promptx doctor
+promptx machine verify
+promptx info
+promptx mcp status
+```
+
+**Common issues:**
+
+```bash
+# Passkey problems
+export PROMPTX_PASSKEY="your-secure-key"
+
+# Storage location
+export PROMPTX_HOME="/custom/path"
+
+# Backend selection
+export PROMPTX_MEMORY_BACKEND=sqlite-v2-token  # Default
+export PROMPTX_MEMORY_BACKEND=vector-stub      # Vectors
+```
+
+## k3d-local + Promptx Together
+
+Combine both tools for a complete development environment:
+
+```bash
+# Terminal 1: Create and manage cluster
+k3d-local create --with-traefik --with-apps
+k3d-local status
+
+# Terminal 2: Capture development interactions
+promptx memory-watch --repo . --interval 5 --force-store
+
+# Terminal 3: Deploy and test your app
+kubectl apply -f deployment.yaml
+kubectl logs -f deployment/my-app
+
+# Later, query your session
+promptx executor "what errors occurred during deploy?" --repo . --limit 10
+```
+
+## Next Steps
+
+- Read [Promptx Guide](promptx.md) for full reference
+- Explore [k3d-local Reference](reference/commands.md)
+- See [Examples](../examples/) for recipes

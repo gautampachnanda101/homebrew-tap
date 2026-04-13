@@ -350,8 +350,7 @@ k3d-local create --verbose 2>&1 | tee debug.log
 
 ### Report Issues
 
-- [k3d-local Issues](https://github.com/gautampachnanda101/local-cluster-k3d/issues)
-- [Homebrew Tap Issues](https://github.com/gautampachnanda101/homebrew-tap/issues)
+- [GitHub Issues](https://github.com/gautampachnanda101/homebrew-tap/issues)
 
 Include:
 - System info (OS, Docker version)

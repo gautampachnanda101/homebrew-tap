@@ -1,6 +1,27 @@
 # k3d-local Examples & Recipes
 
-This directory contains production-ready recipes and examples for extending your k3d-local cluster with additional tools and services.
+Production-ready recipes for extending your **k3d local Kubernetes clusters** with additional tools and services.
+
+**What are these?** Examples of how to deploy industry-standard tools (ArgoCD, Vault, Harbor, etc.) into a k3d cluster created by [k3d-local](../docs/usage.md#k3d-local-workflows).
+
+## Prerequisites
+
+Before using any example, you **must** have:
+
+1. **k3d-local installed:**
+   ```bash
+   brew tap gautampachnanda101/tap
+   brew install k3d-local
+   ```
+
+2. **k3d cluster running with Traefik:**
+   ```bash
+   k3d-local create --with-traefik
+   ```
+
+3. **kubectl configured** (automatic after `k3d-local create`)
+
+Then pick an example and follow its `./install.sh` script.
 
 ## Table of Contents
 
