@@ -1,4 +1,4 @@
-.PHONY: help install-docs-deps build-docs serve-docs publish-docs clean-docs test-docs
+.PHONY: help install-docs-deps build-docs serve-docs publish-docs clean-docs test-docs setup-branch-protection
 
 help:
 	@echo "Homebrew Tap Documentation & Publishing Tasks"
@@ -6,12 +6,13 @@ help:
 	@echo "Usage: make [target]"
 	@echo ""
 	@echo "Targets:"
-	@echo "  install-docs-deps    Install documentation dependencies (pip, mkdocs)"
-	@echo "  build-docs           Build documentation site locally"
-	@echo "  serve-docs           Serve docs locally at http://localhost:8000"
-	@echo "  publish-docs         Build and publish to GitHub Pages (main branch)"
-	@echo "  test-docs            Validate markdown and links"
-	@echo "  clean-docs           Remove generated docs artifacts"
+	@echo "  install-docs-deps         Install documentation dependencies (pip, mkdocs)"
+	@echo "  build-docs                Build documentation site locally"
+	@echo "  serve-docs                Serve docs locally at http://localhost:8000"
+	@echo "  publish-docs              Build and publish to GitHub Pages (main branch)"
+	@echo "  test-docs                 Validate markdown and links"
+	@echo "  clean-docs                Remove generated docs artifacts"
+	@echo "  setup-branch-protection   Enable branch protection rules on main branch"
 	@echo ""
 
 # Install documentation dependencies
@@ -79,3 +80,13 @@ clean-docs:
 	@echo "Cleaning documentation artifacts..."
 	rm -rf site/
 	@echo "✓ Cleaned"
+
+# Setup branch protection on main branch
+setup-branch-protection:
+	@echo "Setting up branch protection on main branch..."
+	@if [ ! -f scripts/setup-branch-protection.sh ]; then \
+		echo "✗ Error: scripts/setup-branch-protection.sh not found"; \
+		exit 1; \
+	fi
+	@chmod +x scripts/setup-branch-protection.sh
+	@bash scripts/setup-branch-protection.sh

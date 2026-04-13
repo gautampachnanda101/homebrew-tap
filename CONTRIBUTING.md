@@ -443,6 +443,40 @@ Thank you for improving the Homebrew Tap! Contributors are recognized by GitHub 
 
 ---
 
+## Repository Access & Protections
+
+The `main` branch has protections to ensure code quality:
+
+### Branch Protection Rules
+- **1 approval required** - PRs need review before merging
+- **Force pushes blocked** - Prevents accidental history rewrites
+- **Deletions blocked** - Protects main branch from removal
+- **Enforce admins** - Rules apply even to repository owner
+
+### Who Can Merge?
+- **External contributors** - Submit PRs, wait for review + 1 approval
+- **Repository owner** - Can merge PRs and push directly (for hotfixes/urgent updates)
+- **Upstream automation** - GoReleaser can push formula updates directly via GitHub Actions
+
+### Setting Up Branch Protection (Maintainers)
+
+To enable branch protection:
+
+```bash
+# Run the automation script
+make setup-branch-protection
+
+# Or manually via GitHub UI:
+# 1. Go to Settings → Branches
+# 2. Click "Add rule" for main branch
+# 3. Enable: Require pull request reviews (1 approval)
+# 4. Enable: Dismiss stale pull request approvals
+# 5. Enable: Restrict who can push (optional)
+# 6. Save
+```
+
+The script in `scripts/setup-branch-protection.sh` automates this configuration.
+
 ## Code of Conduct
 
 - Be respectful and inclusive
