@@ -4,7 +4,7 @@ Common workflows and usage patterns for k3d-local and Promptx.
 
 ## Understanding k3d-local + Examples
 
-**k3d-local** creates a local Kubernetes cluster using k3d. Once your cluster is running, you can deploy additional tools and services into it using the [examples](../examples/).
+**k3d-local** creates a local Kubernetes cluster using k3d. Once your cluster is running, you can deploy additional tools and services into it using the [examples](examples.md).
 
 **Workflow:**
 1. Create cluster with k3d-local
@@ -572,4 +572,4 @@ promptx executor "what errors occurred during deploy?" --repo . --limit 10
 
 - Read [Promptx Guide](promptx.md) for full reference
 - Explore [k3d-local Reference](reference/commands.md)
-- See [Examples](../examples/) for recipes
+- See [Examples](examples.md) for recipes

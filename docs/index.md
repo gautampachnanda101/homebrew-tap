@@ -28,7 +28,7 @@ brew install k3d-local
 k3d-local create --with-traefik
 ```
 
-Once your cluster is created, deploy services from [examples](../examples/) using simple install scripts.
+Once your cluster is created, deploy services from [examples](examples.md) using simple install scripts.
 
 **Perfect for:**
 - Local development and testing

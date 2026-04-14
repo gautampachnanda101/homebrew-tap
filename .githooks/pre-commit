@@ -1,0 +1,16 @@
+#!/usr/bin/env sh
+
+set -eu
+
+echo "Running pre-commit checks..."
+
+staged_files=$(git diff --cached --name-only)
+
+if echo "$staged_files" | grep -Eq '^(docs/|mkdocs.yml|scripts/|Makefile|\.github/workflows/docs-)'; then
+  echo "Docs-related changes detected. Running strict docs checks..."
+  make test-docs
+else
+  echo "No docs-related staged changes. Skipping docs checks."
+fi
+
+exit 0

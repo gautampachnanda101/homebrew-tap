@@ -74,7 +74,7 @@ Once creation completes, access services at:
 
 ### Deploy an Example Service
 
-Once your cluster is running, deploy production-ready services using the [k3d-local examples](../examples/):
+Once your cluster is running, deploy production-ready services using the [k3d-local examples](examples.md):
 
 ```bash
 # Clone the repository
@@ -99,7 +99,7 @@ Available examples include:
 - **Backstage** – Developer portal
 - **And 6 more** (External Secrets, RabbitMQ, SpiceDB, OpenFGA, Kyverno)
 
-[View all examples →](../examples/README.md)
+[View all examples →](examples.md)
 
 ### Check Cluster Status
 
@@ -254,7 +254,7 @@ Shows:
 
 ### Both Tools
 
-- [Explore examples](../examples/)
+- [Explore examples](examples.md)
 - [View all commands](reference/commands.md)
 - [Advanced usage](usage.md)
 
