@@ -4,32 +4,32 @@
 class Vaultx < Formula
   desc "The convenience of an env file. The power of a zero-trust vault."
   homepage "https://github.com/gautampachnanda101/mypass"
-  version "0.1.0-rc3"
+  version "0.1.0-rc4"
 
   on_macos do
     on_intel do
-      url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.1.0-rc3/vaultx_Darwin_x86_64.tar.gz"
-      sha256 "82693db8e0fea3de01ee3dc7c2b388179ec343a6ae88224bf167b655b3dce0ee"
+      url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.1.0-rc4/vaultx_Darwin_x86_64.tar.gz"
+      sha256 "a292a2819dc0281b64416ffe6ee3ba2321dd229ce6e085323ca6cd58556413c1"
     end
 
     on_arm do
-      url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.1.0-rc3/vaultx_Darwin_arm64.tar.gz"
-      sha256 "6601f269d9182234dfeb3213e0c2f556e0fe5d0c34f14a710bf1693d6ab119e3"
+      url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.1.0-rc4/vaultx_Darwin_arm64.tar.gz"
+      sha256 "eba32f52ad74a085a01e23fbf30934b0eef33ec21e25655f00c1d55fd67e6401"
     end
   end
 
   on_linux do
     on_intel do
       if Hardware::CPU.is_64_bit?
-        url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.1.0-rc3/vaultx_Linux_x86_64.tar.gz"
-        sha256 "e63a92c84295e8c53c1a9417634359f05a9fcb53f6f6e4a1377a5617cd6cd935"
+        url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.1.0-rc4/vaultx_Linux_x86_64.tar.gz"
+        sha256 "833a8e06f56a994f736166c8aa7917ce36e6b1b980fc6b9eccdac506bfe5e6a5"
       end
     end
 
     on_arm do
       if Hardware::CPU.is_64_bit?
-        url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.1.0-rc3/vaultx_Linux_arm64.tar.gz"
-        sha256 "9c8253653d2ecf438243988a7ed0e3b8759b161d9c29abaf7be530a1d4f88458"
+        url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.1.0-rc4/vaultx_Linux_arm64.tar.gz"
+        sha256 "5f792541580f58b4367f39e94ca2ed98b415ab24985149ef3f6964aa78ac2bd4"
       end
     end
   end
@@ -40,6 +40,6 @@ class Vaultx < Formula
 
   test do
     assert_match "zero-trust vault", shell_output("#{bin}/vaultx --help")
-    assert_match "0.1.0-rc3", shell_output("#{bin}/vaultx version")
+    assert_match "0.1.0-rc4", shell_output("#{bin}/vaultx version")
   end
 end
