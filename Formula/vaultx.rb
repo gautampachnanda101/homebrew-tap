@@ -9,12 +9,12 @@ class Vaultx < Formula
   on_macos do
     on_intel do
       url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.1.0-rc1/vaultx_Darwin_x86_64.tar.gz"
-      sha256 "760ba141561a9488c4f5458b288e687114dcbe1980e691cf613dbeba153c51ea"
+      sha256 "f7ee801724ec69544f057395bc9a5a0b9581cfd65baa741a98ef4b30621de493"
     end
 
     on_arm do
       url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.1.0-rc1/vaultx_Darwin_arm64.tar.gz"
-      sha256 "7712b7dd829c177212912935e6da1aee694fba56e8adbb4509d37448236efd0e"
+      sha256 "fad388e7bf85f12470c287481da6891ccd5b2674f668259aa6aeea87920605e2"
     end
   end
 
@@ -22,14 +22,14 @@ class Vaultx < Formula
     on_intel do
       if Hardware::CPU.is_64_bit?
         url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.1.0-rc1/vaultx_Linux_x86_64.tar.gz"
-        sha256 "35a4ea68bc2468c5c149655a7ec87f6521bead874bebb20c544a94905578964d"
+        sha256 "99ec4af2c1d9f70bb1f4c008ee8bbe1662df2dff8152bdf7c2aacb8ed5f50e3d"
       end
     end
 
     on_arm do
       if Hardware::CPU.is_64_bit?
         url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.1.0-rc1/vaultx_Linux_arm64.tar.gz"
-        sha256 "a13b6f1dee1a827f6e7a10092b46cb2333532ad89935408483f6d6e3557e836f"
+        sha256 "9f68465566054e29c02c5a894400e35dd24e76883ee1cc7647b33418bfb55359"
       end
     end
   end
