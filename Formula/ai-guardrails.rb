@@ -4,32 +4,32 @@
 class AiGuardrails < Formula
   desc "AI-assisted development guardrails: standardize guardrails, skills, tools, and CI/CD templates."
   homepage "https://github.com/gautampachnanda101/ai-guard-cli"
-  version "0.3.3"
+  version "0.3.4"
 
   on_macos do
     on_intel do
-      url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.3.3/ai-guardrails_0.3.3_Darwin_x86_64.tar.gz"
-      sha256 "b29323623fb2a1b1fa8a1ccc88eee001654912c345c35d77e25673f49b1dc493"
+      url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.3.4/ai-guardrails_0.3.4_Darwin_x86_64.tar.gz"
+      sha256 "286b429d8a5c91af99693dde7d46d8327cfd7c15060c0ab63f4e183a0f83d6b0"
     end
 
     on_arm do
-      url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.3.3/ai-guardrails_0.3.3_Darwin_arm64.tar.gz"
-      sha256 "efff8d357c099845f82c83cb4839635237aa8ba256b9792ca1b3616c5715b64b"
+      url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.3.4/ai-guardrails_0.3.4_Darwin_arm64.tar.gz"
+      sha256 "0038435971d044d86992b1ce092d568e342a6d61931045942f1f1e7ff3f89c6c"
     end
   end
 
   on_linux do
     on_intel do
       if Hardware::CPU.is_64_bit?
-        url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.3.3/ai-guardrails_0.3.3_Linux_x86_64.tar.gz"
-        sha256 "0c24b8f40e0824627d7dc501f4aaf4b96c86e5b3b91eceb6d48304c14131cedc"
+        url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.3.4/ai-guardrails_0.3.4_Linux_x86_64.tar.gz"
+        sha256 "fde66490277e80d1329d470d16cfa91d31cba9ccc1450ff6335a3d887e8af8f7"
       end
     end
 
     on_arm do
       if Hardware::CPU.is_64_bit?
-        url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.3.3/ai-guardrails_0.3.3_Linux_arm64.tar.gz"
-        sha256 "8fdc49e6d87000f280eb9f3a37e672afde99770c91c81117d563f4c17e3fe7de"
+        url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.3.4/ai-guardrails_0.3.4_Linux_arm64.tar.gz"
+        sha256 "a3abbbfa45feb361bed651861ac48fdf2d6751b1a013130ba262b519eca6adad"
       end
     end
   end
