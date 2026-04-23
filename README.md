@@ -214,4 +214,4 @@ All formulas are verified on macOS and Linux via GitHub Actions CI.
 
 ## Contributing
 
-Formulas are auto-generated from upstream releases. For package-specific issues, please visit the respective project repository.
+Formulas are auto-generated from upstream releases. For package-specific issues, please raise an issue on this repo for the maintainer.
