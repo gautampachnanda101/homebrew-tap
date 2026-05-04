@@ -4,32 +4,32 @@
 class Promptx < Formula
   desc "Local-first prompt intelligence connector for AI coding assistants"
   homepage "https://github.com/gautampachnanda101/prompt-detective"
-  version "0.1.0-rc118"
+  version "0.1.0-rc119"
 
   on_macos do
     on_intel do
-      url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.1.0-rc118/promptx_Darwin_x86_64.tar.gz"
-      sha256 "53f275d4e707680f58231ff4d08a80b5117ab9625cbe617c78963a05e0da7e1f"
+      url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.1.0-rc119/promptx_Darwin_x86_64.tar.gz"
+      sha256 "1d5f52fa5bb97c29baec62e43ca8c1ba8b33a6dd89f9fe3f84c4a48b8d06dc17"
     end
 
     on_arm do
-      url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.1.0-rc118/promptx_Darwin_arm64.tar.gz"
-      sha256 "7d09310d258393c034708f0986ddf0900112b4bf6a921b4b90dca8491d92cf8a"
+      url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.1.0-rc119/promptx_Darwin_arm64.tar.gz"
+      sha256 "0ce210f831c5cb1149098292c2c3601bfeb08edef46c15c69591f35398fedc0c"
     end
   end
 
   on_linux do
     on_intel do
       if Hardware::CPU.is_64_bit?
-        url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.1.0-rc118/promptx_Linux_x86_64.tar.gz"
-        sha256 "cb756cef13fdc348cd62c9857e2e194be81710d6aeee2eec1b4e2fa3bfed55f2"
+        url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.1.0-rc119/promptx_Linux_x86_64.tar.gz"
+        sha256 "04e6bb6e057b14516a909f357896e3652c69444999fb0a9acd859e0d8b8f1c0d"
       end
     end
 
     on_arm do
       if Hardware::CPU.is_64_bit?
-        url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.1.0-rc118/promptx_Linux_arm64.tar.gz"
-        sha256 "9fc3ba84461d7c95d2da3320ef478b26d445bf048ea1a7af708586853f7c2aee"
+        url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.1.0-rc119/promptx_Linux_arm64.tar.gz"
+        sha256 "9c54a30cab4475a01a538224f1487229fb873cdb10b670753d08d346ac2e3174"
       end
     end
   end
@@ -63,31 +63,64 @@ class Promptx < Formula
       pid = spawn((opt_bin/"promptx").to_s, "serve", [:out, :err] => "/dev/null")
       Process.detach(pid)
     end
-    # Auto-install VS Code extension for all detected editors.
+    # Auto-install extension into every detected VS Code-compatible editor.
     vsix = Dir["#{share}/promptx/promptx-vscode-*.vsix"].first
     return if vsix.nil?
-    %w[code cursor codium code-insiders windsurf].each do |editor|
+    installed = []
+    %w[code cursor codium code-insiders windsurf trae void].each do |editor|
       next unless (ep = which(editor))
-      system ep.to_s, "--install-extension", vsix, "--force",
-             out: File::NULL, err: File::NULL
+      if system(ep.to_s, "--install-extension", vsix, "--force",
+                 out: File::NULL, err: File::NULL)
+        installed << editor
+      end
+    end
+    unless installed.empty?
+      opoo "Promptx extension installed into: #{installed.join(", ")}"
     end
   end
 
   def caveats
+    vsix = Dir["#{share}/promptx/promptx-vscode-*.vsix"].first
+    vsix_name = vsix ? File.basename(vsix) : "promptx-vscode-<version>.vsix"
+    vsix_path = vsix || "#{share}/promptx/#{vsix_name}"
     <<~EOS
-      To manage the Promptx UI server as a background service:
-        brew services start promptx   # start and persist across reboots
-        brew services stop promptx    # stop
-        brew services restart promptx # restart
+      ── Background service ────────────────────────────────────────────
+        brew services start promptx    # start now and on every login
+        brew services stop promptx     # stop
+        brew services restart promptx  # restart after config change
 
-      The VS Code extension is installed automatically on upgrade.
-      If it was not detected, install manually:
-        #{Dir["#{share}/promptx/promptx-vscode-*.vsix"].first}
+      Or run once without launchd:
+        #{opt_bin}/promptx serve
+
+      Web UI opens at http://localhost:17171 once the service is running.
+
+      ── Coding-assistant extension ────────────────────────────────────
+      The extension is installed automatically into any detected editor.
+      Supported editors (VS Code-compatible CLI install):
+        VS Code · Cursor · VSCodium · VS Code Insiders · Windsurf · Trae · Void
+
+      If your editor was not detected, install manually:
+        code      --install-extension #{vsix_path} --force
+        cursor    --install-extension #{vsix_path} --force
+        codium    --install-extension #{vsix_path} --force
+        windsurf  --install-extension #{vsix_path} --force
+        trae      --install-extension #{vsix_path} --force
+
+      For JetBrains IDEs, install the VS Code extension via the
+      JetBrains Marketplace or use the Promptx CLI directly.
+
+      ── First run ─────────────────────────────────────────────────────
+        promptx setup            # create encrypted vault + passkey
+        promptx serve            # start the UI server
+        promptx ui               # open http://localhost:17171 in browser
+        promptx doctor           # verify everything is configured
+
+      Docs: promptx help  |  promptx <cmd> --help
     EOS
   end
 
   test do
     assert_match "Local-first encrypted prompt intelligence CLI", shell_output("#{bin}/promptx --help")
-    assert_match "0.1.0-rc118", shell_output("#{bin}/promptx version")
+    assert_match "0.1.0-rc119", shell_output("#{bin}/promptx version")
   end
 end
