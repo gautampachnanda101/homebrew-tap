@@ -9,12 +9,12 @@ class AiGuardrails < Formula
   on_macos do
     on_intel do
       url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.4.1/ai-guardrails_0.4.1_Darwin_x86_64.tar.gz"
-      sha256 "f2fcb26b778f8f5cd72165c72369c5871822b3637d73645f8b6c0eac5bd92a1a"
+      sha256 "05b482a87cd7a25d3651d9ea1c04ac517d89ded80ef13a83cbd3d7d02dda6b2e"
     end
 
     on_arm do
       url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.4.1/ai-guardrails_0.4.1_Darwin_arm64.tar.gz"
-      sha256 "dc6c0abf5fb1b04913d7e62124f8875706abf86b832ced8d82415218785dc553"
+      sha256 "3231cbc1052508abd6b842847ffb577bb1cb00387307679a32f1f64ccbe206c9"
     end
   end
 
@@ -22,14 +22,14 @@ class AiGuardrails < Formula
     on_intel do
       if Hardware::CPU.is_64_bit?
         url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.4.1/ai-guardrails_0.4.1_Linux_x86_64.tar.gz"
-        sha256 "0fc41097f424f0b053a516d3d49ba9931ac8f58aecf31386f9e68548fc7e2b97"
+        sha256 "97d915bb78f19aa3fc0405f0a85ad3ad188e1f5974cd3030998954d6b8ec2f25"
       end
     end
 
     on_arm do
       if Hardware::CPU.is_64_bit?
         url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.4.1/ai-guardrails_0.4.1_Linux_arm64.tar.gz"
-        sha256 "e2419d64059147c1ee780123cc1972201432e43bbf7f6d3d6e6d40a48035fca7"
+        sha256 "6618c8b7f0fd0792b96d17019e128d3cadf85bc4faa2993d0ac28fa4512d6f4b"
       end
     end
   end
