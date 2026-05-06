@@ -4,32 +4,32 @@
 class Promptx < Formula
   desc "Local-first prompt intelligence connector for AI coding assistants"
   homepage "https://github.com/gautampachnanda101/prompt-detective"
-  version "0.1.0-rc130"
+  version "0.2.0"
 
   on_macos do
     on_intel do
-      url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.1.0-rc130/promptx_Darwin_x86_64.tar.gz"
-      sha256 "142c3d3151dc7568f0ecb22ea09181f724decd7a96f2a2c64fead305fff6ccf4"
+      url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.2.0/promptx_Darwin_x86_64.tar.gz"
+      sha256 "28a865762e27acf4f551c857ae1f7191dc759584af6adaff36af989e6f330ec1"
     end
 
     on_arm do
-      url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.1.0-rc130/promptx_Darwin_arm64.tar.gz"
-      sha256 "1d28df3019f8c249fc4797726565d0ed19485a7c87bce231e6b3a2743206d91c"
+      url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.2.0/promptx_Darwin_arm64.tar.gz"
+      sha256 "838b3003ae7c14be2420741ca7f48005a8c586b930a570f563006eded4ef7107"
     end
   end
 
   on_linux do
     on_intel do
       if Hardware::CPU.is_64_bit?
-        url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.1.0-rc130/promptx_Linux_x86_64.tar.gz"
-        sha256 "534e71d37748fe2beaa936a8ccbd1b5174cf77f481f82e554be0263e3c83fcaa"
+        url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.2.0/promptx_Linux_x86_64.tar.gz"
+        sha256 "1be439359002bf63b687b82394ea100c250c4608063e6fd62397e8d2df5399c3"
       end
     end
 
     on_arm do
       if Hardware::CPU.is_64_bit?
-        url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.1.0-rc130/promptx_Linux_arm64.tar.gz"
-        sha256 "fc8f55e199436295788d6037d1821706a3dea7ffcfc6b028dcd7207f82e97cc1"
+        url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.2.0/promptx_Linux_arm64.tar.gz"
+        sha256 "16ec37ef4a02891817ce12c3bc2744d83c24dc735092d605bb682894d843a3a8"
       end
     end
   end
@@ -106,9 +106,6 @@ class Promptx < Formula
         windsurf  --install-extension #{vsix_path} --force
         trae      --install-extension #{vsix_path} --force
 
-      For JetBrains IDEs, install the VS Code extension via the
-      JetBrains Marketplace or use the Promptx CLI directly.
-
       ── First run ─────────────────────────────────────────────────────
         promptx setup            # create encrypted vault + passkey
         promptx serve            # start the UI server
@@ -121,6 +118,6 @@ class Promptx < Formula
 
   test do
     assert_match "Local-first encrypted prompt intelligence CLI", shell_output("#{bin}/promptx --help")
-    assert_match "0.1.0-rc130", shell_output("#{bin}/promptx version")
+    assert_match "0.2.0", shell_output("#{bin}/promptx version")
   end
 end
