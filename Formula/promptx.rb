@@ -4,32 +4,32 @@
 class Promptx < Formula
   desc "Local-first prompt intelligence connector for AI coding assistants"
   homepage "https://github.com/gautampachnanda101/prompt-detective"
-  version "0.2.7"
+  version "0.2.8"
 
   on_macos do
     on_intel do
-      url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.2.7/promptx_Darwin_x86_64.tar.gz"
-      sha256 "8e99977273b67f85a89e0dfaa8ae3322586cc0d9f58ee491c6f8ba25e6b9682d"
+      url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.2.8/promptx_Darwin_x86_64.tar.gz"
+      sha256 "c2a9c77c61eba3153717e755829a0e5346976b5e3913bb4e72a7ba746eed0586"
     end
 
     on_arm do
-      url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.2.7/promptx_Darwin_arm64.tar.gz"
-      sha256 "1b8e2ce3c4c3b2c261cf6fdcaa41106c20144241b7d92e1a6ab845384e11bf1a"
+      url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.2.8/promptx_Darwin_arm64.tar.gz"
+      sha256 "381cf203ab44cf0f27ba1be6645f5a4a0a7dff8b168cf6b5d45edadca4d49a05"
     end
   end
 
   on_linux do
     on_intel do
       if Hardware::CPU.is_64_bit?
-        url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.2.7/promptx_Linux_x86_64.tar.gz"
-        sha256 "33b2aba6c38ad189afb8776e85df5d251a1ccbae11e805b53ca322ebdbd52f4b"
+        url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.2.8/promptx_Linux_x86_64.tar.gz"
+        sha256 "db74b61f8b466014e5dff5939d48889acb4c369d19406123f5358aa00a62827c"
       end
     end
 
     on_arm do
       if Hardware::CPU.is_64_bit?
-        url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.2.7/promptx_Linux_arm64.tar.gz"
-        sha256 "9552b5fb885483424dc94d23e2583e631ffddc1a4a22159d223a84c3798640b9"
+        url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.2.8/promptx_Linux_arm64.tar.gz"
+        sha256 "d16ffb708fe84ccb6ffb9d09fe12e126631baa8b52bd294222cc895cd4ebef8c"
       end
     end
   end
@@ -118,6 +118,6 @@ class Promptx < Formula
 
   test do
     assert_match "Local-first encrypted prompt intelligence CLI", shell_output("#{bin}/promptx --help")
-    assert_match "0.2.7", shell_output("#{bin}/promptx version")
+    assert_match "0.2.8", shell_output("#{bin}/promptx version")
   end
 end
