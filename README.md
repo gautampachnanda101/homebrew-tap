@@ -63,10 +63,15 @@ k3d-local delete
 - ✅ Auto-installs dependencies
 
 **Perfect for:**
+
 - Local development and testing
 - Kubernetes learning and training
 - Application prototyping
 - CI/CD pipeline validation
+
+**Links:**
+
+- [k3d-local Tap Guide](docs/taps/k3d-local.md)
 
 ### 2. Promptx
 
@@ -79,41 +84,46 @@ brew install promptx
 ```
 
 **Quick Start:**
+
 ```bash
 # Initialize secure vault
-prompx setup
+promptx setup
 
 # Start memory auto-capture
-prompx memory-watch --repo . --interval 5
+promptx memory-watch --repo . --interval 5
+
+# Open the web dashboard
+promptx serve && promptx ui
 
 # Query memory
-prompx memory-query "your topic" --repo . --limit 5
-
-# Generate prompts
-prompx generate "build a fast Go CLI"
+promptx memory-query "your topic" --repo . --limit 5
 
 # Execute with evidence
-prompx executor "what changed in mcp tools?" --repo . --limit 8
+promptx executor "what changed in mcp tools?" --repo . --limit 8
 ```
 
 **Features:**
+
 - ✅ Local-first encrypted memory capture
+- ✅ Web dashboard — insights, timeline, memory, handoff, graph
+- ✅ AI cost analytics with live model pricing
 - ✅ Cross-tool handoff for GitHub Copilot, Claude, VS Code
 - ✅ Evidence-based execution (no guessing)
-- ✅ Automatic interaction logging
-- ✅ Git commit linking
-- ✅ VS Code extension with chat participant
+- ✅ Automatic interaction logging linked to git commits
+- ✅ VS Code extension with `@promptx` chat participant
 - ✅ MCP server integration
 
 **Perfect for:**
+
 - AI-assisted development workflows
-- Prompt engineering and generation
-- Context-aware coding assistance
+- Tracking AI costs and model usage across tools
+- Context handoff between coding assistants
 - Team collaboration across tools
 - Memory-driven decision making
 
 **Links:**
-- [Tap Documentation](docs/index.md)
+
+- [Promptx Tap Guide](docs/taps/promptx.md)
 - [Public Docs Site](https://gautampachnanda101.github.io/homebrew-tap/)
 - [GitHub Repository](https://github.com/gautampachnanda101/homebrew-tap)
 - [GitHub Issues](https://github.com/gautampachnanda101/homebrew-tap/issues)
@@ -151,15 +161,22 @@ cd homebrew-tap/examples/argocd
 
 ## Documentation
 
+**Tap Guides:**
+
+- [promptx](docs/taps/promptx.md) — web UI, memory, handoff, MCP, VS Code extension
+- [k3d-local](docs/taps/k3d-local.md) — local Kubernetes cluster setup and management
+- [vaultx](docs/taps/vaultx.md) — encrypted secrets CLI
+
+**General:**
+
 - Start here: [docs/index.md](docs/index.md)
 - Quick start: [docs/getting-started.md](docs/getting-started.md)
 - Install guide: [docs/installation.md](docs/installation.md)
 - Usage guide: [docs/usage.md](docs/usage.md)
-- Helm guide: [docs/helm-deployment.md](docs/helm-deployment.md)
-- Customization: [docs/customization.md](docs/customization.md)
-- Git workflows: [docs/git-workflows.md](docs/git-workflows.md)
 - Troubleshooting: [docs/troubleshooting.md](docs/troubleshooting.md)
 - Command reference: [docs/reference/commands.md](docs/reference/commands.md)
+
+**Public site:** <https://gautampachnanda101.github.io/homebrew-tap/>
 
 ---
 
