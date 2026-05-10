@@ -11,6 +11,11 @@ theme:
 
 nav:
   - Home: index.md
+  - Taps:
+    - Catalog: taps/index.md
+    - k3d-local: taps/k3d-local.md
+    - promptx: taps/promptx.md
+    - vaultx: taps/vaultx.md
   - Getting Started: getting-started.md
   - Installation: installation.md
   - Usage: usage.md

@@ -66,6 +66,30 @@ promptx memory-watch --repo . --interval 5
 - Team collaboration with encrypted memory
 - Learning from AI interactions
 
+### 🔐 Vaultx
+
+Zero-trust secrets CLI that keeps the convenience of `.env` style workflows while protecting sensitive values in an encrypted vault.
+
+**Quick install:**
+```bash
+brew tap gautampachnanda101/tap
+brew install vaultx
+vaultx --help
+```
+
+**Perfect for:**
+- Teams migrating away from plain-text `.env` secrets
+- Local development with encrypted secrets handling
+- Zero-trust secret access patterns in CI/CD and developer workflows
+
+## Tap Catalog
+
+Use the tap catalog for per-tool installation, purpose, and troubleshooting guides:
+
+- [k3d-local tap guide](taps/k3d-local.md)
+- [promptx tap guide](taps/promptx.md)
+- [vaultx tap guide](taps/vaultx.md)
+
 ## Documentation by Tool
 
 ### k3d-local
