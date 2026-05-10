@@ -326,6 +326,84 @@ k3d cluster delete --all
 docker system prune -a
 ```
 
+## Promptx Issues
+
+### "promptx: command not found" after installation
+
+```bash
+which promptx
+exec $SHELL
+brew --prefix promptx
+```
+
+### Vault locked / passkey error
+
+```bash
+# Set passkey explicitly
+export PROMPTX_PASSKEY="your-secure-key"
+
+# Or reinitialize (loses existing memory)
+promptx setup
+```
+
+### Memory capture not persisting
+
+```bash
+# Run health checks
+promptx doctor
+promptx machine verify
+
+# Check vault status
+promptx info
+
+# Force-store on next capture
+promptx memory-watch --repo . --interval 5 --force-store
+```
+
+### MCP server not connecting
+
+```bash
+promptx mcp status
+promptx mcp-guard   # restart with auto-restart
+```
+
+## Vaultx Issues
+
+### "vaultx: command not found" after installation
+
+```bash
+which vaultx
+exec $SHELL
+brew reinstall vaultx
+```
+
+### Vault locked after failed unlock attempts
+
+After 5 failed attempts the vault locks for 30 minutes. Use a recovery code if MFA is enabled, or wait out the lockout.
+
+### Web UI not loading at port 7474
+
+```bash
+# Ensure daemon is running
+vaultx serve
+
+# Use a custom port if 7474 is taken
+vaultx serve --port 8080
+```
+
+### Secrets not injecting into process
+
+```bash
+# Verify vault is unlocked first
+vaultx unlock
+
+# Check the secret exists
+vaultx list
+
+# Then inject
+vaultx run -- your-command
+```
+
 ## Getting Help
 
 ### Gather Debug Information

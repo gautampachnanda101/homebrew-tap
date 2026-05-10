@@ -1,15 +1,16 @@
 # Installation
 
-Complete installation guide for all packages (k3d-local and Promptx).
+Complete installation guide for all packages in this tap.
 
 ## Choose Your Package
 
-This tap provides two main packages:
+This tap provides three packages:
 
 - **k3d-local** – Local Kubernetes cluster management
-- **promptx** – Prompt intelligence CLI with encrypted memory
+- **promptx** – Prompt intelligence CLI with encrypted memory and web UI
+- **vaultx** – Zero-trust encrypted secrets CLI with web UI
 
-You can install one or both.
+You can install any combination.
 
 ## Homebrew (macOS / Linux)
 
@@ -22,14 +23,12 @@ brew tap gautampachnanda101/tap
 ### Install Packages
 
 ```bash
-# Install k3d-local
 brew install k3d-local
-
-# Install promptx
 brew install promptx
+brew install vaultx
 
-# Install both
-brew install k3d-local promptx
+# Or install multiple at once
+brew install k3d-local promptx vaultx
 ```
 
 ### Upgrade
@@ -37,6 +36,7 @@ brew install k3d-local promptx
 ```bash
 brew upgrade k3d-local
 brew upgrade promptx
+brew upgrade vaultx
 brew upgrade             # Upgrade all
 ```
 
@@ -45,6 +45,7 @@ brew upgrade             # Upgrade all
 ```bash
 brew uninstall k3d-local
 brew uninstall promptx
+brew uninstall vaultx
 brew untap gautampachnanda101/tap  # Optional: remove tap entirely
 ```
 
@@ -52,7 +53,7 @@ brew untap gautampachnanda101/tap  # Optional: remove tap entirely
 
 ### Scoop Installation
 
-Promptx and k3d-local are available via Scoop:
+All three tools are available via Scoop:
 
 ```powershell
 # Add scoop bucket
@@ -61,6 +62,7 @@ scoop bucket add promptx https://github.com/gautampachnanda101/scoop-bucket
 # Install
 scoop install promptx
 scoop install k3d-local
+scoop install vaultx
 ```
 
 ### Upgrade
@@ -68,6 +70,7 @@ scoop install k3d-local
 ```powershell
 scoop update promptx
 scoop update k3d-local
+scoop update vaultx
 ```
 
 ## Manual Installation (All Platforms)
@@ -242,9 +245,35 @@ This creates:
 - Background memory watch daemon
 
 Verify:
+
 ```bash
 promptx doctor
 promptx machine verify
+```
+
+## Vaultx Installation
+
+Homebrew (macOS/Linux):
+
+```bash
+brew tap gautampachnanda101/tap
+brew install vaultx
+```
+
+Windows (Scoop):
+
+```powershell
+scoop bucket add promptx https://github.com/gautampachnanda101/scoop-bucket
+scoop install vaultx
+```
+
+Initialize and open the web UI at `http://127.0.0.1:7474/`:
+
+```bash
+vaultx init
+vaultx unlock
+vaultx serve
+open http://127.0.0.1:7474/
 ```
 
 ## First-Run Setup
@@ -278,18 +307,31 @@ promptx memory-watch --repo . --interval 5 --force-store
 promptx doctor
 ```
 
-See [Promptx Guide](promptx.md) for details.
+See [Promptx Guide](taps/promptx.md) for details.
+
+### Vaultx
+
+Initialize vault and start using:
+
+```bash
+vaultx init
+vaultx unlock
+vaultx serve    # open http://127.0.0.1:7474/ for the web UI
+```
+
+See [Vaultx Guide](taps/vaultx.md) for details.
 
 ## Troubleshooting Installation
 
 ### Command Not Found
 
-If `k3d-local` or `promptx` is not recognized:
+If any tool is not recognized after install:
 
 ```bash
 # Check if installed
 which k3d-local
 which promptx
+which vaultx
 
 # Reload shell
 exec $SHELL
@@ -297,6 +339,7 @@ exec $SHELL
 # Check Homebrew
 brew --prefix k3d-local
 brew --prefix promptx
+brew --prefix vaultx
 
 # Check PATH
 echo $PATH
@@ -337,13 +380,13 @@ Ensure 2.31 or higher for Linux binaries.
 
 1. Run diagnosis:
    ```bash
-   prompts doctor
-   prompts machine verify
+   promptx doctor
+   promptx machine verify
    ```
 
 2. Check troubleshooting guides:
    - [k3d-local Troubleshooting](troubleshooting.md)
-   - [Promptx Guide - Troubleshooting](promptx.md#troubleshooting)
+   - [Promptx Guide - Troubleshooting](taps/promptx.md#troubleshooting)
 
 3. Report issues:
    - [GitHub Issues](https://github.com/gautampachnanda101/homebrew-tap/issues)

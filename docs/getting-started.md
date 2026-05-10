@@ -2,9 +2,11 @@
 
 Get up and running with homebrew-tap tools in 5 minutes.
 
-This tap provides two main tools:
+This tap provides three tools:
+
 - **k3d-local** – Local Kubernetes development environment
-- **promptx** – Prompt intelligence CLI with encrypted memory
+- **promptx** – Prompt intelligence CLI with encrypted memory and web UI
+- **vaultx** – Zero-trust encrypted secrets CLI with web UI
 
 Choose the tool(s) you want to use to get started.
 
@@ -236,10 +238,51 @@ Shows:
 - MCP registrations
 - Configuration
 
+## Vaultx: Encrypted Secrets CLI
+
+Get vaultx running in 2 minutes.
+
+```bash
+brew tap gautampachnanda101/tap
+brew install vaultx
+```
+
+### First-Time Setup
+
+```bash
+vaultx init      # create encrypted vault
+vaultx unlock    # unlock for this session
+```
+
+### Store and Use Secrets
+
+```bash
+vaultx set myapp/db_password "s3cr3t"    # store a secret
+vaultx get myapp/db_password             # retrieve it
+vaultx run -- go run ./cmd/server        # inject into process
+```
+
+### Web UI
+
+```bash
+vaultx serve
+open http://127.0.0.1:7474/
+```
+
+The dashboard has two tabs — **Secrets** (manage vault entries) and **Audit Log** (security events). Touch ID unlocks access on macOS.
+
+### Verify Vaultx
+
+```bash
+vaultx --version
+vaultx unlock
+```
+
 ## What's Next?
 
 ### k3d-local Users
 
+- [k3d-local Tap Guide](taps/k3d-local.md)
 - [Detailed usage guide](usage.md#k3d-local-workflows)
 - [Helm deployment](helm-deployment.md)
 - [Customization options](customization.md)
@@ -247,22 +290,26 @@ Shows:
 
 ### Promptx Users
 
-- [Promptx Guide](promptx.md) – Full reference
-- [Daily workflows](promptx.md#daily-workflows)
-- [VS Code Extension](promptx.md#vs-code-extension)
-- [MCP Integration](promptx.md#mcp-integration)
+- [Promptx Tap Guide](taps/promptx.md)
+- [Daily workflows](usage.md#promptx-workflows)
+- [VS Code Extension](taps/promptx.md#vs-code-extension)
+- [MCP Integration](taps/promptx.md#mcp-integration)
 
-### Both Tools
+### Vaultx Users
+
+- [Vaultx Tap Guide](taps/vaultx.md)
+- [Secrets management](taps/vaultx.md#daily-workflows)
+- [MFA setup](taps/vaultx.md#mfa-totp)
+- [Backup and recovery](taps/vaultx.md#backup-and-recovery)
+
+### All Tools
 
 - [Explore examples](examples.md)
 - [View all commands](reference/commands.md)
 - [Advanced usage](usage.md)
 
-## Need Help?
-
-### All Tools
+## Getting Help
 
 - [Troubleshooting Guide](troubleshooting.md)
-- [Promptx Guide](promptx.md#troubleshooting)
-- [GitHub Issues - Report here](https://github.com/gautampachnanda101/homebrew-tap/issues)
+- [GitHub Issues](https://github.com/gautampachnanda101/homebrew-tap/issues)
 - [k3d Documentation](https://k3d.io/)

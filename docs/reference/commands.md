@@ -1,6 +1,6 @@
 # Command Reference
 
-Complete reference for the `k3d-local` CLI as verified against the installed Homebrew package.
+Complete reference for all CLI tools in this tap: `k3d-local`, `promptx`, and `vaultx`.
 
 ## Top-Level Commands
 
@@ -161,9 +161,116 @@ k3d-local --help
 k3d-local create --help
 ```
 
+---
+
+## Promptx
+
+Local-first prompt intelligence CLI with encrypted memory and web UI.
+
+### Core Commands
+
+| Command | Description |
+| ------- | ----------- |
+| `promptx setup` | Initialize encrypted vault and MCP registration |
+| `promptx doctor` | Health check — vault, memory backend, MCP, config |
+| `promptx machine verify` | Verify machine identity |
+| `promptx info` | Show version and configuration |
+
+### Memory
+
+| Command | Description |
+| ------- | ----------- |
+| `promptx memory-watch --repo . --interval 5` | Continuously capture interactions |
+| `promptx memory-write "<text>" --repo .` | Write a memory entry directly |
+| `promptx search "<query>" --repo .` | Full-text search |
+| `promptx fuzzy-search "<query>" --repo .` | Semantic fuzzy search |
+| `promptx ask "<question>" --repo .` | Natural language question |
+| `promptx executor "<query>" --repo .` | Evidence-based execution |
+| `promptx logs --limit 50` | View recent decrypted logs |
+
+### Web UI
+
+| Command | Description |
+| ------- | ----------- |
+| `promptx serve` | Start web server at `http://127.0.0.1:17171/` |
+| `promptx ui` | Open web UI in browser |
+
+### Context and Handoff
+
+| Command | Description |
+| ------- | ----------- |
+| `promptx switch` | Create a handoff context pack |
+| `promptx resume` | Resume from a handoff pack |
+| `promptx context-pack --repo .` | Export context as markdown |
+| `promptx commits --repo .` | View git commits linked to AI interactions |
+| `promptx graph --repo .` | Visualize chat-code relationships |
+
+### MCP Server
+
+| Command | Description |
+| ------- | ----------- |
+| `promptx mcp` | Start MCP server |
+| `promptx mcp-guard` | Start MCP server with auto-restart |
+| `promptx mcp status` | Show MCP server status |
+
+### Generation
+
+| Command | Description |
+| ------- | ----------- |
+| `promptx generate "<prompt>"` | Generate a prompt using local AI |
+
+---
+
+## Vaultx
+
+Zero-trust encrypted secrets CLI.
+
+### Vault Commands
+
+| Command | Description |
+| ------- | ----------- |
+| `vaultx init` | Create and encrypt a new vault |
+| `vaultx unlock` | Unlock vault for this session |
+| `vaultx --version` | Show version |
+
+### Secrets Commands
+
+| Command | Description |
+| ------- | ----------- |
+| `vaultx set <key> <value>` | Store a secret |
+| `vaultx get <key>` | Retrieve a secret |
+| `vaultx list [prefix]` | List secrets (values masked) |
+| `vaultx delete <key>` | Delete a secret |
+
+### Injection Commands
+
+| Command | Description |
+| ------- | ----------- |
+| `vaultx run -- <cmd>` | Run command with secrets injected |
+| `vaultx docker compose -- ...` | Docker Compose with secret injection |
+
+### Dashboard
+
+| Command | Description |
+| ------- | ----------- |
+| `vaultx serve [--port N]` | Start daemon with embedded web UI |
+
+### Security Commands
+
+| Command | Description |
+| ------- | ----------- |
+| `vaultx mfa enable` | Enable TOTP two-factor authentication |
+| `vaultx backup split --shares N --threshold M` | M-of-N Shamir key split |
+| `vaultx backup restore` | Restore vault from shares |
+| `vaultx audit` | View security audit log |
+
+---
+
 ## See Also
 
 - [Getting Started](../getting-started.md)
 - [Usage Guide](../usage.md)
+- [Promptx Tap Guide](../taps/promptx.md)
+- [Vaultx Tap Guide](../taps/vaultx.md)
 - [k3d Official Docs](https://k3d.io/)
 - [Kubernetes Docs](https://kubernetes.io/docs/)

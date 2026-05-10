@@ -1,6 +1,6 @@
 # Usage Guide
 
-Common workflows and usage patterns for k3d-local and Promptx.
+Common workflows and usage patterns for k3d-local, Promptx, and Vaultx.
 
 ## Understanding k3d-local + Examples
 
@@ -568,8 +568,57 @@ kubectl logs -f deployment/my-app
 promptx executor "what errors occurred during deploy?" --repo . --limit 10
 ```
 
+## Vaultx Workflows
+
+Vaultx replaces plain `.env` files with encrypted vault-backed secrets.
+
+### Initialize and Unlock
+
+```bash
+vaultx init      # create encrypted vault
+vaultx unlock    # unlock for this session (Touch ID or master password)
+```
+
+### Store and Retrieve Secrets
+
+```bash
+vaultx set myapp/db_password "s3cr3t"    # store a secret
+vaultx get myapp/db_password             # retrieve it
+vaultx list                              # list all (values masked)
+vaultx list myapp/                       # list under a prefix
+vaultx delete myapp/db_password          # delete
+```
+
+### Inject Secrets at Runtime
+
+Replace `.env` files with vault-backed injection — nothing written to disk:
+
+```bash
+vaultx run -- go run ./cmd/server
+vaultx run -- python manage.py runserver
+vaultx docker compose -- up --build
+```
+
+### Web Dashboard
+
+```bash
+vaultx serve          # start daemon on http://127.0.0.1:7474/
+open http://127.0.0.1:7474/
+```
+
+The dashboard has two tabs: **Secrets** (manage entries) and **Audit Log** (security events). Touch ID authenticates on macOS.
+
+### MFA and Backup
+
+```bash
+vaultx mfa enable                      # enable TOTP two-factor auth
+vaultx backup split --shares 5 --threshold 3  # M-of-N Shamir backup
+vaultx backup restore                  # restore from shares
+```
+
 ## Next Steps
 
-- Read [Promptx Guide](promptx.md) for full reference
+- Read [Promptx Guide](taps/promptx.md) for full reference
+- Read [Vaultx Guide](taps/vaultx.md) for full reference
 - Explore [k3d-local Reference](reference/commands.md)
 - See [Examples](examples.md) for recipes
