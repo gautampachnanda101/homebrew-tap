@@ -58,39 +58,36 @@ Docker/Docker Desktop is not active.
 
 **Solution:**
 
-=== "macOS"
+**macOS:**
 
-    ```bash
-    # Start Docker Desktop from Applications
-    open -a Docker
-    
-    # Or via Homebrew
-    brew services start docker
-    ```
+```bash
+open -a Docker
+# or: brew services start docker
+```
 
-=== "Linux"
+**Linux:**
 
-    ```bash
-    # Start Docker daemon
-    sudo systemctl start docker
-    sudo systemctl enable docker  # Auto-start
-    ```
+```bash
+sudo systemctl start docker
+sudo systemctl enable docker  # auto-start on boot
+```
 
-### "Port 8080 already in use"
+### "Port 80 or 443 already in use"
 
 Another service occupies the Traefik port.
 
 **Solution:**
 
 ```bash
-# Find process using port 8080
-lsof -i :8080
+# Find process using port 80
+lsof -i :80
+lsof -i :443
 
-# Kill the process
+# Kill the conflicting process
 kill -9 <PID>
 
-# Or use different port (see docker-compose)
-# and update URLs accordingly
+# Or use different ports
+k3d-local create --with-traefik --http-port 8080 --https-port 8443
 ```
 
 ### "Insufficient disk space"
@@ -431,6 +428,7 @@ k3d-local create --verbose 2>&1 | tee debug.log
 - [GitHub Issues](https://github.com/gautampachnanda101/homebrew-tap/issues)
 
 Include:
+
 - System info (OS, Docker version)
 - Full error output
 - Steps to reproduce

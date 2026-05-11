@@ -93,7 +93,7 @@ spec:
               number: 8080
 ```
 
-Apply and access at: `http://myapp.127.0.0.1.sslip.io:8080`
+Apply and access at: `http://myapp.127.0.0.1.sslip.io`
 
 ## Container Registry
 
@@ -147,7 +147,7 @@ kubectl top pods --all-namespaces
 When using `--with-traefik`:
 
 ```
-http://dashboard.127.0.0.1.sslip.io:8080/dashboard/
+http://dashboard.127.0.0.1.sslip.io/dashboard/
 ```
 
 Shows:
@@ -217,7 +217,7 @@ kubectl rollout status deployment/myapp
 kubectl logs -f deployment/myapp
 
 # 5. Test endpoint
-curl http://myapp.127.0.0.1.sslip.io:8080
+curl http://myapp.127.0.0.1.sslip.io
 ```
 
 ### Hot Reload for Development
@@ -246,12 +246,12 @@ k3d-local create --with-telemetry
 
 Access monitoring stack:
 
-| Service | URL |
-|---------|-----|
-| Grafana | http://grafana.127.0.0.1.sslip.io:8080 |
-| Prometheus | http://prometheus.127.0.0.1.sslip.io:8080 |
-| Loki | http://loki.127.0.0.1.sslip.io:8080 |
-| Tempo | http://tempo.127.0.0.1.sslip.io:8080 |
+| Service    | URL                                    |
+| ---------- | -------------------------------------- |
+| Grafana    | <http://grafana.127.0.0.1.sslip.io>    |
+| Prometheus | <http://prometheus.127.0.0.1.sslip.io> |
+| Loki       | <http://loki.127.0.0.1.sslip.io>       |
+| Tempo      | <http://tempo.127.0.0.1.sslip.io>      |
 
 Default credentials: `admin` / `admin`
 
@@ -269,16 +269,16 @@ All services use **sslip.io** for automatic DNS:
 
 ```bash
 # These all resolve without additional configuration
-curl http://app.127.0.0.1.sslip.io:8080
-curl http://dashboard.127.0.0.1.sslip.io:8080
+curl http://app.127.0.0.1.sslip.io
+curl http://dashboard.127.0.0.1.sslip.io
 ```
 
 ### Port Mapping
 
-By default, Traefik uses port 8080. Access via:
+By default, Traefik uses port 80 (HTTP) and 443 (HTTPS). Access via:
 
-- HTTP: `http://service.127.0.0.1.sslip.io:8080`
-- HTTPS: `https://service.127.0.0.1.sslip.io:8443` (if enabled)
+- HTTP: `http://service.127.0.0.1.sslip.io`
+- HTTPS: `https://service.127.0.0.1.sslip.io`
 
 ### Environment Variables
 

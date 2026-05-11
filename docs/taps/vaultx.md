@@ -1,6 +1,6 @@
 # vaultx
 
-Zero-trust secrets CLI — the convenience of `.env` files with encrypted vault-backed secrets, Touch ID unlock, and an embedded web UI.
+Zero-trust secrets broker — commit `vaultx.env` (references only, never values), and vaultx injects the real secrets into your process at runtime. Nothing is written to disk in plain text.
 
 ## Installation
 
@@ -27,19 +27,37 @@ scoop install vaultx
 Verify:
 
 ```bash
-vaultx --version
+vaultx version
 ```
 
 ## First-Time Setup
 
 ```bash
-vaultx init      # create and encrypt the vault
-vaultx unlock    # unlock for this session (Touch ID or master password)
+vaultx init --biometric   # create vault + enable Touch ID (macOS)
+# or
+vaultx init               # create vault with master password only
+```
+
+Run a health check:
+
+```bash
+vaultx doctor
+```
+
+## The vaultx.env File
+
+`vaultx.env` is a reference file — it contains secret names, not values. It is safe to commit to git.
+
+At runtime, `vaultx run` resolves each reference from the vault and injects the real value into the process environment. Nothing touches disk.
+
+Example `vaultx.env`:
+
+```env
+DB_PASSWORD=vaultx://myapp/db_password
+API_KEY=vaultx://myapp/api_key
 ```
 
 ## Web UI
-
-Start the local daemon and open the browser dashboard:
 
 ```bash
 vaultx serve          # start daemon on http://127.0.0.1:7474/
@@ -48,11 +66,11 @@ open http://127.0.0.1:7474/
 
 ### Dashboard Tabs
 
-**Secrets** — view, add, and manage your vault entries. Secrets are never written to disk in plain text; they exist only in process memory and are injected directly into applications.
+**Secrets** — view, add, and manage vault entries. Values are never stored in plain text.
 
-**Audit Log** — security event log covering vault unlocks (success/failure), secret reads, writes, and deletions. Audit logs can be forwarded to syslog for compliance use cases.
+**Audit Log** — security event log: unlocks (success/failure), secret reads, writes, deletions. Supports syslog forwarding for compliance.
 
-Authentication to the web UI uses Touch ID on macOS. The daemon token is stored locally and scoped to the running process.
+Touch ID authenticates the web UI on macOS.
 
 ### Serve Options
 
@@ -67,37 +85,40 @@ vaultx serve --syslog-network tcp --syslog-address host:514 # remote syslog
 ### Store and Retrieve Secrets
 
 ```bash
-vaultx set myapp/db_password "s3cr3t"    # store a secret
-vaultx get myapp/db_password             # retrieve a value
-vaultx list                              # list all secrets (values masked)
-vaultx list myapp/                       # list secrets under a prefix
-vaultx delete myapp/db_password          # delete a secret
+vaultx set myapp/db_password "s3cr3t"    # store
+vaultx get myapp/db_password             # retrieve
+vaultx list                              # list all (values masked)
+vaultx list myapp/                       # list under a prefix
+vaultx delete myapp/db_password          # delete
 ```
 
 ### Run Commands with Secrets Injected
 
-Replace `.env` files with vault-backed injection:
+From a directory containing a `vaultx.env` file:
 
 ```bash
 vaultx run -- go run ./cmd/server
-vaultx run --env staging.env -- ./server
 vaultx run -- python manage.py runserver
+vaultx run -- npm start
 ```
 
-Secrets from `vaultx.env` are resolved at runtime and injected into the process environment — nothing is written to disk.
-
-### Docker Compose
+### Inject into Current Shell
 
 ```bash
-vaultx docker compose -- up --build
+eval $(vaultx shell)    # exports secrets as env vars in the current shell
 ```
 
-Injects secrets into the Docker Compose environment without exposing them in `docker inspect` output.
-
-### Unlock and Session Management
+### Docker
 
 ```bash
-vaultx unlock     # unlock for this session (Touch ID or master password)
+vaultx docker compose -- up --build    # Docker Compose with secrets injected
+```
+
+### Session Management
+
+```bash
+vaultx unlock    # unlock for this session (Touch ID or master password)
+vaultx lock      # lock the vault (clear cached key)
 ```
 
 Security defaults:
@@ -105,9 +126,22 @@ Security defaults:
 - Rate limiting: 10 unlock attempts per minute
 - Lockout: 5 failed attempts locks the vault for 30 minutes
 
-## MFA (TOTP)
+## Providers
 
-Add two-factor authentication to vault unlocking:
+vaultx supports multiple secret providers configured in `~/.vaultx/config.toml`:
+
+- **Local** — encrypted vault at `~/.vaultx/vault.enc` (default)
+- **1Password** — pull secrets from 1Password vaults
+- **HashiCorp Vault** — connect to a Vault server
+- **AWS Secrets Manager** — pull from AWS
+
+Check provider health:
+
+```bash
+vaultx providers
+```
+
+## MFA (TOTP)
 
 ```bash
 vaultx mfa enable    # generates TOTP secret + QR code + 10 recovery codes
@@ -116,35 +150,66 @@ vaultx unlock        # now prompts for TOTP code after master password
 
 ## Backup and Recovery
 
-Split the backup encryption key using M-of-N Shamir shares:
-
 ```bash
-# Split into 5 shares, requiring any 3 to restore
+# Split into 5 shares, requiring any 3 to restore (Shamir M-of-N)
 vaultx backup split --shares 5 --threshold 3
 
 # Restore from shares
 vaultx backup restore
 ```
 
-Useful for team escrow, compliance requirements, and M-of-N governance.
+## Import and Export
+
+```bash
+vaultx import    # import credentials from an external password manager
+vaultx export    # export credentials to a file
+```
+
+## Built-in Docs
+
+```bash
+vaultx docs    # pretty-print the public user guide shipped with the binary
+```
+
+## Shell Completion
+
+```bash
+vaultx completion    # install tab completion (zsh, bash, fish, PowerShell)
+```
+
+## Kubernetes Integration
+
+```bash
+vaultx k3d    # helpers for k3d / Kubernetes External Secrets integration
+```
 
 ## Command Reference
 
 | Command | Purpose |
 | ------- | ------- |
-| `init` | Create and encrypt a new vault |
+| `init [--biometric]` | Create vault, optionally enable Touch ID |
 | `unlock` | Unlock vault for this session |
+| `lock` | Lock vault (clear cached key) |
+| `doctor` | Health check — vault, runtime deps |
 | `serve` | Start daemon with embedded web UI |
 | `set <key> <value>` | Store a secret |
-| `get <key>` | Retrieve a secret value |
+| `get <key>` | Retrieve a secret |
 | `list [prefix]` | List secrets (values masked) |
 | `delete <key>` | Delete a secret |
 | `run -- <cmd>` | Run command with secrets injected |
+| `shell` | Print export statements for current shell |
 | `docker compose -- ...` | Docker Compose with secret injection |
 | `mfa enable` | Enable TOTP two-factor authentication |
 | `backup split` | Split backup key into M-of-N shares |
 | `backup restore` | Restore from shares |
 | `audit` | View security audit log |
+| `providers` | List configured providers and health |
+| `import` | Import from external password manager |
+| `export` | Export credentials to file |
+| `k3d` | k3d / Kubernetes External Secrets helpers |
+| `docs` | View built-in user guide |
+| `completion` | Install shell tab completion |
+| `version` | Show version |
 
 ## Troubleshooting
 
@@ -160,11 +225,18 @@ exec $SHELL
 
 After 5 failed unlock attempts the vault locks for 30 minutes. Wait out the lockout or use a recovery code if MFA is enabled.
 
-### Check Formula and Version
+### Health Check
 
 ```bash
+vaultx doctor
+vaultx providers
+```
+
+### Check Version
+
+```bash
+vaultx version
 brew info vaultx
-vaultx --version
 ```
 
 ### Reinstall if Binary Is Missing
@@ -175,5 +247,5 @@ brew reinstall vaultx
 
 ## Resources
 
-- 📦 **Releases**: [homebrew-tap/releases](https://github.com/gautampachnanda101/homebrew-tap/releases)
-- 🐛 **Issues**: [homebrew-tap/issues](https://github.com/gautampachnanda101/homebrew-tap/issues)
+- **Releases**: [homebrew-tap/releases](https://github.com/gautampachnanda101/homebrew-tap/releases)
+- **Issues**: [homebrew-tap/issues](https://github.com/gautampachnanda101/homebrew-tap/issues)

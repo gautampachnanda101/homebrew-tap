@@ -37,8 +37,8 @@ Key flags:
 - `--servers` (default: `1`)
 - `--agents` (default: `2`)
 - `--api-port` (default: `6550`)
-- `--http-port` (default: `8080`)
-- `--https-port` (default: `8443`)
+- `--http-port` (default: `80`)
+- `--https-port` (default: `443`)
 - `--timeout` (default: `600` seconds)
 - `--with-traefik`
 - `--with-apps`

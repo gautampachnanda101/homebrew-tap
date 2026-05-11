@@ -10,13 +10,16 @@ This tap provides three tools:
 
 Choose the tool(s) you want to use to get started.
 
+---
+
 ## k3d-local: Local Kubernetes
 
 Get up and running with k3d-local in 5 minutes.
 
-### Prerequisites
+### Requirements
 
 A modern system with:
+
 - **macOS** 10.14+, **Linux** (most distributions), or **Windows 10+**
 - **Docker** or **Docker Desktop** pre-installed
 - **Internet connection** (for initial downloads)
@@ -24,9 +27,7 @@ A modern system with:
 !!! note
     Other dependencies (k3d, kubectl, helm) can be automatically installed using the `--auto-install` flag.
 
-## Installation
-
-### Quick Install (Recommended)
+### Install k3d-local
 
 ```bash
 brew tap gautampachnanda101/tap
@@ -35,110 +36,74 @@ brew install k3d-local
 
 For detailed platform-specific instructions, see [Installation Guide](installation.md).
 
-## Your First Cluster (< 2 minutes)
+### Create Your First Cluster
 
-### Create a Basic Cluster
+**Basic cluster:**
 
 ```bash
 k3d-local create
 ```
 
-This creates a cluster with:
-- 1 server node + 2 agent nodes
-- Kubernetes v1.31.5+
-- Ready-to-use configuration
+This creates a cluster with 1 server node, 2 agent nodes, and a ready-to-use kubeconfig.
 
-### Create a Full-Featured Cluster
+**Full-featured cluster:**
 
 ```bash
 k3d-local create --with-traefik --with-apps
 ```
 
 This includes:
-- ✅ k3d cluster
-- ✅ Traefik v3 ingress controller
-- ✅ Sample applications
-- ✅ Pre-configured DNS (sslip.io)
 
-## Access Your Services
+- k3d cluster
+- Traefik v3 ingress controller
+- Sample applications
+- Pre-configured DNS (sslip.io)
+
+### Access Services
 
 Once creation completes, access services at:
 
-| Service | URL |
-|---------|-----|
-| **Traefik Dashboard** | http://dashboard.127.0.0.1.sslip.io:8080 |
-| **Sample App** | http://app.127.0.0.1.sslip.io:8080 |
+| Service           | URL                                              |
+| ----------------- | ------------------------------------------------ |
+| Traefik Dashboard | <http://dashboard.127.0.0.1.sslip.io/dashboard/> |
+| Sample App        | <http://app.127.0.0.1.sslip.io>                  |
 
 !!! info
-    All services use port 8080 by default (the k3d host port).
+    k3d-local defaults to port 80 (HTTP) and 443 (HTTPS), so no port suffix is needed in URLs.
 
-## Common Operations
+### Common Operations
 
-### Deploy an Example Service
-
-Once your cluster is running, deploy production-ready services using the [k3d-local examples](examples.md):
+Deploy production-ready services using the [k3d-local examples](examples.md):
 
 ```bash
-# Clone the repository
 git clone https://github.com/gautampachnanda101/homebrew-tap.git
-cd homebrew-tap/examples
-
-# Deploy ArgoCD for GitOps
-cd argocd && ./install.sh
-
-# Or deploy Vault for secrets management
-# cd ../vault && ./install.sh
-
-# Or choose from 10+ other services
+cd homebrew-tap/examples/argocd
+./install.sh
 ```
 
 Available examples include:
+
 - **ArgoCD** – GitOps continuous deployment
 - **Vault** – Secrets management
 - **Harbor** – Container registry
 - **Authentik / Keycloak** – Identity management
 - **GitLab Runner** – CI/CD executor
 - **Backstage** – Developer portal
-- **And 6 more** (External Secrets, RabbitMQ, SpiceDB, OpenFGA, Kyverno)
+- And 6 more (External Secrets, RabbitMQ, SpiceDB, OpenFGA, Kyverno)
 
 [View all examples →](examples.md)
 
-### Check Cluster Status
+Check cluster status:
 
 ```bash
 k3d-local status
 ```
 
-Displays current cluster state and component health.
-
-### Deploy Your Application
-
-```bash
-kubectl apply -f your-app.yaml
-```
-
-Your cluster has kubectl pre-configured and ready to use.
-
-### Delete Cluster
+Delete cluster:
 
 ```bash
 k3d-local delete
 ```
-
-Safely tears down all components and frees resources.
-
-## What's Next?
-
-- Explore [detailed usage patterns](usage.md)
-- Set up [Grafana telemetry stack](usage.md#observability)
-- Review [available commands](reference/commands.md)
-- Check [troubleshooting guide](troubleshooting.md)
-
-## Need Help?
-
-- See [Troubleshooting Guide](troubleshooting.md)
-- Visit [k3d documentation](https://k3d.io/)
-- Open an issue: [GitHub Issues](https://github.com/gautampachnanda101/homebrew-tap/issues)
 
 ---
 
@@ -146,31 +111,28 @@ Safely tears down all components and frees resources.
 
 Get Promptx up and running in 5 minutes.
 
-### Prerequisites
-
-- **Installed:** `brew install promptx`
-- **Git repository** (recommended for context)
-- **Internet connection** (for first-time setup)
-
-### Installation
+Install:
 
 ```bash
 brew tap gautampachnanda101/tap
 brew install promptx
 ```
 
-### First-Time Setup (< 1 minute)
+A Git repository and internet connection are recommended for first-time setup.
+
+### Initialize Promptx
 
 ```bash
 promptx setup
 ```
 
 This creates:
+
 - Encrypted vault for memory storage
 - Passkey for encryption
 - MCP registrations for IDE integrations
 
-### Your First Memory Capture (< 2 minutes)
+### Capture Memory
 
 Start capturing interactions:
 
@@ -179,20 +141,14 @@ promptx memory-watch --repo . --interval 5 --force-store
 ```
 
 This watches for:
+
 - Git commits
 - Code changes
 - IDE interactions
 
-In another terminal, work normally:
+In another terminal, work normally — everything is captured and encrypted locally.
 
-```bash
-# Edit code, run tests, ask AI questions, etc.
-# Everything is being captured and encrypted locally
-```
-
-### Query Your Memory
-
-Ask questions about your session:
+### Query Memory
 
 ```bash
 # Search your history
@@ -205,53 +161,47 @@ promptx ask "what changed today?" --repo . --limit 6
 promptx executor "how do we handle errors?" --repo . --limit 8
 ```
 
-### Generate Prompts
+### VS Code Extension
 
-Use local AI:
+1. Install the extension:
 
-```bash
-promptx generate "write a go cli for file sync"
-```
-
-### VS Code Integration
-
-1. Install the VS Code extension:
    ```bash
    code --install-extension $(brew --prefix)/share/promptx/promptx-vscode-*.vsix
    ```
 
 2. In Copilot Chat, use:
-   ```
+
+   ```text
    @promptx What changed in the auth module?
    @promptx /timeline
    ```
 
-### Check Everything Works
+### Verify Promptx
 
 ```bash
 promptx doctor
 ```
 
-Shows:
-- Vault status
-- Memory backend health
-- MCP registrations
-- Configuration
+Shows vault status, memory backend health, MCP registrations, and configuration.
+
+---
 
 ## Vaultx: Encrypted Secrets CLI
 
 Get vaultx running in 2 minutes.
+
+Install:
 
 ```bash
 brew tap gautampachnanda101/tap
 brew install vaultx
 ```
 
-### First-Time Setup
+### Initialize Vaultx
 
 ```bash
-vaultx init      # create encrypted vault
-vaultx unlock    # unlock for this session
+vaultx init --biometric   # create vault + enable Touch ID (macOS)
+vaultx unlock             # unlock for this session
 ```
 
 ### Store and Use Secrets
@@ -262,7 +212,7 @@ vaultx get myapp/db_password             # retrieve it
 vaultx run -- go run ./cmd/server        # inject into process
 ```
 
-### Web UI
+### Vaultx Web UI
 
 ```bash
 vaultx serve
@@ -274,11 +224,13 @@ The dashboard has two tabs — **Secrets** (manage vault entries) and **Audit Lo
 ### Verify Vaultx
 
 ```bash
-vaultx --version
-vaultx unlock
+vaultx version
+vaultx doctor
 ```
 
-## What's Next?
+---
+
+## Next Steps
 
 ### k3d-local Users
 
@@ -308,7 +260,7 @@ vaultx unlock
 - [View all commands](reference/commands.md)
 - [Advanced usage](usage.md)
 
-## Getting Help
+## Need Help?
 
 - [Troubleshooting Guide](troubleshooting.md)
 - [GitHub Issues](https://github.com/gautampachnanda101/homebrew-tap/issues)
