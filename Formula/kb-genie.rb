@@ -9,12 +9,12 @@ class KbGenie < Formula
   on_macos do
     on_intel do
       url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/kb-genie-v1.0.0/kb-genie_Darwin_x86_64.tar.gz"
-      sha256 "955b09f664b3ab7d3b05d60a534b5038e98b263c8f28f9c719b9eaeb10e8bfc6"
+      sha256 "51c766f1b9575e7557eeaed5ff78927e2f535e8a647878ebd64b5e1663b3c4b9"
     end
 
     on_arm do
       url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/kb-genie-v1.0.0/kb-genie_Darwin_arm64.tar.gz"
-      sha256 "185987c3f620e5a198166dab6ba10a5c123ba0d2862b5cdd229dda6fa573ee3c"
+      sha256 "90886641efccd97909cc2f231a7e920e1eba18612b13e3cc2ce91773d9ea9c94"
     end
   end
 
@@ -22,14 +22,14 @@ class KbGenie < Formula
     on_intel do
       if Hardware::CPU.is_64_bit?
         url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/kb-genie-v1.0.0/kb-genie_Linux_x86_64.tar.gz"
-        sha256 "4e5c9892e99b23440f90a03c4dce1ea7ccf1a200dad694693a64d9ce0746c7d1"
+        sha256 "4a41a5437c4d1e494b2fb011c709816753b1c56e11e12b3aa8cf6087599b6a34"
       end
     end
 
     on_arm do
       if Hardware::CPU.is_64_bit?
         url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/kb-genie-v1.0.0/kb-genie_Linux_arm64.tar.gz"
-        sha256 "d53258f544b499c01beaca0546ecda04b661c5178f4d703b78063e08ae0935b5"
+        sha256 "40d8a28c01ee374ec78266d7a1ef5f771afe4f28d5b922f4206a9ee87d07c97f"
       end
     end
   end
