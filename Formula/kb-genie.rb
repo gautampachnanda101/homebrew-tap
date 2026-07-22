@@ -4,32 +4,32 @@
 class KbGenie < Formula
   desc "Local-first RAG knowledge base builder with pluggable embedding backends"
   homepage "https://github.com/gautampachnanda101/kb-genie"
-  version "1.2.16"
+  version "1.2.17"
 
   on_macos do
     on_intel do
-      url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/kb-genie-v1.2.16/kb-genie_Darwin_x86_64.tar.gz"
-      sha256 "fcb0e9cbb41076a23fd16c376af5551a9fb4347ad23aa09ec8dd97cf93ff41fc"
+      url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/kb-genie-v1.2.17/kb-genie_Darwin_x86_64.tar.gz"
+      sha256 "c04666e3d31a5ba41c8a7ac8dde545afd61c3474aca86591f526aa9d58b70751"
     end
 
     on_arm do
-      url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/kb-genie-v1.2.16/kb-genie_Darwin_arm64.tar.gz"
-      sha256 "aa626f67458d2947453f72ecac17946c021d72571dc67775b061b7cc2bcb2c57"
+      url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/kb-genie-v1.2.17/kb-genie_Darwin_arm64.tar.gz"
+      sha256 "4d7768dc1fdf911c7216e6daa36f96ef19f52933b6a961c7685518b90f2ce2e9"
     end
   end
 
   on_linux do
     on_intel do
       if Hardware::CPU.is_64_bit?
-        url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/kb-genie-v1.2.16/kb-genie_Linux_x86_64.tar.gz"
-        sha256 "1683f7172051d94ea56babb6eec2b79f46bb90db0a89b9188eab4ee7b849f54d"
+        url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/kb-genie-v1.2.17/kb-genie_Linux_x86_64.tar.gz"
+        sha256 "b864413b9fb1e52fda58958e3b27924f0c6c8769df7cf9b26bc0d0520c7542c4"
       end
     end
 
     on_arm do
       if Hardware::CPU.is_64_bit?
-        url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/kb-genie-v1.2.16/kb-genie_Linux_arm64.tar.gz"
-        sha256 "d8f0d0959322562d5cbdb336812ccc09eafc48afbf2a560834cdfaf1c7039343"
+        url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/kb-genie-v1.2.17/kb-genie_Linux_arm64.tar.gz"
+        sha256 "b5a54454c5bae652f3d48346f40e2ce2582f01fc3ea6a90c54c25d802343695f"
       end
     end
   end
