@@ -1,33 +1,33 @@
 # typed: false
 # frozen_string_literal: true
 
-# Template — the release workflow substitutes 0.7.0, https://github.com/gautampachnanda101/vitals/releases/download/v0.7.0 and the
+# Template — the release workflow substitutes 0.8.0, https://github.com/gautampachnanda101/vitals/releases/download/v0.8.0 and the
 # __SHA_*__ placeholders and commits the result to Formula/vitals.rb in the tap.
 class Vitals < Formula
   desc "Local-first system diagnostics: names your bottleneck and the fix"
   homepage "https://github.com/gautampachnanda101/vitals"
-  version "0.7.0"
+  version "0.8.0"
   license "MIT"
 
   on_macos do
     on_intel do
-      url "https://github.com/gautampachnanda101/vitals/releases/download/v0.7.0/vitals_Darwin_x86_64.tar.gz"
-      sha256 "b6de0502486d485d725ffe7eee5956ac1bbff89d36f85940d3a660bb3fe0ed1f"
+      url "https://github.com/gautampachnanda101/vitals/releases/download/v0.8.0/vitals_Darwin_x86_64.tar.gz"
+      sha256 "c6bf8e1b77ff997b48ad77117af90d06c2d49d5a46faa63ca33bb7c24a451c9f"
     end
     on_arm do
-      url "https://github.com/gautampachnanda101/vitals/releases/download/v0.7.0/vitals_Darwin_arm64.tar.gz"
-      sha256 "c917a981bfa7d02a98806c6b8d3a58060632ebc219439dd76bf9d2c162a01c10"
+      url "https://github.com/gautampachnanda101/vitals/releases/download/v0.8.0/vitals_Darwin_arm64.tar.gz"
+      sha256 "e14e9173c299994877f1539987123f4adca33c739ee42c5ee0390962387d7023"
     end
   end
 
   on_linux do
     on_intel do
-      url "https://github.com/gautampachnanda101/vitals/releases/download/v0.7.0/vitals_Linux_x86_64.tar.gz"
-      sha256 "430b0ec1b5391a29cdd256a2f6f0582f2ae27a8f79acd5735bd21b3cc28d263f"
+      url "https://github.com/gautampachnanda101/vitals/releases/download/v0.8.0/vitals_Linux_x86_64.tar.gz"
+      sha256 "d6a4cbdf377be4e02db15371b492f16e3057435eb3f13928963b0d2fc0ddff84"
     end
     on_arm do
-      url "https://github.com/gautampachnanda101/vitals/releases/download/v0.7.0/vitals_Linux_arm64.tar.gz"
-      sha256 "74a92f286b0a46da85fef3e75418be840f19b0fe1c47e28fc80f4e2dfefb8c87"
+      url "https://github.com/gautampachnanda101/vitals/releases/download/v0.8.0/vitals_Linux_arm64.tar.gz"
+      sha256 "bb55b48c9e53652d9895144d1507412fb011de900e6c0c8375fc79355080d091"
     end
   end
 
