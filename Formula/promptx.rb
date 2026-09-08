@@ -4,32 +4,32 @@
 class Promptx < Formula
   desc "Local-first prompt intelligence connector for AI coding assistants"
   homepage "https://github.com/gautampachnanda101/prompt-detective"
-  version "0.7.1"
+  version "0.7.3"
 
   on_macos do
     on_intel do
-      url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.7.1/promptx_Darwin_x86_64.tar.gz"
-      sha256 "2164a0d8b40389dd2447464f585c5a4d83700463b10740602ba5323c58512556"
+      url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.7.3/promptx_Darwin_x86_64.tar.gz"
+      sha256 "ada8ef67e158c4f36f704d19f03d3cd27ddbd085dacc282d08b722fe714387ef"
     end
 
     on_arm do
-      url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.7.1/promptx_Darwin_arm64.tar.gz"
-      sha256 "953be73508b2f77e17ed5a8262fd77c06f088bf949ed5b7a2dfcb68c1497f3f5"
+      url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.7.3/promptx_Darwin_arm64.tar.gz"
+      sha256 "f5dcef3527e60f2d2ab38ed38970aa036bfd21c76db0b6e1e9b632d4a5b03376"
     end
   end
 
   on_linux do
     on_intel do
       if Hardware::CPU.is_64_bit?
-        url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.7.1/promptx_Linux_x86_64.tar.gz"
-        sha256 "e9711d3b009da962948061033da1b6d83ac1795e2fe049aa9ce2a24b88b38bf3"
+        url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.7.3/promptx_Linux_x86_64.tar.gz"
+        sha256 "5da5ffbbea2bf2f180178d6578410e2f088d99bcc5fcb6aba35dffa9e5993a36"
       end
     end
 
     on_arm do
       if Hardware::CPU.is_64_bit?
-        url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.7.1/promptx_Linux_arm64.tar.gz"
-        sha256 "a1340dcc7844ab54acad044fad30e1988b73dc07bd4abffc4f80d504ae48a8b0"
+        url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.7.3/promptx_Linux_arm64.tar.gz"
+        sha256 "fdd4b0df8e6e510bff52cd1f3d7d81aba0affda18d923464596c0de6a1c77cc1"
       end
     end
   end
@@ -41,7 +41,7 @@ class Promptx < Formula
     doc.install "PROMPTX_USER_GUIDE.md" if File.exist?("PROMPTX_USER_GUIDE.md")
   end
 
-  # Homebrew service — enables .
+  # Homebrew service enables brew services start promptx.
   # When active, launchd owns the lifecycle and auto-restarts after upgrade.
   service do
     run [opt_bin/"promptx", "serve"]
@@ -118,6 +118,6 @@ class Promptx < Formula
 
   test do
     assert_match "Local-first encrypted prompt intelligence CLI", shell_output("#{bin}/promptx --help")
-    assert_match "0.7.1", shell_output("#{bin}/promptx version")
+    assert_match "0.7.3", shell_output("#{bin}/promptx version")
   end
 end
