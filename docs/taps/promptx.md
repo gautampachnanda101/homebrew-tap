@@ -80,6 +80,13 @@ cache hits, model/tool/satisfaction breakdowns with live model pricing),
 interactions). All data stays on your machine. `promptx ui --help` lists the
 tabs; the full walkthrough is in `promptx docs` → *Web UI*.
 
+The nav-bar repo picker scopes the graph, timeline, insights and activity to one
+repo ("⊙ All repos" clears it). The graph tab's **Enrich** button (needs an LLM
+backend — `promptx llm status`) names every cluster, extracts concepts, and
+explains surprising links; `promptx graph-index --semantic` (alias
+`promptx graphify`) does the same from the CLI. `promptx graph-index`
+auto-provisions its `uv`/`graphifyy` runtime.
+
 ## Environment
 
 | Variable | Purpose |
@@ -91,11 +98,13 @@ tabs; the full walkthrough is in `promptx docs` → *Web UI*.
 | `PROMPTX_LLM_ENDPOINT` | OpenAI-compatible endpoint (Ollama, LM Studio, …) |
 | `PROMPTX_LLM_MODEL` | model id (see `promptx llm models`) |
 | `PROMPTX_PASSKEY_COMMAND` | command whose stdout is the vault passkey (`op`, `bw`, `keepassxc-cli`, `pass`, …) |
+| `PROMPTX_REPO_ROOTS` | extra dirs (`:`/`,`-sep) scanned for git repos in the web UI picker |
 | `PROMPTX_NO_UPDATE_CHECK` | disable the passive update nudge |
 
-Non-secret settings (`llm.endpoint`, `llm.model`, `listen`, storage dirs) can
-also live in `~/.promptx/config.yaml` — `promptx config set/show/get`. Env vars
-override the file; secrets never go in it.
+Non-secret settings (`llm.endpoint`, `llm.model`, `listen`, `graph.autoinstall`,
+`repo_roots`, storage dirs) can also live in `~/.promptx/config.yaml` —
+`promptx config set/show/get`. Env vars override the file; the vault passkey and
+API keys never go in it.
 
 ## Troubleshooting
 
