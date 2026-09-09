@@ -89,7 +89,13 @@ tabs; the full walkthrough is in `promptx docs` → *Web UI*.
 | `GH_TOKEN` / `GITHUB_TOKEN` | private pack fetch + GitHub API rate limits |
 | `PROMPTX_REGISTRY_URL` | replace the default context-pack registry |
 | `PROMPTX_LLM_ENDPOINT` | OpenAI-compatible endpoint (Ollama, LM Studio, …) |
+| `PROMPTX_LLM_MODEL` | model id (see `promptx llm models`) |
+| `PROMPTX_PASSKEY_COMMAND` | command whose stdout is the vault passkey (`op`, `bw`, `keepassxc-cli`, `pass`, …) |
 | `PROMPTX_NO_UPDATE_CHECK` | disable the passive update nudge |
+
+Non-secret settings (`llm.endpoint`, `llm.model`, `listen`, storage dirs) can
+also live in `~/.promptx/config.yaml` — `promptx config set/show/get`. Env vars
+override the file; secrets never go in it.
 
 ## Troubleshooting
 
