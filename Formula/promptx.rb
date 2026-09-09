@@ -4,32 +4,32 @@
 class Promptx < Formula
   desc "Local-first prompt intelligence connector for AI coding assistants"
   homepage "https://github.com/gautampachnanda101/prompt-detective"
-  version "0.8.0-rc3"
+  version "0.8.0-rc1"
 
   on_macos do
     on_intel do
-      url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.8.0-rc3/promptx_Darwin_x86_64.tar.gz"
-      sha256 "17e23d952951e6f47b361fc0be9ab854c49f5eba4483b180e2af5cb9baecb6dd"
+      url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.8.0-rc1/promptx_Darwin_x86_64.tar.gz"
+      sha256 "e02202d8d624ba5129d86371435ee6399517d832af063e339990e80cde2970b9"
     end
 
     on_arm do
-      url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.8.0-rc3/promptx_Darwin_arm64.tar.gz"
-      sha256 "2d3865d9346b9dbe59e6773e7f5e662f1b5a6a0105f87635e64ce68e6d33d388"
+      url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.8.0-rc1/promptx_Darwin_arm64.tar.gz"
+      sha256 "50898eb15433a11467f9022509ea90ee9133c23ee751f793fb0ca5592bb784bc"
     end
   end
 
   on_linux do
     on_intel do
       if Hardware::CPU.is_64_bit?
-        url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.8.0-rc3/promptx_Linux_x86_64.tar.gz"
-        sha256 "b83bb1183a5a7a252084a3766b1d3abcf8649f9c9277a1c0e933845d987b4df1"
+        url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.8.0-rc1/promptx_Linux_x86_64.tar.gz"
+        sha256 "41e68adceb9b8a022204e01b6b7e81ef37a0ddfe83e68a197aabe52846abcdac"
       end
     end
 
     on_arm do
       if Hardware::CPU.is_64_bit?
-        url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.8.0-rc3/promptx_Linux_arm64.tar.gz"
-        sha256 "b807a60c5cce1f88e1bb248e8d7ddc2967aefd1caec887ff0b804f9f203d1ae0"
+        url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.8.0-rc1/promptx_Linux_arm64.tar.gz"
+        sha256 "f9abe203f1c0223a0a8ea19dc056e3830875937a352dd89c6dcfb3d91ae443dd"
       end
     end
   end
@@ -85,6 +85,6 @@ class Promptx < Formula
 
   test do
     assert_match "promptx", shell_output("#{bin}/promptx --help")
-    assert_match(/\d+\.\d+\.\d+/, shell_output("#{bin}/promptx --version"))
+    assert_match(/\d+\.\d+\.\d+/, shell_output("#{bin}/promptx version"))
   end
 end
