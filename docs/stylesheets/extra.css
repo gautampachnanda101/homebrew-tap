@@ -17,6 +17,16 @@
   --md-accent-fg-color: #e1c979;
 }
 
+[data-md-color-scheme="default"] {
+  --md-default-bg-color: #f4f1ea;
+  --md-default-fg-color: #263238;
+  --md-default-fg-color--light: #697178;
+  --md-primary-fg-color: #101c24;
+  --md-primary-fg-color--light: #273f4e;
+  --md-primary-fg-color--dark: #091117;
+  --md-accent-fg-color: #8b6915;
+}
+
 .md-header {
   background: var(--tap-ink);
   box-shadow: 0 1px 0 rgba(16, 28, 36, 0.18);
@@ -24,6 +34,13 @@
 
 .md-tabs {
   background: #1b2b35;
+}
+
+.md-header,
+.md-header a,
+.md-tabs,
+.md-tabs a {
+  color: #f4f1ea;
 }
 
 .md-main__inner {
@@ -41,6 +58,13 @@
   margin: -1.2rem calc(50% - 50vw) 2.5rem;
   padding: clamp(3rem, 8vw, 7rem) max(1.2rem, calc((100vw - 61rem) / 2));
   position: relative;
+}
+
+.tap-hero,
+.tap-hero h1,
+.tap-hero p,
+.tap-hero a {
+  color: #f4f1ea;
 }
 
 .tap-hero::after {
@@ -108,6 +132,11 @@
   color: #f4f1ea !important;
 }
 
+.tap-button-secondary:hover,
+.tap-button-primary:hover {
+  color: var(--tap-ink) !important;
+}
+
 .tap-terminal {
   background: #18252c;
   box-shadow: 0 1rem 2.5rem rgba(16, 28, 36, 0.15);
@@ -148,6 +177,11 @@
 .tap-terminal code {
   background: transparent;
   color: #dce5e4;
+}
+
+.tap-terminal .terminal-prompt,
+.tap-terminal .terminal-success {
+  color: var(--tap-gold);
 }
 
 .terminal-prompt,
@@ -196,12 +230,25 @@
 }
 
 .formula-item a {
-  color: var(--tap-ink);
+  color: #1769aa;
   font-weight: 700;
 }
 
 .formula-item a:hover {
-  color: var(--tap-gold);
+  color: #8b6915;
+}
+
+.md-typeset a {
+  color: #1769aa;
+}
+
+.md-typeset a:hover {
+  color: #8b6915;
+}
+
+.md-typeset table a {
+  color: #1769aa;
+  font-weight: 700;
 }
 
 [data-md-color-scheme="slate"] .tap-hero {
