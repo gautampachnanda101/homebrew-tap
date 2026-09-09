@@ -4,32 +4,32 @@
 class Promptx < Formula
   desc "Local-first prompt intelligence connector for AI coding assistants"
   homepage "https://github.com/gautampachnanda101/prompt-detective"
-  version "0.8.0-rc2"
+  version "0.8.0-rc4"
 
   on_macos do
     on_intel do
-      url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.8.0-rc2/promptx_Darwin_x86_64.tar.gz"
-      sha256 "283e497268bab7880d20b49838ad7e8c6c0d6b2b1cfa8512a5d30f78aaf4be7a"
+      url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.8.0-rc4/promptx_Darwin_x86_64.tar.gz"
+      sha256 "a00114864348676c63c2e5eb5da88e01f0d52e1bc572e24680b67f0cbb4e7490"
     end
 
     on_arm do
-      url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.8.0-rc2/promptx_Darwin_arm64.tar.gz"
-      sha256 "40a62f3cac13c76c4f020d8ab19f022588c07a0aeb7146b7f8f8565fd8f0f822"
+      url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.8.0-rc4/promptx_Darwin_arm64.tar.gz"
+      sha256 "c6fb48086047388371ac1e2122a6e9191143abc22ed8495a6b83e7ce4e98e1e6"
     end
   end
 
   on_linux do
     on_intel do
       if Hardware::CPU.is_64_bit?
-        url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.8.0-rc2/promptx_Linux_x86_64.tar.gz"
-        sha256 "4829ca1195088aebe961e5d70b723e6f283ac0d0f10b3f2511588401c5a0b421"
+        url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.8.0-rc4/promptx_Linux_x86_64.tar.gz"
+        sha256 "111873dfad3c7539907188ffe2f8d5c28427c2dea19436fa695991ed7372f3eb"
       end
     end
 
     on_arm do
       if Hardware::CPU.is_64_bit?
-        url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.8.0-rc2/promptx_Linux_arm64.tar.gz"
-        sha256 "ad61cbe4959df608fd121b5071b5ee781be28b10884b88fc7e8f144829b2265f"
+        url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.8.0-rc4/promptx_Linux_arm64.tar.gz"
+        sha256 "6c53664da24cac395ad0bf271842e986c590d5e89b8a420fc41e684cdda41fcb"
       end
     end
   end

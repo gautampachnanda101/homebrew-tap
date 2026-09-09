@@ -61,6 +61,25 @@ brew services start promptx   # promptx serve on http://localhost:17171, restart
 promptx mcp                    # stdio MCP server (registered by `promptx setup`)
 ```
 
+## Web UI
+
+`promptx serve` also hosts a browser dashboard embedded in the binary. With the
+service running:
+
+```bash
+promptx ui                     # opens http://127.0.0.1:17171/ui/
+```
+
+Unlock with your vault passkey (or Touch ID / Face ID after `promptx setup
+--biometric`); the session lasts 8 hours. Tabs: **graph** (knowledge graph from
+`graphify-out/graph.json`, with in-place build), **insights** (tokens, cost,
+cache hits, model/tool/satisfaction breakdowns with live model pricing),
+**timeline** (decrypted interaction history with a per-row detail drawer),
+**memory** (encrypted entries with full-text, type and tag filters), **handoff**
+(build or retrieve a cross-tool resume pack), and **debug** (background-daemon
+interactions). All data stays on your machine. `promptx ui --help` lists the
+tabs; the full walkthrough is in `promptx docs` → *Web UI*.
+
 ## Environment
 
 | Variable | Purpose |
