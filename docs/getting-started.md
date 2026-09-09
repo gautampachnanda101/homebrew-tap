@@ -244,8 +244,8 @@ vaultx doctor
 
 - [Promptx Tap Guide](taps/promptx.md)
 - [Daily workflows](usage.md#promptx-workflows)
-- [VS Code Extension](taps/promptx.md#vs-code-extension)
-- [MCP Integration](taps/promptx.md#mcp-integration)
+- [VS Code Extension](taps/promptx.md#first-run)
+- [MCP Integration](taps/promptx.md#service)
 
 ### Vaultx Users
 

@@ -1,116 +1,103 @@
-# Homebrew Tap
+<div class="home-hero">
 
-Official Homebrew tap for cross-platform development tools maintained by [@gautampachnanda101](https://github.com/gautampachnanda101).
+# Tools for the local-first developer
 
-## Overview
+One tap for **Kubernetes environments, AI workflow memory, and encrypted secrets**. Install what you need, keep it close to your machine, and get back to building.
 
-This tap provides pre-built formulas for development tools optimized for local development and AI-assisted workflows. All tools are cross-platform, zero-configuration, and production-ready.
+</div>
 
-## Available Packages
+<div class="quick-start">
 
-### 🐳 k3d-local
+**Start here**
 
-A comprehensive CLI tool for managing **local Kubernetes development environments** with k3d, Traefik v3, and cross-platform DNS resolution.
-
-**Key features:**
-- ✅ One-command setup for complete Kubernetes cluster
-- ✅ Production-ready components: k3d, Traefik v3, self-signed TLS
-- ✅ Cross-platform support: macOS, Linux, Windows
-- ✅ Optional add-ons: sample apps, core components, Grafana LGTM telemetry
-- ✅ Local container registry
-- ✅ Automatic kubectl configuration
-- ✅ **12 example services ready to deploy** (ArgoCD, Vault, Harbor, Keycloak, etc.)
-
-**Quick install:**
 ```bash
 brew tap gautampachnanda101/tap
 brew install k3d-local
 k3d-local create --with-traefik
 ```
 
-Once your cluster is created, deploy services from [examples](examples.md) using simple install scripts.
+New to the tap? Follow the [5-minute getting started guide](getting-started.md). Looking for another tool? Browse the [tap catalog](taps/index.md).
 
-**Perfect for:**
-- Local development and testing
-- Kubernetes learning and training
-- Application prototyping
-- CI/CD pipeline validation
-- Edge computing simulation
+</div>
 
-### 🧠 Promptx
+## Pick your tool
 
-Local-first prompt intelligence CLI with encrypted memory and cross-tool context handoff. Integrates with GitHub Copilot, Claude, and VS Code.
+<div class="grid cards" markdown>
 
-**Key features:**
-- ✅ Local-first encrypted memory capture and retrieval
-- ✅ Cross-tool handoff (GitHub Copilot ↔ Claude ↔ VS Code)
-- ✅ Evidence-based execution (no guessing)
-- ✅ Automatic interaction logging linked to git commits
-- ✅ VS Code extension with `@promptx` chat participant
-- ✅ MCP server integration for IDE connectors
-- ✅ Fuzzy and semantic search over encrypted history
-- ✅ Self-learning from executor outcomes
-
-**Quick install:**
-```bash
-brew tap gautampachnanda101/tap
-brew install promptx
-promptx setup
-promptx memory-watch --repo . --interval 5
-```
-
-**Perfect for:**
-- AI-assisted development workflows
-- Prompt engineering and generation
-- Context-aware coding assistance across tools
-- Team collaboration with encrypted memory
-- Learning from AI interactions
-
-### 🔐 Vaultx
-
-Zero-trust secrets CLI that keeps the convenience of `.env` style workflows while protecting sensitive values in an encrypted vault.
-
-**Quick install:**
-```bash
-brew tap gautampachnanda101/tap
-brew install vaultx
-vaultx --help
-```
-
-**Perfect for:**
-- Teams migrating away from plain-text `.env` secrets
-- Local development with encrypted secrets handling
-- Zero-trust secret access patterns in CI/CD and developer workflows
-
-## Tap Catalog
-
-Use the tap catalog for per-tool installation, purpose, and troubleshooting guides:
-
-- [k3d-local tap guide](taps/k3d-local.md)
-- [promptx tap guide](taps/promptx.md)
-- [vaultx tap guide](taps/vaultx.md)
-
-## Documentation by Tool
+<div class="tool-card" markdown>
 
 ### k3d-local
-- [Get started in 5 minutes](getting-started.md)
-- [Installation guide](installation.md)
-- [Usage patterns](usage.md)
-- [Command reference](reference/commands.md)
-- [Troubleshooting](troubleshooting.md)
-- [Helm deployment](helm-deployment.md)
-- [Customization](customization.md)
+
+Create a useful local Kubernetes environment without stitching together the same setup scripts every time.
+
+`brew install k3d-local`
+
+- Traefik v3 and local TLS
+- Optional observability and sample apps
+- 12 ready-to-deploy service recipes
+
+[Open the k3d-local guide](taps/k3d-local.md){ .md-button }
+
+</div>
+
+<div class="tool-card" markdown>
 
 ### Promptx
-- [Promptx Guide](promptx.md)
-- [Installation & Setup](promptx.md#installation)
-- [Daily Workflows](promptx.md#daily-workflows)
-- [VS Code Extension](promptx.md#vs-code-extension)
-- [MCP Integration](promptx.md#mcp-integration)
 
-## Resources
+Keep AI-assisted development context searchable, encrypted, and available across your coding tools.
 
-- 🏠 **Public Docs Site**: https://gautampachnanda101.github.io/homebrew-tap/
-- 📦 **GitHub Repository**: https://github.com/gautampachnanda101/homebrew-tap
-- 🐛 **Report Issues**: https://github.com/gautampachnanda101/homebrew-tap/issues
-- 💬 **GitHub Discussions**: https://github.com/gautampachnanda101/homebrew-tap/discussions
+`brew install promptx`
+
+- Local-first encrypted memory
+- VS Code and MCP integrations
+- Evidence-backed handoffs and search
+
+[Open the Promptx guide](taps/promptx.md){ .md-button }
+
+</div>
+
+<div class="tool-card" markdown>
+
+### Vaultx
+
+Use `.env`-style workflows without leaving secrets in plaintext files or shell history.
+
+`brew install vaultx`
+
+- Encrypted local vault
+- Touch ID support on macOS
+- Safe secret injection into commands
+
+[Open the Vaultx guide](taps/vaultx.md){ .md-button }
+
+</div>
+
+</div>
+
+## Choose your next move
+
+| You want to... | Start with |
+| --- | --- |
+| Install one or more tools | [Installation](installation.md) |
+| Create your first local cluster | [Getting started](getting-started.md) |
+| Deploy a service into k3d | [Examples and recipes](examples.md) |
+| Learn the day-to-day commands | [Usage guide](usage.md) |
+| Find a flag or command | [Command reference](reference/commands.md) |
+| Fix a setup problem | [Troubleshooting](troubleshooting.md) |
+
+## Built for local work
+
+These formulas are maintained by [@gautampachnanda101](https://github.com/gautampachnanda101) for workflows where fast feedback, portable tooling, and control over your data matter.
+
+!!! tip "Keep the catalog handy"
+	Add this site to your bookmarks, or jump directly to the [tap catalog](taps/index.md) whenever you need a tool-specific install or troubleshooting path.
+
+<div class="grid cards" markdown>
+
+- :fontawesome-brands-github: **[Source on GitHub](https://github.com/gautampachnanda101/homebrew-tap)**
+
+- :fontawesome-solid-bug: **[Report an issue](https://github.com/gautampachnanda101/homebrew-tap/issues)**
+
+- :fontawesome-solid-code-branch: **[Contributing guide](https://github.com/gautampachnanda101/homebrew-tap/blob/main/CONTRIBUTING.md)**
+
+</div>

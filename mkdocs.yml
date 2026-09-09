@@ -3,11 +3,45 @@ site_description: Official Homebrew tap for cross-platform development tools
 site_url: https://github.com/gautampachnanda101/homebrew-tap
 repo_url: https://github.com/gautampachnanda101/homebrew-tap
 repo_name: gautampachnanda101/homebrew-tap
+exclude_docs: /promptx.md
 
 theme:
   name: material
+  language: en
+  font:
+    text: Space Grotesk
+    code: IBM Plex Mono
   icon:
     repo: fontawesome/brands/github
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.top
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      toggle:
+        icon: fontawesome/solid/sun
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      toggle:
+        icon: fontawesome/solid/moon
+        name: Switch to light mode
+
+extra_css:
+  - stylesheets/extra.css
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/gautampachnanda101/homebrew-tap
+      name: Homebrew Tap on GitHub
+
+copyright: Built for practical local development
 
 nav:
   - Home: index.md
@@ -33,6 +67,7 @@ plugins:
 
 markdown_extensions:
   - admonition
+  - attr_list
   - pymdownx.details
   - pymdownx.superfences
   - pymdownx.tabbed:

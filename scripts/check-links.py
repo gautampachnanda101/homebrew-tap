@@ -76,8 +76,10 @@ def validate_anchors():
         heading_pattern = r'^#{1,6}\s+(.+)$'
         for match in re.finditer(heading_pattern, content, re.MULTILINE):
             heading_text = match.group(1).strip()
-            # Convert to anchor format (lowercase, spaces to hyphens)
-            anchor = heading_text.lower().replace(' ', '-').replace('/', '-')
+            # Match MkDocs' slug behavior: punctuation becomes a separator and
+            # repeated separators collapse into one hyphen.
+            normalized_heading = heading_text.lower().replace('/', '')
+            anchor = re.sub(r'[^a-z0-9]+', '-', normalized_heading).strip('-')
             headings_map[anchor] = {
                 'file': str(md_file),
                 'text': heading_text

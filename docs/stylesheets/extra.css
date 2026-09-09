@@ -1,0 +1,147 @@
+:root {
+  --md-primary-fg-color: #173f35;
+  --md-primary-fg-color--light: #286957;
+  --md-primary-fg-color--dark: #102d26;
+  --md-accent-fg-color: #d85d35;
+  --tap-ink: #173f35;
+  --tap-paper: #f8f5ed;
+  --tap-sun: #f2c94c;
+  --tap-coral: #d85d35;
+}
+
+[data-md-color-scheme="slate"] {
+  --md-default-bg-color: #132522;
+  --md-default-bg-color--light: #1b312d;
+  --md-default-fg-color: #f8f5ed;
+  --md-primary-fg-color: #f2c94c;
+  --md-primary-bg-color: #132522;
+  --md-accent-fg-color: #f29b73;
+}
+
+body {
+  background: var(--tap-paper);
+}
+
+[data-md-color-scheme="slate"] body {
+  background: #132522;
+}
+
+.md-header {
+  box-shadow: 0 1px 0 rgba(23, 63, 53, 0.14);
+}
+
+.md-main__inner {
+  margin-top: 1.2rem;
+}
+
+.md-content h1 {
+  color: var(--tap-ink);
+  font-size: clamp(2.25rem, 5vw, 4.2rem);
+  letter-spacing: -0.04em;
+  line-height: 1;
+  max-width: 11ch;
+}
+
+[data-md-color-scheme="slate"] .md-content h1 {
+  color: #f8f5ed;
+}
+
+.home-hero {
+  background: var(--tap-ink);
+  border-radius: 0.35rem;
+  color: #f8f5ed;
+  margin: 0 0 2rem;
+  overflow: hidden;
+  padding: clamp(1.5rem, 4vw, 3.5rem);
+  position: relative;
+}
+
+.home-hero::after {
+  border: 1px solid rgba(242, 201, 76, 0.45);
+  border-radius: 50%;
+  content: "";
+  height: 18rem;
+  position: absolute;
+  right: -5rem;
+  top: -7rem;
+  width: 18rem;
+}
+
+.home-hero h1 {
+  color: var(--tap-sun);
+  font-size: clamp(2.35rem, 6vw, 4.8rem);
+  margin: 0;
+  max-width: 9ch;
+}
+
+.home-hero p {
+  color: #e8e5d9;
+  font-size: 1.1rem;
+  max-width: 42rem;
+}
+
+.home-hero strong {
+  color: #fff;
+}
+
+.quick-start {
+  background: #fffdf8;
+  border-left: 0.35rem solid var(--tap-coral);
+  border-radius: 0.2rem;
+  box-shadow: 0 0.6rem 1.5rem rgba(23, 63, 53, 0.08);
+  margin: 1.5rem 0 2.5rem;
+  padding: 1rem 1.25rem;
+}
+
+.quick-start p {
+  margin: 0.3rem 0;
+}
+
+.quick-start code {
+  background: #f3eddd;
+  color: var(--tap-ink);
+}
+
+.tool-card {
+  background: #fffdf8;
+  border: 1px solid rgba(23, 63, 53, 0.15);
+  border-top: 0.3rem solid var(--tap-sun);
+  border-radius: 0.2rem;
+  height: 100%;
+  padding: 1.25rem;
+}
+
+.tool-card h3 {
+  color: var(--tap-ink);
+  margin-top: 0;
+}
+
+.tool-card code {
+  color: var(--tap-coral);
+}
+
+[data-md-color-scheme="slate"] .quick-start,
+[data-md-color-scheme="slate"] .tool-card {
+  background: #1b312d;
+  border-color: rgba(248, 245, 237, 0.18);
+}
+
+[data-md-color-scheme="slate"] .quick-start code {
+  background: #28453e;
+  color: #f8f5ed;
+}
+
+.md-typeset .grid {
+  grid-gap: 1rem;
+}
+
+@media screen and (max-width: 600px) {
+  .md-content h1 {
+    font-size: 2.35rem;
+  }
+
+  .home-hero {
+    margin-left: -0.2rem;
+    margin-right: -0.2rem;
+  }
+}
