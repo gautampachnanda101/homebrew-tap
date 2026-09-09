@@ -9,12 +9,12 @@ class Promptx < Formula
   on_macos do
     on_intel do
       url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.8.0-rc3/promptx_Darwin_x86_64.tar.gz"
-      sha256 "5d4bd6c7978f7f23d8cb3e511346a6b43ed04eb00f2430612c53560633a0c8eb"
+      sha256 "17e23d952951e6f47b361fc0be9ab854c49f5eba4483b180e2af5cb9baecb6dd"
     end
 
     on_arm do
       url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.8.0-rc3/promptx_Darwin_arm64.tar.gz"
-      sha256 "44a843e2fa60347d48f7c0bbfcf06f7c882b41d412945f81009b17f4cf19e39a"
+      sha256 "2d3865d9346b9dbe59e6773e7f5e662f1b5a6a0105f87635e64ce68e6d33d388"
     end
   end
 
@@ -22,14 +22,14 @@ class Promptx < Formula
     on_intel do
       if Hardware::CPU.is_64_bit?
         url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.8.0-rc3/promptx_Linux_x86_64.tar.gz"
-        sha256 "da640fb92d64aeff80981489c85d6a2dc794010fcb00ee14a7ba3008afb4b3fc"
+        sha256 "b83bb1183a5a7a252084a3766b1d3abcf8649f9c9277a1c0e933845d987b4df1"
       end
     end
 
     on_arm do
       if Hardware::CPU.is_64_bit?
         url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.8.0-rc3/promptx_Linux_arm64.tar.gz"
-        sha256 "5e6c9977a9a3f33bb8705f63a8c52d4d28b5fde2d552fcb07a40933f2d568b68"
+        sha256 "b807a60c5cce1f88e1bb248e8d7ddc2967aefd1caec887ff0b804f9f203d1ae0"
       end
     end
   end
