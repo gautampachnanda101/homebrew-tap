@@ -4,32 +4,32 @@
 class Promptx < Formula
   desc "Local-first prompt intelligence connector for AI coding assistants"
   homepage "https://github.com/gautampachnanda101/prompt-detective"
-  version "0.7.4"
+  version "0.8.0-rc1"
 
   on_macos do
     on_intel do
-      url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.7.4/promptx_Darwin_x86_64.tar.gz"
-      sha256 "4002540d40bf4123951601e992a027f627fde39c3d722b9a1624b19bfde05718"
+      url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.8.0-rc1/promptx_Darwin_x86_64.tar.gz"
+      sha256 "55061d4e4489292d8b4cf1d867b076d6d1cb84912bf0e18982909f96094830e1"
     end
 
     on_arm do
-      url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.7.4/promptx_Darwin_arm64.tar.gz"
-      sha256 "9a4cc3441f9131effe9c85f3432d5f7a9c66078c9178ee04984f338c66eb2de6"
+      url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.8.0-rc1/promptx_Darwin_arm64.tar.gz"
+      sha256 "2c88a1862f71f369aa80ff1d6680c16dd6056e8814e1c5a8a075f9ff9f76c4a6"
     end
   end
 
   on_linux do
     on_intel do
       if Hardware::CPU.is_64_bit?
-        url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.7.4/promptx_Linux_x86_64.tar.gz"
-        sha256 "1f815347d5ad5e9ff20165e67471184637b5fccf4750428284e6f7e5a2ad904b"
+        url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.8.0-rc1/promptx_Linux_x86_64.tar.gz"
+        sha256 "e10085255cd4576e9e75e1af165c9c8df1bfad4c3663c7a59d4fd8f459e265da"
       end
     end
 
     on_arm do
       if Hardware::CPU.is_64_bit?
-        url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.7.4/promptx_Linux_arm64.tar.gz"
-        sha256 "6d1e047aa08cf9a41d82aa3c36da623fa6a1338753ed24622d357b76c578361a"
+        url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.8.0-rc1/promptx_Linux_arm64.tar.gz"
+        sha256 "8448b53bd48ca2b91a5cf05e0ee5aa549d42292f4e1aec49a92383ba73c3d32f"
       end
     end
   end
@@ -51,38 +51,7 @@ class Promptx < Formula
     working_dir Dir.home
   end
 
-  def post_install
-    # Bounce any running serve process so the new binary takes over immediately.
-    IO.popen(["lsof", "-ti", "tcp:17171"], err: [:child, :out]) do |io|
-      io.read.split.each { |pid| Process.kill("TERM", pid.to_i) rescue nil }
-    end
-    sleep 1
-    # If not managed by brew services, restart manually in background.
-    unless system("launchctl", "list", "homebrew.mxcl.promptx",
-                  out: File::NULL, err: File::NULL)
-      pid = spawn((opt_bin/"promptx").to_s, "serve", [:out, :err] => "/dev/null")
-      Process.detach(pid)
-    end
-    # Auto-install extension into every detected VS Code-compatible editor.
-    vsix = Dir["#{share}/promptx/promptx-vscode-*.vsix"].first
-    return if vsix.nil?
-    installed = []
-    %w[code cursor codium code-insiders windsurf trae void].each do |editor|
-      next unless (ep = which(editor))
-      if system(ep.to_s, "--install-extension", vsix, "--force",
-                 out: File::NULL, err: File::NULL)
-        installed << editor
-      end
-    end
-    unless installed.empty?
-      opoo "Promptx extension installed into: #{installed.join(", ")}"
-    end
-  end
-
   def caveats
-    vsix = Dir["#{share}/promptx/promptx-vscode-*.vsix"].first
-    vsix_name = vsix ? File.basename(vsix) : "promptx-vscode-<version>.vsix"
-    vsix_path = vsix || "#{share}/promptx/#{vsix_name}"
     <<~EOS
       ── Background service ────────────────────────────────────────────
         brew services start promptx    # start now and on every login
@@ -95,16 +64,14 @@ class Promptx < Formula
       Web UI opens at http://localhost:17171 once the service is running.
 
       ── Coding-assistant extension ────────────────────────────────────
-      The extension is installed automatically into any detected editor.
-      Supported editors (VS Code-compatible CLI install):
-        VS Code · Cursor · VSCodium · VS Code Insiders · Windsurf · Trae · Void
+      Install the bundled extension into every detected editor:
+        promptx extension install
 
-      If your editor was not detected, install manually:
-        code      --install-extension #{vsix_path} --force
-        cursor    --install-extension #{vsix_path} --force
-        codium    --install-extension #{vsix_path} --force
-        windsurf  --install-extension #{vsix_path} --force
-        trae      --install-extension #{vsix_path} --force
+      It is published on Open VSX (VSCodium, Windsurf, Cursor, ...).
+      Detected editors: VS Code · Cursor · VSCodium · VS Code Insiders · Windsurf · Kiro
+
+      After each 'brew upgrade promptx', re-run 'promptx extension install'
+      (or 'promptx update') so the extension matches the CLI.
 
       ── First run ─────────────────────────────────────────────────────
         promptx setup            # create encrypted vault + passkey
@@ -112,12 +79,12 @@ class Promptx < Formula
         promptx ui               # open http://localhost:17171 in browser
         promptx doctor           # verify everything is configured
 
-      Docs: promptx help  |  promptx <cmd> --help
+      Docs: https://gautampachnanda101.github.io/homebrew-tap/
     EOS
   end
 
   test do
-    assert_match "Local-first encrypted prompt intelligence CLI", shell_output("#{bin}/promptx --help")
-    assert_match "0.7.4", shell_output("#{bin}/promptx version")
+    assert_match "promptx", shell_output("#{bin}/promptx --help")
+    assert_match(/\d+\.\d+\.\d+/, shell_output("#{bin}/promptx version"))
   end
 end
