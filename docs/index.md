@@ -15,8 +15,6 @@ Use the [installation guide](installation.md) for Homebrew, Scoop, and direct do
 
 ## Formulas
 
-<div class="formula-list" markdown>
-
 ### k3d-local
 
 Local Kubernetes environments built around k3d, Traefik, and optional observability components.
@@ -49,8 +47,6 @@ vaultx init --biometric
 ```
 
 Read the [Vaultx guide](taps/vaultx.md) for providers, MFA, backups, and integrations.
-
-</div>
 
 ## Find your next step
 
