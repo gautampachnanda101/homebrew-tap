@@ -52,7 +52,7 @@ brew info <formula-name>
 
 ## Common troubleshooting
 
-<div class="catalog-tools">
+<div class="catalog-tools" markdown>
 
 ### Formula not found
 
