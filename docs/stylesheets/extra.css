@@ -47,9 +47,15 @@
   margin-top: 1.2rem;
 }
 
-.md-typeset code {
-  background: #edf1f5;
-  color: #183b56;
+/* Inline code only — leave fenced blocks to Material's per-scheme theming */
+.md-typeset :not(pre) > code {
+  background: #eceef2;
+  color: #1a3a52;
+}
+
+[data-md-color-scheme="slate"] .md-typeset :not(pre) > code {
+  background: rgba(237, 242, 245, 0.12);
+  color: #e6edf2;
 }
 
 .md-typeset h1,
@@ -83,8 +89,8 @@
 
 .catalog-hero h1 {
   color: var(--tap-ink);
-  font-size: clamp(2.2rem, 5vw, 4rem);
-  letter-spacing: -0.04em;
+  font-size: clamp(1.9rem, 4vw, 3rem);
+  letter-spacing: -0.03em;
   margin-bottom: 0.75rem;
 }
 
@@ -126,16 +132,21 @@
 
 .catalog-install {
   background: #18252c;
+  border: 1px solid rgba(200, 166, 75, 0.25);
   color: #dce5e4;
   font-family: var(--md-code-font-family);
   font-size: 0.78rem;
   margin: 0;
+  overflow-x: auto;
   padding: 0.8rem 1rem;
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
 }
 
 .catalog-install code {
   background: transparent;
   color: #dce5e4;
+  white-space: inherit;
 }
 
 .catalog-install a {
@@ -177,7 +188,8 @@
   background: var(--tap-ink);
   color: #f4f1ea;
   margin: -1.2rem calc(50% - 50vw) 2.5rem;
-  padding: clamp(3rem, 8vw, 7rem) max(1.2rem, calc((100vw - 61rem) / 2));
+  overflow: hidden;
+  padding: clamp(3rem, 8vw, 6rem) max(1.2rem, calc((100vw - 61rem) / 2));
   position: relative;
 }
 
@@ -209,11 +221,11 @@
 
 .tap-hero h1 {
   color: #f4f1ea;
-  font-size: clamp(2.6rem, 7vw, 5.8rem);
-  letter-spacing: -0.045em;
-  line-height: 0.98;
+  font-size: clamp(2.2rem, 5.5vw, 4rem);
+  letter-spacing: -0.04em;
+  line-height: 1.03;
   margin: 0;
-  max-width: 10ch;
+  max-width: 18ch;
   position: relative;
   z-index: 1;
 }
@@ -347,6 +359,9 @@
 .formula-item code {
   display: block;
   margin: 1rem 0;
+  max-width: 100%;
+  overflow-x: auto;
+  white-space: nowrap;
   width: fit-content;
 }
 
@@ -359,17 +374,13 @@
   color: #8b6915;
 }
 
-.md-typeset a {
-  color: #1769aa;
-}
-
-.md-typeset a:hover {
-  color: #8b6915;
-}
-
 .md-typeset table a {
   color: #1769aa;
   font-weight: 700;
+}
+
+[data-md-color-scheme="slate"] .md-typeset table a {
+  color: #9ed0ed;
 }
 
 [data-md-color-scheme="slate"] .tap-hero {
