@@ -253,7 +253,7 @@ Access monitoring stack:
 | Loki       | <http://loki.127.0.0.1.sslip.io>       |
 | Tempo      | <http://tempo.127.0.0.1.sslip.io>      |
 
-Default credentials: `admin` / `admin`
+Use the credentials configured for your deployment; change them before sharing the instance.
 
 ### Monitoring Your Applications
 
@@ -538,7 +538,7 @@ promptx mcp status
 
 ```bash
 # Passkey problems
-export PROMPTX_PASSKEY="your-secure-key"
+export PROMPTX_PASSKEY="<your-passkey>"
 
 # Storage location
 export PROMPTX_HOME="/custom/path"
@@ -582,7 +582,7 @@ vaultx unlock    # unlock for this session (Touch ID or master password)
 ### Store and Retrieve Secrets
 
 ```bash
-vaultx set myapp/db_password "s3cr3t"    # store a secret
+vaultx set myapp/db_password "<your-secret>"    # store a secret
 vaultx get myapp/db_password             # retrieve it
 vaultx list                              # list all (values masked)
 vaultx list myapp/                       # list under a prefix

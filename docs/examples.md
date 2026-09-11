@@ -1,33 +1,75 @@
 # Examples & Recipes
 
-Production-ready Kustomize recipes for extending your k3d-local cluster with additional tools and services.
+Practical recipes and workflows, grouped by the tool they extend.
 
-## Table of Contents
+<div class="formula-grid">
+  <article class="formula-item">
+    <p class="formula-number">01</p>
+    <h3>k3d-local</h3>
+    <p>Kustomize recipes that deploy production-style services — ArgoCD, Vault, Harbor, and more — into your local cluster.</p>
+    <a href="#k3d-local-cluster-recipes">Jump to k3d-local -&gt;</a>
+  </article>
+  <article class="formula-item">
+    <p class="formula-number">02</p>
+    <h3>Promptx</h3>
+    <p>Capture AI coding context automatically, then query, share, or surface it from the CLI, web UI, or editor.</p>
+    <a href="#promptx-workflow-examples">Jump to Promptx -&gt;</a>
+  </article>
+  <article class="formula-item">
+    <p class="formula-number">03</p>
+    <h3>Vaultx</h3>
+    <p>Inject secrets into a process, shell, Docker Compose, or Kubernetes without ever writing values to disk.</p>
+    <a href="#vaultx-secret-injection-examples">Jump to Vaultx -&gt;</a>
+  </article>
+</div>
 
-- [Available Recipes](#available-recipes)
-  - [ArgoCD - GitOps Continuous Delivery](#argocd-gitops-continuous-delivery)
-  - [HashiCorp Vault - Secrets Management](#hashicorp-vault-secrets-management)
-  - [Harbor - Container Registry](#harbor-container-registry)
-  - [GitLab Runner - CI/CD Executor](#gitlab-runner-cicd-executor)
-  - [Keycloak - Identity and Access Management](#keycloak-identity-and-access-management)
-  - [Authentik - Open Source IDP](#authentik-open-source-idp)
-- [Recipe Structure](#recipe-structure)
-- [Using Recipes](#using-recipes)
-  - [Prerequisites](#prerequisites)
-  - [Installation Methods](#installation-methods)
-- [Customizing Recipes](#customizing-recipes)
-  - [Using Kustomize Overlays](#using-kustomize-overlays)
-  - [Common Customizations](#common-customizations)
-- [TLS Configuration](#tls-configuration)
-  - [Local Development](#local-development)
-  - [Production](#production)
-- [Contributing Recipes](#contributing-recipes)
-- [Support](#support)
-- [Related Resources](#related-resources)
+## k3d-local Cluster Recipes
 
-## Available Recipes
+Kustomize recipes that deploy production-style services into your k3d-local cluster.
 
-### ArgoCD - GitOps Continuous Delivery
+### Prerequisites
+
+All recipes require:
+
+1. **k3d-local cluster** created with Traefik:
+
+   ```bash
+   k3d-local create --with-traefik
+   ```
+
+2. **kubectl** configured to access your cluster
+3. **Kustomize** (optional, kubectl has built-in support)
+
+### Installation methods
+
+#### Option 1: Using the installation script (recommended)
+
+```bash
+cd examples/recipe-name
+./install.sh
+```
+
+#### Option 2: Using kubectl with Kustomize
+
+```bash
+# Local development
+kubectl apply -k examples/recipe-name/overlays/local/
+
+# Production
+kubectl apply -k examples/recipe-name/overlays/prod/
+```
+
+#### Option 3: Using the Kustomize CLI
+
+```bash
+kustomize build examples/recipe-name/overlays/local/ | kubectl apply -f -
+```
+
+### Production-ready recipes
+
+These six ship with local and production overlays, TLS, and dedicated docs.
+
+#### ArgoCD - GitOps Continuous Delivery
 
 Install ArgoCD with proper TLS support for managing your Kubernetes applications using GitOps principles.
 
@@ -40,8 +82,8 @@ Install ArgoCD with proper TLS support for managing your Kubernetes applications
 - ✅ High availability configuration for production
 
 **Quick Start:**
+
 ```bash
-# Clone or download the examples
 git clone https://github.com/gautampachnanda101/homebrew-tap.git
 cd homebrew-tap/examples/argocd
 
@@ -54,12 +96,12 @@ cd homebrew-tap/examples/argocd
 
 **Access:**
 
-- Local: https://argocd.127.0.0.1.sslip.io
-- Production: https://argocd.yourdomain.com
+- Local: `https://argocd.127.0.0.1.sslip.io`
+- Production: `https://argocd.yourdomain.com`
 
-[View ArgoCD Recipe →](https://github.com/gautampachnanda101/homebrew-tap/tree/main/examples/argocd)
+[View ArgoCD recipe →](https://github.com/gautampachnanda101/homebrew-tap/tree/main/examples/argocd)
 
-### HashiCorp Vault - Secrets Management
+#### HashiCorp Vault - Secrets Management
 
 Install HashiCorp Vault for secure secrets management, encryption, and identity-based access.
 
@@ -72,8 +114,8 @@ Install HashiCorp Vault for secure secrets management, encryption, and identity-
 - ✅ Kustomize overlays for easy customization
 
 **Quick Start:**
+
 ```bash
-# Clone or download the examples
 git clone https://github.com/gautampachnanda101/homebrew-tap.git
 cd homebrew-tap/examples/vault
 
@@ -86,13 +128,13 @@ cd homebrew-tap/examples/vault
 
 **Access:**
 
-- Local: https://vault.127.0.0.1.sslip.io
-- Root Token (dev mode): `root`
-- Production: https://vault.yourdomain.com
+- Local: `https://vault.127.0.0.1.sslip.io`
+- Dev-mode token: use the value printed by the install script; never use dev mode outside local testing.
+- Production: `https://vault.yourdomain.com`
 
-[View Vault Recipe →](https://github.com/gautampachnanda101/homebrew-tap/tree/main/examples/vault)
+[View Vault recipe →](https://github.com/gautampachnanda101/homebrew-tap/tree/main/examples/vault)
 
-### Harbor - Container Registry
+#### Harbor - Container Registry
 
 Install Harbor as a cloud-native container registry with vulnerability scanning, image signing, and replication.
 
@@ -105,8 +147,8 @@ Install Harbor as a cloud-native container registry with vulnerability scanning,
 - ✅ Kustomize overlays for easy customization
 
 **Quick Start:**
+
 ```bash
-# Clone or download the examples
 git clone https://github.com/gautampachnanda101/homebrew-tap.git
 cd homebrew-tap/examples/harbor
 
@@ -119,13 +161,13 @@ cd homebrew-tap/examples/harbor
 
 **Access:**
 
-- Local: https://harbor.127.0.0.1.sslip.io
-- Default credentials: admin / Harbor12345
-- Production: https://harbor.yourdomain.com
+- Local: `https://harbor.127.0.0.1.sslip.io`
+- Credentials: set and rotate them before sharing the registry.
+- Production: `https://harbor.yourdomain.com`
 
-[View Harbor Recipe →](https://github.com/gautampachnanda101/homebrew-tap/tree/main/examples/harbor)
+[View Harbor recipe →](https://github.com/gautampachnanda101/homebrew-tap/tree/main/examples/harbor)
 
-### GitLab Runner - CI/CD Executor
+#### GitLab Runner - CI/CD Executor
 
 Install GitLab Runner with Kubernetes executor for running CI/CD pipelines in your cluster.
 
@@ -138,8 +180,8 @@ Install GitLab Runner with Kubernetes executor for running CI/CD pipelines in yo
 - ✅ Kustomize overlays for easy customization
 
 **Quick Start:**
+
 ```bash
-# Clone or download the examples
 git clone https://github.com/gautampachnanda101/homebrew-tap.git
 cd homebrew-tap/examples/gitlab-runner
 
@@ -157,9 +199,9 @@ export GITLAB_URL="https://gitlab.com"
 - Runner will auto-register with your GitLab instance
 - Default executor: Kubernetes (builds run in pods)
 
-[View GitLab Runner Recipe →](https://github.com/gautampachnanda101/homebrew-tap/tree/main/examples/gitlab-runner)
+[View GitLab Runner recipe →](https://github.com/gautampachnanda101/homebrew-tap/tree/main/examples/gitlab-runner)
 
-### Keycloak - Identity and Access Management
+#### Keycloak - Identity and Access Management
 
 Install Keycloak for comprehensive identity and access management (IAM) with OpenID Connect and SAML support.
 
@@ -173,8 +215,8 @@ Install Keycloak for comprehensive identity and access management (IAM) with Ope
 - ✅ Kustomize overlays for easy customization
 
 **Quick Start:**
+
 ```bash
-# Clone or download the examples
 git clone https://github.com/gautampachnanda101/homebrew-tap.git
 cd homebrew-tap/examples/keycloak
 
@@ -187,20 +229,20 @@ cd homebrew-tap/examples/keycloak
 
 **Access:**
 
-- Local: https://keycloak.127.0.0.1.sslip.io
-- Admin credentials: Use get-password.sh script
-- Production: https://keycloak.yourdomain.com
+- Local: `https://keycloak.127.0.0.1.sslip.io`
+- Admin credentials: use the `get-password.sh` script
+- Production: `https://keycloak.yourdomain.com`
 
-[View Keycloak Recipe →](https://github.com/gautampachnanda101/homebrew-tap/tree/main/examples/keycloak)
+[View Keycloak recipe →](https://github.com/gautampachnanda101/homebrew-tap/tree/main/examples/keycloak)
 
-### Authentik - Open Source IDP
+#### Authentik - Open Source IDP
 
 Install Authentik as a modern, flexible identity provider with flow-based authentication and powerful policy engine.
 
 **Features:**
 
 - ✅ Works with both self-signed (local) and Let's Encrypt (production) certificates
-- ✅ Traefik ingress integration  
+- ✅ Traefik ingress integration
 - ✅ PostgreSQL and Redis backends
 - ✅ Server/worker architecture for scalability
 - ✅ Modern UI with flow-based configuration
@@ -208,8 +250,8 @@ Install Authentik as a modern, flexible identity provider with flow-based authen
 - ✅ Kustomize overlays for easy customization
 
 **Quick Start:**
+
 ```bash
-# Clone or download the examples
 git clone https://github.com/gautampachnanda101/homebrew-tap.git
 cd homebrew-tap/examples/authentik
 
@@ -222,18 +264,41 @@ cd homebrew-tap/examples/authentik
 
 **Access:**
 
-- Local: https://authentik.127.0.0.1.sslip.io/if/flow/initial-setup/
-- First-time: Visit URL above to create admin account
-- Admin interface: https://authentik.127.0.0.1.sslip.io/if/admin/
-- Production: https://auth.yourdomain.com
+- Local: `https://authentik.127.0.0.1.sslip.io/if/flow/initial-setup/`
+- First-time: visit the URL above to create an admin account
+- Admin interface: `https://authentik.127.0.0.1.sslip.io/if/admin/`
+- Production: `https://auth.yourdomain.com`
 
-[View Authentik Recipe →](https://github.com/gautampachnanda101/homebrew-tap/tree/main/examples/authentik)
+[View Authentik recipe →](https://github.com/gautampachnanda101/homebrew-tap/tree/main/examples/authentik)
 
-## Recipe Structure
+### Starter recipes
+
+Six more scaffolds for local experimentation. They install the same way and are lighter-weight than the recipes above — expect to add real policies, resources, or config before relying on them.
+
+| Recipe | What it scaffolds | Directory |
+| --- | --- | --- |
+| Backstage | Developer portal starter | `examples/backstage` |
+| External Secrets Operator | Integrates External Secrets with Vault (example `SecretStore` / `ExternalSecret`) | `examples/external-secrets-operator` |
+| Kyverno | Policy-as-code and admission control starter | `examples/kyverno` |
+| OpenFGA | Fine-grained authorization model starter | `examples/openfga` |
+| RabbitMQ | Local async messaging with the management UI | `examples/rabbitmq` |
+| SpiceDB | Relationship-based authorization starter (in-memory datastore) | `examples/spicedb` |
+
+**Quick Start** (swap in the directory from the table above):
+
+```bash
+git clone https://github.com/gautampachnanda101/homebrew-tap.git
+cd homebrew-tap/examples/<recipe-directory>
+./install.sh
+```
+
+[Browse all recipes on GitHub →](https://github.com/gautampachnanda101/homebrew-tap/tree/main/examples)
+
+### Recipe structure
 
 Each recipe follows a consistent structure using Kustomize:
 
-```
+```text
 recipe-name/
 ├── base/                       # Base Kubernetes manifests
 │   ├── kustomization.yaml     # Base kustomize config
@@ -249,45 +314,9 @@ recipe-name/
 └── README.md                  # Detailed documentation
 ```
 
-## Using Recipes
+### Customizing recipes
 
-### Prerequisites
-
-All recipes require:
-1. **k3d-local cluster** created with Traefik:
-   ```bash
-   k3d-local create --with-traefik
-   ```
-
-2. **kubectl** configured to access your cluster
-
-3. **Kustomize** (optional, kubectl has built-in support)
-
-### Installation Methods
-
-#### Option 1: Using the Installation Script (Recommended)
-```bash
-cd examples/recipe-name
-./install.sh
-```
-
-#### Option 2: Using kubectl with Kustomize
-```bash
-# Local development
-kubectl apply -k examples/recipe-name/overlays/local/
-
-# Production
-kubectl apply -k examples/recipe-name/overlays/prod/
-```
-
-#### Option 3: Using Kustomize CLI
-```bash
-kustomize build examples/recipe-name/overlays/local/ | kubectl apply -f -
-```
-
-## Customizing Recipes
-
-### Using Kustomize Overlays
+#### Using Kustomize overlays
 
 Create your own overlay to customize any recipe:
 
@@ -319,9 +348,10 @@ EOF
 kubectl apply -k .
 ```
 
-### Common Customizations
+#### Common customizations
 
 **Change domain:**
+
 ```yaml
 patches:
   - target:
@@ -333,6 +363,7 @@ patches:
 ```
 
 **Adjust resources:**
+
 ```yaml
 patches:
   - target:
@@ -347,42 +378,46 @@ patches:
 ```
 
 **Change namespace:**
+
 ```yaml
 namespace: my-custom-namespace
 ```
 
-## TLS Configuration
+### TLS configuration
 
-### Local Development
+#### Local development
 
 Recipes use self-signed certificates by default:
+
 - ClusterIssuer: `local-dev-ca-issuer`
 - Domain: `*.127.0.0.1.sslip.io`
 - Automatic certificate issuance via cert-manager
 
-### Production
+#### Production
 
 For production with Let's Encrypt:
 
-1. Create cluster with Let's Encrypt support:
+1. Create the cluster with Let's Encrypt support:
+
    ```bash
    k3d-local create --with-traefik --use-letsencrypt \
      --domain yourdomain.com \
      --email admin@yourdomain.com
    ```
 
-2. Use production overlay:
+2. Use the production overlay:
+
    ```bash
    ./install.sh --environment prod --domain yourdomain.com
    ```
 
 **Requirements:**
 
-- Domain must resolve to cluster's public IP
-- Port 80 accessible for HTTP-01 challenge
+- Domain must resolve to the cluster's public IP
+- Port 80 accessible for the HTTP-01 challenge
 - Port 443 for HTTPS traffic
 
-## Contributing Recipes
+### Contributing recipes
 
 We welcome recipe contributions! If you've created a useful recipe:
 
@@ -401,6 +436,99 @@ We welcome recipe contributions! If you've created a useful recipe:
 - Test TLS configuration thoroughly
 - Follow Kubernetes best practices
 
+## Promptx Workflow Examples
+
+Local-first prompt intelligence for AI coding assistants: capture your assistant and git activity, store it encrypted on your machine, and pull the relevant slice back into any assistant's prompt.
+
+### Capture context automatically
+
+```bash
+brew install promptx
+promptx setup                 # encrypted vault; passkey in the OS keychain
+promptx memory-watch --repo . # background capture of commits, diffs, IDE activity
+```
+
+### Query memory from the CLI
+
+```bash
+promptx search "function debugging"
+promptx ask "what changed today?" --repo . --limit 5
+promptx execute "how do we handle errors here?" --repo .
+```
+
+### Share conventions as context packs
+
+```bash
+promptx skill install code-review-checklist   # from the shared registry
+promptx skill enable code-review-checklist    # applied to every generate/ask, no flags
+promptx generate "add retry logic to the HTTP client"
+```
+
+### Run as a background service with a web UI
+
+```bash
+brew services start promptx   # promptx serve on http://localhost:17171
+promptx ui                    # opens the dashboard: graph, insights, timeline, memory
+```
+
+### Editor integration (VS Code / Copilot Chat)
+
+```bash
+code --install-extension $(brew --prefix)/share/promptx/promptx-vscode-*.vsix
+```
+
+Then, in Copilot Chat: `@promptx what changed in the auth module?`
+
+[Full Promptx guide →](taps/promptx.md)
+
+## Vaultx Secret Injection Examples
+
+Zero-trust secrets broker: commit `vaultx.env` (references only, never values), and vaultx injects the real secrets into your process at runtime. Nothing is written to disk in plain text.
+
+### Store and inject a secret
+
+```bash
+vaultx init --biometric              # create vault + enable Touch ID (macOS)
+vaultx set myapp/db_password "<your-secret>"
+vaultx run -- go run ./cmd/server    # secret is injected into the process env
+```
+
+### Reference file (safe to commit)
+
+```env
+DB_PASSWORD=vaultx://myapp/db_password
+API_KEY=vaultx://myapp/api_key
+```
+
+### Inject into the current shell
+
+```bash
+eval $(vaultx shell)
+```
+
+### Docker Compose
+
+```bash
+vaultx docker compose -- up --build
+```
+
+### Kubernetes / External Secrets
+
+```bash
+vaultx k3d    # helpers for k3d / Kubernetes External Secrets integration
+```
+
+Pairs with the [External Secrets Operator recipe](https://github.com/gautampachnanda101/homebrew-tap/tree/main/examples/external-secrets-operator) above to pull vaultx-managed secrets into a k3d-local cluster.
+
+### CI pipeline
+
+```bash
+vaultx unlock
+vaultx run -- npm test
+```
+
+[Full Vaultx guide →](taps/vaultx.md)
+
 ## Support
 
 - [Report issues](https://github.com/gautampachnanda101/homebrew-tap/issues)
@@ -410,6 +538,8 @@ We welcome recipe contributions! If you've created a useful recipe:
 ## Related Resources
 
 - [k3d-local Documentation](index.md)
+- [Promptx guide](taps/promptx.md)
+- [Vaultx guide](taps/vaultx.md)
 - [Kustomize Documentation](https://kustomize.io/)
 - [cert-manager Documentation](https://cert-manager.io/docs/)
 - [Traefik Documentation](https://doc.traefik.io/traefik/)

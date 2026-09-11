@@ -169,14 +169,14 @@ kubectl create namespace databases
 # Deploy PostgreSQL
 helm install pgdb bitnami/postgresql \
   -n databases \
-  --set auth.postgresPassword=dev \
+  --set auth.postgresPassword=<your-postgres-password> \
   --set primary.persistence.size=10Gi
 ```
 
 Access from your application:
 ```bash
 kubectl port-forward -n databases svc/pgdb-postgresql 5432:5432
-# Connect: postgresql://postgres:dev@localhost:5432/postgres
+# Connect with the password you supplied during installation.
 ```
 
 ## Customization: Storage
@@ -553,7 +553,7 @@ spec:
 kubectl create secret generic db-credentials \
   -n development \
   --from-literal=username=dev \
-  --from-literal=password=secretpassword
+  --from-literal=password=<your-password>
 
 # Reference in deployment
 env:

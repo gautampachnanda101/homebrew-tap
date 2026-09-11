@@ -531,7 +531,7 @@ git add secrets.yaml  # Don't!
 ```bash
 # Use sealed-secrets or external-secrets operator
 kubectl create secret generic myapp-secrets \
-  --from-literal=password=secret \
+  --from-literal=password=<your-password> \
   -n development
 
 # Or use sealed-secrets CLI
@@ -554,8 +554,8 @@ env:
 K3D_SERVERS=1
 K3D_AGENTS=2
 K3D_MEMORY=4g
-DATABASE_PASSWORD=localdev
-API_KEY=test-key-only
+DATABASE_PASSWORD=<local-development-password>
+API_KEY=<local-development-key>
 
 # Create gitignored files
 echo ".env" >> .gitignore

@@ -1,6 +1,6 @@
 site_name: Homebrew Tap
 site_description: Official Homebrew tap for cross-platform development tools
-site_url: https://github.com/gautampachnanda101/homebrew-tap
+site_url: https://gautampachnanda101.github.io/homebrew-tap/
 repo_url: https://github.com/gautampachnanda101/homebrew-tap
 repo_name: gautampachnanda101/homebrew-tap
 exclude_docs: /promptx.md
@@ -75,3 +75,4 @@ markdown_extensions:
       alternate_style: true
   - toc:
       permalink: true
+      toc_depth: "2-3"

@@ -143,7 +143,7 @@ k3d-local create --auto-install
 
 # Avoid Docker Hub rate limits
 k3d-local create --with-traefik --create-regcred \
-  --docker-username myuser --docker-password dckr_pat_abc123
+  --docker-username <registry-user> --docker-password <registry-token>
 
 # Let's Encrypt with custom domain
 k3d-local create --with-traefik --use-letsencrypt \

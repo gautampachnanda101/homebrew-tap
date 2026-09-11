@@ -97,7 +97,7 @@ vaultx serve --syslog-network tcp --syslog-address host:514 # remote syslog
 ### Store and Retrieve Secrets
 
 ```bash
-vaultx set myapp/db_password "s3cr3t"    # store
+vaultx set myapp/db_password "<your-secret>"    # store
 vaultx get myapp/db_password             # retrieve
 vaultx list                              # list all (values masked)
 vaultx list myapp/                       # list under a prefix

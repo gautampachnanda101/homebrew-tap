@@ -44,16 +44,16 @@ Tools that remove repeated setup work from local development.
   </article>
 </div>
 
-## Find your way
+## Documentation
 
 | You need to... | Go here |
 | --- | --- |
-| Install one or more formulas | [Installation](installation.md) |
-| Create your first local cluster | [Getting started](getting-started.md) |
-| Deploy a service into k3d | [Examples and recipes](examples.md) |
-| Learn common workflows | [Usage](usage.md) |
-| Find a command or flag | [Command reference](reference/commands.md) |
-| Fix a setup problem | [Troubleshooting](troubleshooting.md) |
+| Install one or more formulas | [Installation](https://gautampachnanda101.github.io/homebrew-tap/installation/) |
+| Create your first local cluster | [Getting started](https://gautampachnanda101.github.io/homebrew-tap/getting-started/) |
+| Deploy a service into k3d | [Examples and recipes](https://gautampachnanda101.github.io/homebrew-tap/examples/) |
+| Learn common workflows | [Usage](https://gautampachnanda101.github.io/homebrew-tap/usage/) |
+| Find a command or flag | [Command reference](https://gautampachnanda101.github.io/homebrew-tap/reference/commands/) |
+| Fix a setup problem | [Troubleshooting](https://gautampachnanda101.github.io/homebrew-tap/troubleshooting/) |
 
 ## Local by default
 

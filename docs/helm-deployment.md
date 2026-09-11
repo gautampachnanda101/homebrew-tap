@@ -131,7 +131,7 @@ helm search repo bitnami | grep postgres
 helm install my-postgres bitnami/postgresql \
   --namespace databases \
   --create-namespace \
-  --set auth.postgresPassword=password123 \
+  --set auth.postgresPassword=<your-postgres-password> \
   --set primary.persistence.size=10Gi
 ```
 
@@ -232,7 +232,7 @@ helm repo update
 cat > postgres-values.yaml << EOF
 auth:
   username: dev
-  password: devpassword
+  password: <your-password>
   database: myapp_db
 
 primary:
@@ -268,7 +268,7 @@ helm install postgres bitnami/postgresql \
 kubectl port-forward -n databases svc/postgres-postgresql 5432:5432
 
 # In your app
-DATABASE_URL=postgresql://dev:devpassword@localhost:5432/myapp_db
+DATABASE_URL=postgresql://dev:<your-password>@localhost:5432/myapp_db
 ```
 
 ### Step 5: Verify
@@ -430,7 +430,7 @@ Store sensitive values in Kubernetes secrets:
 ```bash
 # Create secret
 kubectl create secret generic db-secret \
-  --from-literal=password=supersecret \
+  --from-literal=password=<your-password> \
   -n databases
 
 # Reference in values

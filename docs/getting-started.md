@@ -207,7 +207,7 @@ vaultx unlock             # unlock for this session
 ### Store and Use Secrets
 
 ```bash
-vaultx set myapp/db_password "s3cr3t"    # store a secret
+vaultx set myapp/db_password "<your-secret>"    # store a secret
 vaultx get myapp/db_password             # retrieve it
 vaultx run -- go run ./cmd/server        # inject into process
 ```

@@ -337,7 +337,7 @@ brew --prefix promptx
 
 ```bash
 # Set passkey explicitly
-export PROMPTX_PASSKEY="your-secure-key"
+export PROMPTX_PASSKEY="<your-passkey>"
 
 # Or reinitialize (loses existing memory)
 promptx setup
