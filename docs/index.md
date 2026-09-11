@@ -67,14 +67,12 @@ Tools that remove repeated setup work from local development.
 
 ## Documentation
 
-<div class="docs-links" role="navigation" aria-label="Documentation">
-  <a href="https://gautampachnanda101.github.io/homebrew-tap/installation/"><span>Install</span><strong>Installation <b aria-hidden="true">-&gt;</b></strong></a>
-  <a href="https://gautampachnanda101.github.io/homebrew-tap/getting-started/"><span>Begin</span><strong>Getting started <b aria-hidden="true">-&gt;</b></strong></a>
-  <a href="https://gautampachnanda101.github.io/homebrew-tap/examples/"><span>Deploy</span><strong>Examples and recipes <b aria-hidden="true">-&gt;</b></strong></a>
-  <a href="https://gautampachnanda101.github.io/homebrew-tap/usage/"><span>Learn</span><strong>Usage <b aria-hidden="true">-&gt;</b></strong></a>
-  <a href="https://gautampachnanda101.github.io/homebrew-tap/reference/commands/"><span>Look up</span><strong>Command reference <b aria-hidden="true">-&gt;</b></strong></a>
-  <a href="https://gautampachnanda101.github.io/homebrew-tap/troubleshooting/"><span>Fix</span><strong>Troubleshooting <b aria-hidden="true">-&gt;</b></strong></a>
-</div>
+- [Installation](https://gautampachnanda101.github.io/homebrew-tap/installation/)
+- [Getting started](https://gautampachnanda101.github.io/homebrew-tap/getting-started/)
+- [Examples and recipes](https://gautampachnanda101.github.io/homebrew-tap/examples/)
+- [Usage](https://gautampachnanda101.github.io/homebrew-tap/usage/)
+- [Command reference](https://gautampachnanda101.github.io/homebrew-tap/reference/commands/)
+- [Troubleshooting](https://gautampachnanda101.github.io/homebrew-tap/troubleshooting/)
 
 ## Local by default
 
