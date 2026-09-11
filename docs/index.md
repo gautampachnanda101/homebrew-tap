@@ -46,14 +46,14 @@ Tools that remove repeated setup work from local development.
 
 ## Documentation
 
-| You need to... | Go here |
-| --- | --- |
-| Install one or more formulas | [Installation](https://gautampachnanda101.github.io/homebrew-tap/installation/) |
-| Create your first local cluster | [Getting started](https://gautampachnanda101.github.io/homebrew-tap/getting-started/) |
-| Deploy a service into k3d | [Examples and recipes](https://gautampachnanda101.github.io/homebrew-tap/examples/) |
-| Learn common workflows | [Usage](https://gautampachnanda101.github.io/homebrew-tap/usage/) |
-| Find a command or flag | [Command reference](https://gautampachnanda101.github.io/homebrew-tap/reference/commands/) |
-| Fix a setup problem | [Troubleshooting](https://gautampachnanda101.github.io/homebrew-tap/troubleshooting/) |
+<nav class="docs-links" aria-label="Documentation">
+  <a href="https://gautampachnanda101.github.io/homebrew-tap/installation/"><span>Install</span><strong>Installation <b aria-hidden="true">-&gt;</b></strong></a>
+  <a href="https://gautampachnanda101.github.io/homebrew-tap/getting-started/"><span>Begin</span><strong>Getting started <b aria-hidden="true">-&gt;</b></strong></a>
+  <a href="https://gautampachnanda101.github.io/homebrew-tap/examples/"><span>Deploy</span><strong>Examples and recipes <b aria-hidden="true">-&gt;</b></strong></a>
+  <a href="https://gautampachnanda101.github.io/homebrew-tap/usage/"><span>Learn</span><strong>Usage <b aria-hidden="true">-&gt;</b></strong></a>
+  <a href="https://gautampachnanda101.github.io/homebrew-tap/reference/commands/"><span>Look up</span><strong>Command reference <b aria-hidden="true">-&gt;</b></strong></a>
+  <a href="https://gautampachnanda101.github.io/homebrew-tap/troubleshooting/"><span>Fix</span><strong>Troubleshooting <b aria-hidden="true">-&gt;</b></strong></a>
+</nav>
 
 ## Local by default
 

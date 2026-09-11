@@ -366,6 +366,44 @@
   color: #8b6915;
 }
 
+.docs-links {
+  border-top: 1px solid rgba(16, 28, 36, 0.2);
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  margin: 1.5rem 0 3rem;
+}
+
+.docs-links a {
+  border-bottom: 1px solid rgba(16, 28, 36, 0.2);
+  color: var(--tap-ink);
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding: 1rem 1rem 1rem 0;
+  text-decoration: none;
+}
+
+.docs-links a:nth-child(even) {
+  border-left: 1px solid rgba(16, 28, 36, 0.2);
+  padding-left: 1rem;
+}
+
+.docs-links span {
+  color: var(--tap-muted);
+  font-family: var(--md-code-font-family);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+}
+
+.docs-links strong {
+  font-size: 1rem;
+}
+
+.docs-links b {
+  color: var(--tap-gold);
+  font-weight: 400;
+}
+
 .md-typeset table a {
   color: #1769aa;
   font-weight: 700;
@@ -382,6 +420,16 @@
 [data-md-color-scheme="slate"] .formula-grid,
 [data-md-color-scheme="slate"] .formula-item + .formula-item {
   border-color: rgba(237, 242, 245, 0.2);
+}
+
+[data-md-color-scheme="slate"] .docs-links,
+[data-md-color-scheme="slate"] .docs-links a,
+[data-md-color-scheme="slate"] .docs-links a:nth-child(even) {
+  border-color: rgba(237, 242, 245, 0.2);
+}
+
+[data-md-color-scheme="slate"] .docs-links a {
+  color: #edf2f5;
 }
 
 @media screen and (max-width: 700px) {
@@ -402,6 +450,15 @@
 
   .formula-item:first-child {
     border-top: 0;
+  }
+
+  .docs-links {
+    display: block;
+  }
+
+  .docs-links a:nth-child(even) {
+    border-left: 0;
+    padding-left: 0;
   }
 
   .catalog-item {
