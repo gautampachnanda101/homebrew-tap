@@ -4,16 +4,10 @@ Local-first prompt intelligence for AI coding assistants. Captures your
 assistant + git activity, stores it encrypted on your machine, and injects the
 relevant slice back into any assistant's prompt.
 
-## First commands
-
-```bash
-brew tap gautampachnanda101/tap
-brew install promptx
-promptx version
-promptx setup
-promptx memory-watch --repo . --interval 30
-promptx doctor
-```
+> This page is owned by the `promptx` project and published to the tap by its
+> release pipeline. The tap repo owns the surrounding site (nav, theme, index,
+> issue forms). Do not edit it in the tap repo — edit `docs/tap/promptx.md` in
+> `prompt-detective` and cut a release.
 
 ## Install
 
@@ -78,7 +72,7 @@ promptx ui                     # opens http://127.0.0.1:17171/ui/
 
 Unlock with your vault passkey (or Touch ID / Face ID after `promptx setup
 --biometric`); the session lasts 8 hours. Tabs: **graph** (knowledge graph from
-the project knowledge graph, with in-place build), **insights** (tokens, cost,
+`graphify-out/graph.json`, with in-place build), **insights** (tokens, cost,
 cache hits, model/tool/satisfaction breakdowns with live model pricing),
 **timeline** (decrypted interaction history with a per-row detail drawer),
 **memory** (encrypted entries with full-text, type and tag filters), **handoff**
