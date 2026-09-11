@@ -3,13 +3,13 @@
   <h1>Tools for the work happening on your machine.</h1>
   <p class="tap-lede">One tap for local Kubernetes, AI-assisted development, and encrypted secrets. Install a focused tool, run it locally, and keep your workflow moving.</p>
   <div class="tap-actions">
-    <a class="tap-button tap-button-primary" href="getting-started/">Get started</a>
-    <a class="tap-button tap-button-secondary" href="taps/">Browse formulas</a>
+    <a class="tap-button tap-button-primary" href="https://gautampachnanda101.github.io/homebrew-tap/getting-started/">Get started</a>
+    <a class="tap-button tap-button-secondary" href="https://gautampachnanda101.github.io/homebrew-tap/taps/">Browse formulas</a>
   </div>
 </section>
 
 <section class="tap-terminal" aria-label="Homebrew installation example">
-  <div class="terminal-bar"><span></span><span></span><span></span><strong>~/workspace</strong></div>
+  <div class="terminal-bar"><span></span><span></span><span></span><strong>shell</strong></div>
   <pre><code><span class="terminal-prompt">$</span> brew tap gautampachnanda101/tap
 <span class="terminal-prompt">$</span> brew install k3d-local
 <span class="terminal-prompt">$</span> k3d-local create --with-traefik
@@ -26,21 +26,21 @@ Tools that remove repeated setup work from local development.
     <h3>k3d-local</h3>
     <p>Build a local Kubernetes environment with k3d, Traefik, optional telemetry, and ready-to-deploy service recipes.</p>
     <code>brew install k3d-local</code>
-    <a href="taps/k3d-local/">k3d-local <span aria-hidden="true">-&gt;</span></a>
+    <a href="https://gautampachnanda101.github.io/homebrew-tap/taps/k3d-local/">k3d-local <span aria-hidden="true">-&gt;</span></a>
   </article>
   <article class="formula-item">
     <p class="formula-number">02</p>
     <h3>Promptx</h3>
     <p>Keep AI coding context encrypted, searchable, and available across assistants, editors, and MCP clients.</p>
     <code>brew install promptx</code>
-    <a href="taps/promptx/">Promptx <span aria-hidden="true">-&gt;</span></a>
+    <a href="https://gautampachnanda101.github.io/homebrew-tap/taps/promptx/">Promptx <span aria-hidden="true">-&gt;</span></a>
   </article>
   <article class="formula-item">
     <p class="formula-number">03</p>
     <h3>Vaultx</h3>
     <p>Inject secrets at runtime from an encrypted vault while keeping reference files safe to commit.</p>
     <code>brew install vaultx</code>
-    <a href="taps/vaultx/">Vaultx <span aria-hidden="true">-&gt;</span></a>
+    <a href="https://gautampachnanda101.github.io/homebrew-tap/taps/vaultx/">Vaultx <span aria-hidden="true">-&gt;</span></a>
   </article>
 </div>
 

@@ -4,6 +4,17 @@ Local-first prompt intelligence for AI coding assistants. Captures your
 assistant + git activity, stores it encrypted on your machine, and injects the
 relevant slice back into any assistant's prompt.
 
+## First commands
+
+```bash
+brew tap gautampachnanda101/tap
+brew install promptx
+promptx version
+promptx setup
+promptx memory-watch --repo . --interval 30
+promptx doctor
+```
+
 > This page is owned by the `promptx` project and published to the tap by its
 > release pipeline. The tap repo owns the surrounding site (nav, theme, index,
 > issue forms). Do not edit it in the tap repo — edit `docs/tap/promptx.md` in

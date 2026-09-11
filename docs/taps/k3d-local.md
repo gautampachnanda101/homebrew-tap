@@ -2,6 +2,17 @@
 
 Cross-platform CLI for creating and managing local Kubernetes development clusters with k3d, Traefik v3, and optional telemetry.
 
+## First commands
+
+```bash
+brew tap gautampachnanda101/tap
+brew install k3d-local
+k3d-local --version
+k3d-local create --with-traefik
+k3d-local status
+k3d-local delete
+```
+
 ## Installation
 
 ### macOS and Linux (Homebrew)

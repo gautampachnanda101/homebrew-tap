@@ -2,6 +2,18 @@
 
 Zero-trust secrets broker — commit `vaultx.env` (references only, never values), and vaultx injects the real secrets into your process at runtime. Nothing is written to disk in plain text.
 
+## First commands
+
+```bash
+brew tap gautampachnanda101/tap
+brew install vaultx
+vaultx version
+vaultx init --biometric
+vaultx set myapp/api_key "replace-with-a-secret"
+vaultx get myapp/api_key
+vaultx run -- npm start
+```
+
 ## Installation
 
 ### macOS and Linux (Homebrew)
