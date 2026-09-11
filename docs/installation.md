@@ -29,9 +29,12 @@ brew tap gautampachnanda101/tap
 brew install k3d-local
 brew install promptx
 brew install vaultx
+brew install kb-genie
+brew install ai-guardrails
+brew install vitals
 
 # Or install multiple at once
-brew install k3d-local promptx vaultx
+brew install k3d-local promptx vaultx kb-genie ai-guardrails vitals
 ```
 
 ### Upgrade
@@ -40,6 +43,9 @@ brew install k3d-local promptx vaultx
 brew upgrade k3d-local
 brew upgrade promptx
 brew upgrade vaultx
+brew upgrade kb-genie
+brew upgrade ai-guardrails
+brew upgrade vitals
 brew upgrade             # Upgrade all
 ```
 
@@ -49,6 +55,9 @@ brew upgrade             # Upgrade all
 brew uninstall k3d-local
 brew uninstall promptx
 brew uninstall vaultx
+brew uninstall kb-genie
+brew uninstall ai-guardrails
+brew uninstall vitals
 brew untap gautampachnanda101/tap  # Optional: remove tap entirely
 ```
 
@@ -56,7 +65,7 @@ brew untap gautampachnanda101/tap  # Optional: remove tap entirely
 
 ### Scoop Installation
 
-All six tools are available via Scoop:
+Scoop commands are documented here for k3d-local, promptx, and vaultx:
 
 ```powershell
 # Add scoop bucket
