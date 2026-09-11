@@ -4,32 +4,32 @@
 class Promptx < Formula
   desc "Local-first prompt intelligence connector for AI coding assistants"
   homepage "https://github.com/gautampachnanda101/prompt-detective"
-  version "0.9.2"
+  version "0.9.3"
 
   on_macos do
     on_intel do
-      url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.9.2/promptx_Darwin_x86_64.tar.gz"
-      sha256 "8b20cc74821330f76198af79d7b87d28ce49244426c47ab1e15154b26b0e003d"
+      url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.9.3/promptx_Darwin_x86_64.tar.gz"
+      sha256 "b8d79d8bf72001807e49a0c60340f5b057b5b6b9aeda9788024df00e16fd0996"
     end
 
     on_arm do
-      url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.9.2/promptx_Darwin_arm64.tar.gz"
-      sha256 "59215bfa8a0aebc299015e8f667a9c63cbbaafc34129e457d0098d17017493a9"
+      url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.9.3/promptx_Darwin_arm64.tar.gz"
+      sha256 "2668d5e4494df84dc5711349698df0684acbd4de2f2e79a7af376190d5e366ba"
     end
   end
 
   on_linux do
     on_intel do
       if Hardware::CPU.is_64_bit?
-        url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.9.2/promptx_Linux_x86_64.tar.gz"
-        sha256 "0e534eac491d74c346aa5479be74a38114d14fd103fbf89240e10c5bddd5a44a"
+        url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.9.3/promptx_Linux_x86_64.tar.gz"
+        sha256 "1be238080a27bd35daf6049ad407ef96bd9520c4eaadb90c5b4a90d54008fc1b"
       end
     end
 
     on_arm do
       if Hardware::CPU.is_64_bit?
-        url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.9.2/promptx_Linux_arm64.tar.gz"
-        sha256 "16aeb0c8a399b98c1e8da6ef10bd85f70b0e1815a1098f9a7f2ae6e818757812"
+        url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.9.3/promptx_Linux_arm64.tar.gz"
+        sha256 "10633d31fce51620d72d6ee8ec8f34da8c38786c0458beec8cfd85ffa110a4fe"
       end
     end
   end
