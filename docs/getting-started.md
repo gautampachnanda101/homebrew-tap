@@ -2,11 +2,14 @@
 
 Get up and running with homebrew-tap tools in 5 minutes.
 
-This tap provides three tools:
+This tap provides six tools:
 
 - **k3d-local** – Local Kubernetes development environment
 - **promptx** – Prompt intelligence CLI with encrypted memory and web UI
 - **vaultx** – Zero-trust encrypted secrets CLI with web UI
+- **kb-genie** – Local-first knowledge base builder with browser chat
+- **ai-guardrails** – AI development guardrails and workflow templates
+- **vitals** – Local system diagnostics and bottleneck detection
 
 Choose the tool(s) you want to use to get started.
 

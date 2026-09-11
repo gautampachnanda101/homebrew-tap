@@ -16,7 +16,7 @@
 <span class="terminal-success">ready</span>  local cluster available at https://dashboard.127.0.0.1.sslip.io</code></pre>
 </section>
 
-## Three useful binaries
+## Six useful binaries
 
 Tools that remove repeated setup work from local development.
 
@@ -42,18 +42,39 @@ Tools that remove repeated setup work from local development.
     <code>brew install vaultx</code>
     <a href="https://gautampachnanda101.github.io/homebrew-tap/taps/vaultx/">Vaultx <span aria-hidden="true">-&gt;</span></a>
   </article>
+  <article class="formula-item">
+    <p class="formula-number">04</p>
+    <h3>kb-genie</h3>
+    <p>Build a local knowledge base with pluggable embeddings and a browser chat interface.</p>
+    <code>brew install kb-genie</code>
+    <a href="https://gautampachnanda101.github.io/homebrew-tap/taps/kb-genie/">kb-genie <span aria-hidden="true">-&gt;</span></a>
+  </article>
+  <article class="formula-item">
+    <p class="formula-number">05</p>
+    <h3>ai-guardrails</h3>
+    <p>Standardize AI development guardrails, skills, tools, and CI/CD templates.</p>
+    <code>brew install ai-guardrails</code>
+    <a href="https://gautampachnanda101.github.io/homebrew-tap/taps/ai-guardrails/">ai-guardrails <span aria-hidden="true">-&gt;</span></a>
+  </article>
+  <article class="formula-item">
+    <p class="formula-number">06</p>
+    <h3>vitals</h3>
+    <p>Diagnose the bottleneck on your machine and get the next command to run.</p>
+    <code>brew install vitals</code>
+    <a href="https://gautampachnanda101.github.io/vitals/">Vitals docs <span aria-hidden="true">-&gt;</span></a>
+  </article>
 </div>
 
 ## Documentation
 
-<nav class="docs-links" aria-label="Documentation">
+<div class="docs-links" role="navigation" aria-label="Documentation">
   <a href="https://gautampachnanda101.github.io/homebrew-tap/installation/"><span>Install</span><strong>Installation <b aria-hidden="true">-&gt;</b></strong></a>
   <a href="https://gautampachnanda101.github.io/homebrew-tap/getting-started/"><span>Begin</span><strong>Getting started <b aria-hidden="true">-&gt;</b></strong></a>
   <a href="https://gautampachnanda101.github.io/homebrew-tap/examples/"><span>Deploy</span><strong>Examples and recipes <b aria-hidden="true">-&gt;</b></strong></a>
   <a href="https://gautampachnanda101.github.io/homebrew-tap/usage/"><span>Learn</span><strong>Usage <b aria-hidden="true">-&gt;</b></strong></a>
   <a href="https://gautampachnanda101.github.io/homebrew-tap/reference/commands/"><span>Look up</span><strong>Command reference <b aria-hidden="true">-&gt;</b></strong></a>
   <a href="https://gautampachnanda101.github.io/homebrew-tap/troubleshooting/"><span>Fix</span><strong>Troubleshooting <b aria-hidden="true">-&gt;</b></strong></a>
-</nav>
+</div>
 
 ## Local by default
 

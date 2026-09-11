@@ -4,11 +4,14 @@ Complete installation guide for all packages in this tap.
 
 ## Choose Your Package
 
-This tap provides three packages:
+This tap provides six packages:
 
 - **k3d-local** – Local Kubernetes cluster management
 - **promptx** – Prompt intelligence CLI with encrypted memory and web UI
 - **vaultx** – Zero-trust encrypted secrets CLI with web UI
+- **kb-genie** – Local-first knowledge base builder with browser chat
+- **ai-guardrails** – AI development guardrails and workflow templates
+- **vitals** – Local system diagnostics and bottleneck detection
 
 You can install any combination.
 
@@ -53,7 +56,7 @@ brew untap gautampachnanda101/tap  # Optional: remove tap entirely
 
 ### Scoop Installation
 
-All three tools are available via Scoop:
+All six tools are available via Scoop:
 
 ```powershell
 # Add scoop bucket

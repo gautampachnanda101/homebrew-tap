@@ -50,6 +50,8 @@ nav:
     - k3d-local: taps/k3d-local.md
     - promptx: taps/promptx.md
     - vaultx: taps/vaultx.md
+    - kb-genie: taps/kb-genie.md
+    - ai-guardrails: taps/ai-guardrails.md
   - Getting Started: getting-started.md
   - Installation: installation.md
   - Usage: usage.md
