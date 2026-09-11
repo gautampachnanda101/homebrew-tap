@@ -79,14 +79,6 @@
   padding-bottom: 1.5rem;
 }
 
-.catalog-kicker {
-  color: var(--tap-muted);
-  font-family: var(--md-code-font-family);
-  font-size: 0.72rem;
-  letter-spacing: 0.08em;
-  margin-bottom: 0.5rem;
-}
-
 .catalog-hero h1 {
   color: var(--tap-ink);
   font-size: clamp(1.9rem, 4vw, 3rem);

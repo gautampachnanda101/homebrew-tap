@@ -16,9 +16,9 @@
 <span class="terminal-success">ready</span>  local cluster available at https://dashboard.127.0.0.1.sslip.io</code></pre>
 </section>
 
-## One tap. Three useful binaries.
+## Three useful binaries
 
-The catalog is intentionally small: tools that remove repeated setup work from local development without requiring an account or a hosted control plane.
+Tools that remove repeated setup work from local development.
 
 <div class="formula-grid">
   <article class="formula-item">
@@ -26,25 +26,25 @@ The catalog is intentionally small: tools that remove repeated setup work from l
     <h3>k3d-local</h3>
     <p>Build a local Kubernetes environment with k3d, Traefik, optional telemetry, and ready-to-deploy service recipes.</p>
     <code>brew install k3d-local</code>
-    <a href="taps/k3d-local/">Read the k3d-local guide <span aria-hidden="true">-&gt;</span></a>
+    <a href="taps/k3d-local/">k3d-local <span aria-hidden="true">-&gt;</span></a>
   </article>
   <article class="formula-item">
     <p class="formula-number">02</p>
     <h3>Promptx</h3>
     <p>Keep AI coding context encrypted, searchable, and available across assistants, editors, and MCP clients.</p>
     <code>brew install promptx</code>
-    <a href="taps/promptx/">Read the Promptx guide <span aria-hidden="true">-&gt;</span></a>
+    <a href="taps/promptx/">Promptx <span aria-hidden="true">-&gt;</span></a>
   </article>
   <article class="formula-item">
     <p class="formula-number">03</p>
     <h3>Vaultx</h3>
     <p>Inject secrets at runtime from an encrypted vault while keeping reference files safe to commit.</p>
     <code>brew install vaultx</code>
-    <a href="taps/vaultx/">Read the Vaultx guide <span aria-hidden="true">-&gt;</span></a>
+    <a href="taps/vaultx/">Vaultx <span aria-hidden="true">-&gt;</span></a>
   </article>
 </div>
 
-## Start with the job in front of you
+## Find your way
 
 | You need to... | Go here |
 | --- | --- |
@@ -55,7 +55,7 @@ The catalog is intentionally small: tools that remove repeated setup work from l
 | Find a command or flag | [Command reference](reference/commands.md) |
 | Fix a setup problem | [Troubleshooting](troubleshooting.md) |
 
-## Built to stay local
+## Local by default
 
 No accounts, hosted dashboard, or telemetry requirement. The tools run on your machine and the guides show the exact commands they expect.
 

@@ -1,10 +1,7 @@
 <section class="catalog-hero">
-	<p class="catalog-kicker">FORMULA CATALOG · 3 TOOLS</p>
 	<h1>Choose the tool for the job.</h1>
-	<p>Each formula is a focused local binary. Install the tap once, then open the guide for setup, workflows, and troubleshooting.</p>
+	<p>Local tools for Kubernetes, AI-assisted development, and secrets.</p>
 </section>
-
-## Included formulas
 
 <div class="catalog-list">
 	<article class="catalog-item">
@@ -14,7 +11,7 @@
 			<p>Build local Kubernetes clusters with k3d, Traefik, optional telemetry, and ready-to-deploy service recipes.</p>
 		</div>
 		<pre class="catalog-install"><code>brew install k3d-local
-k3d-local create --with-traefik</code><a href="k3d-local/">Open guide -&gt;</a></pre>
+	k3d-local create --with-traefik</code></pre>
 	</article>
 	<article class="catalog-item">
 		<p class="catalog-number">02</p>
@@ -23,7 +20,7 @@ k3d-local create --with-traefik</code><a href="k3d-local/">Open guide -&gt;</a><
 			<p>Keep AI coding context encrypted, searchable, and available across assistants, editors, and MCP clients.</p>
 		</div>
 		<pre class="catalog-install"><code>brew install promptx
-promptx setup</code><a href="promptx/">Open guide -&gt;</a></pre>
+	promptx setup</code></pre>
 	</article>
 	<article class="catalog-item">
 		<p class="catalog-number">03</p>
@@ -32,7 +29,7 @@ promptx setup</code><a href="promptx/">Open guide -&gt;</a></pre>
 			<p>Inject secrets at runtime from an encrypted vault while keeping reference files safe to commit.</p>
 		</div>
 		<pre class="catalog-install"><code>brew install vaultx
-vaultx init --biometric</code><a href="vaultx/">Open guide -&gt;</a></pre>
+	vaultx init --biometric</code></pre>
 	</article>
 </div>
 
