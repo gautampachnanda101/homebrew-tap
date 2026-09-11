@@ -26,6 +26,6 @@ ai-guardrails --help
 
 Use `ai-guardrails <command> --help` to inspect the commands available in the installed version.
 
-## Resources
+## Help
 
-- [ai-guardrails source repository](https://github.com/gautampachnanda101/ai-guard-cli)
+Use `ai-guardrails --help` for the installed command set. Report tap packaging issues through the [public issue tracker](https://github.com/gautampachnanda101/homebrew-tap/issues).

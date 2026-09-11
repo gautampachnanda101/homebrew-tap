@@ -45,7 +45,6 @@ kb-genie status
 kb-genie logs
 ```
 
-## Resources
+## Help
 
-- [kb-genie source repository](https://github.com/gautampachnanda101/kb-genie)
-- [Report an issue](https://github.com/gautampachnanda101/kb-genie/issues)
+Use `kb-genie <command> --help` for the installed command set. Report tap packaging issues through the [public issue tracker](https://github.com/gautampachnanda101/homebrew-tap/issues).

@@ -532,7 +532,6 @@ vaultx run -- npm test
 ## Support
 
 - [Report issues](https://github.com/gautampachnanda101/homebrew-tap/issues)
-- [View k3d-local documentation](https://github.com/gautampachnanda101/local-cluster-k3d)
 - [Browse source code](https://github.com/gautampachnanda101/homebrew-tap/tree/main/examples)
 
 ## Related Resources

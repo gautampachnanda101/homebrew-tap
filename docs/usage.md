@@ -259,7 +259,7 @@ Use the credentials configured for your deployment; change them before sharing t
 
 Applications automatically send metrics/logs when telemetry stack is enabled.
 
-See [k3d-local telemetry docs](https://github.com/gautampachnanda101/local-cluster-k3d/blob/main/docs/telemetry.md) for configuration.
+Use the telemetry options in the [k3d-local guide](taps/k3d-local.md) and verify the running services from the URLs above.
 
 ## Networking
 
@@ -305,7 +305,7 @@ k3d-local create
 
 - Explore [Command Reference](reference/commands.md)
 - Check [Troubleshooting Guide](troubleshooting.md)
-- Visit [k3d-local repository](https://github.com/gautampachnanda101/local-cluster-k3d)
+- Continue with the [k3d-local guide](taps/k3d-local.md)
 
 ---
 
