@@ -4,32 +4,32 @@
 class Promptx < Formula
   desc "Local-first prompt intelligence connector for AI coding assistants"
   homepage "https://github.com/gautampachnanda101/prompt-detective"
-  version "0.11.1"
+  version "0.11.2"
 
   on_macos do
     on_intel do
-      url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.11.1/promptx_Darwin_x86_64.tar.gz"
-      sha256 "6fdc037647f5481f93b1e3e5e5f8595cf11d1646acc6e07937a3e3ec468cd1fa"
+      url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.11.2/promptx_Darwin_x86_64.tar.gz"
+      sha256 "6a07b00f58e7e6da8a2c8b0b1d197d7d15bfffead64eb6ede47399dfd1a7d56b"
     end
 
     on_arm do
-      url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.11.1/promptx_Darwin_arm64.tar.gz"
-      sha256 "42350eb6dedd6738e0b4c6db42b4fa5fd1ea27b8e6e884a20f8c5fcabd308b53"
+      url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.11.2/promptx_Darwin_arm64.tar.gz"
+      sha256 "4b4cdbe96aca0a3a8558848e6817ad841a7dc09ecb76c04028655914d504d824"
     end
   end
 
   on_linux do
     on_intel do
       if Hardware::CPU.is_64_bit?
-        url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.11.1/promptx_Linux_x86_64.tar.gz"
-        sha256 "929913157d15e4b01ad8657deb6f5f7b38ceae4ddcefd169618e8b3c5d12dbe5"
+        url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.11.2/promptx_Linux_x86_64.tar.gz"
+        sha256 "3998d3d8eb190ee824a09cb49825f878b7e6a6f9385f278c5668ad591a8dfcbe"
       end
     end
 
     on_arm do
       if Hardware::CPU.is_64_bit?
-        url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.11.1/promptx_Linux_arm64.tar.gz"
-        sha256 "e8cc7a9382e66cf6570ac8bf968ebb7c963cbf64c707b42807fdc8e3c93efc9c"
+        url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.11.2/promptx_Linux_arm64.tar.gz"
+        sha256 "46a84b10fada99bc4f49ace2bbc4ff595790340a1b0ac0b6765d9fbf692e4940"
       end
     end
   end
