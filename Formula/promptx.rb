@@ -4,32 +4,32 @@
 class Promptx < Formula
   desc "Local-first prompt intelligence connector for AI coding assistants"
   homepage "https://github.com/gautampachnanda101/prompt-detective"
-  version "0.11.0"
+  version "0.11.1"
 
   on_macos do
     on_intel do
-      url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.11.0/promptx_Darwin_x86_64.tar.gz"
-      sha256 "bda70f56e32893e24c4cd0e8514193efb0bea6d8bb4294bcccca4245d8392877"
+      url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.11.1/promptx_Darwin_x86_64.tar.gz"
+      sha256 "6fdc037647f5481f93b1e3e5e5f8595cf11d1646acc6e07937a3e3ec468cd1fa"
     end
 
     on_arm do
-      url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.11.0/promptx_Darwin_arm64.tar.gz"
-      sha256 "f721ddd351b8a2c607a35ae238c308cfea5806e26dd13c3097450b5d872ad43f"
+      url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.11.1/promptx_Darwin_arm64.tar.gz"
+      sha256 "42350eb6dedd6738e0b4c6db42b4fa5fd1ea27b8e6e884a20f8c5fcabd308b53"
     end
   end
 
   on_linux do
     on_intel do
       if Hardware::CPU.is_64_bit?
-        url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.11.0/promptx_Linux_x86_64.tar.gz"
-        sha256 "34ce3f90c101f32f2425e4ee453db1dee6548636c43bbeee47c7e52959a05e73"
+        url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.11.1/promptx_Linux_x86_64.tar.gz"
+        sha256 "929913157d15e4b01ad8657deb6f5f7b38ceae4ddcefd169618e8b3c5d12dbe5"
       end
     end
 
     on_arm do
       if Hardware::CPU.is_64_bit?
-        url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.11.0/promptx_Linux_arm64.tar.gz"
-        sha256 "6b65c5040554818290685922d972d56d244bebf4f1b45ea91aa7a44ed577fd9e"
+        url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.11.1/promptx_Linux_arm64.tar.gz"
+        sha256 "e8cc7a9382e66cf6570ac8bf968ebb7c963cbf64c707b42807fdc8e3c93efc9c"
       end
     end
   end
