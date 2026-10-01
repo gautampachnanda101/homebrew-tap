@@ -4,32 +4,32 @@
 class Promptx < Formula
   desc "Local-first prompt intelligence connector for AI coding assistants"
   homepage "https://github.com/gautampachnanda101/prompt-detective"
-  version "0.12.0"
+  version "0.12.1"
 
   on_macos do
     on_intel do
-      url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.12.0/promptx_Darwin_x86_64.tar.gz"
-      sha256 "2833e05a39cf19e66604e88b11c09ce1f8d176780d46f6e6ce65f62156974e14"
+      url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.12.1/promptx_Darwin_x86_64.tar.gz"
+      sha256 "aaf6ae3d28e08a1f9e405894484e50729dc411fe53197c693c13389aa596f048"
     end
 
     on_arm do
-      url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.12.0/promptx_Darwin_arm64.tar.gz"
-      sha256 "888ce0dd0342c6efe2b4a3a86b0fcbcbe6fa4741c61b33d179d28fe323ef6328"
+      url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.12.1/promptx_Darwin_arm64.tar.gz"
+      sha256 "3a58528a827d5e9ca4d23196e99ba14427e8057506071ed329e96151532f6826"
     end
   end
 
   on_linux do
     on_intel do
       if Hardware::CPU.is_64_bit?
-        url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.12.0/promptx_Linux_x86_64.tar.gz"
-        sha256 "427b87167776361da7e6a5e9a6d672c5359048dcc3ed99b2b2d6e8906a3adbda"
+        url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.12.1/promptx_Linux_x86_64.tar.gz"
+        sha256 "f83d0476156df712e7a9e14814bae75c9b57d1ab7f0ad00fa2e01bc26ec887bf"
       end
     end
 
     on_arm do
       if Hardware::CPU.is_64_bit?
-        url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.12.0/promptx_Linux_arm64.tar.gz"
-        sha256 "50a78389a6722a71b4de9e0798bbf79309041c836bef532a124f28bb3e4b12b3"
+        url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.12.1/promptx_Linux_arm64.tar.gz"
+        sha256 "5b430fa9e62593812af178db03289450d1208875bf3d6c260c8f0c1ed4edc89a"
       end
     end
   end
