@@ -4,32 +4,32 @@
 class Promptx < Formula
   desc "Local-first prompt intelligence connector for AI coding assistants"
   homepage "https://github.com/gautampachnanda101/prompt-detective"
-  version "0.12.1"
+  version "0.12.2"
 
   on_macos do
     on_intel do
-      url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.12.1/promptx_Darwin_x86_64.tar.gz"
-      sha256 "aaf6ae3d28e08a1f9e405894484e50729dc411fe53197c693c13389aa596f048"
+      url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.12.2/promptx_Darwin_x86_64.tar.gz"
+      sha256 "b1c299bda21e186430ae67ba47a11d7399ddd00bbd13b2ab3f4ccb0a35d0a09c"
     end
 
     on_arm do
-      url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.12.1/promptx_Darwin_arm64.tar.gz"
-      sha256 "3a58528a827d5e9ca4d23196e99ba14427e8057506071ed329e96151532f6826"
+      url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.12.2/promptx_Darwin_arm64.tar.gz"
+      sha256 "cf235ad3d7b6ac6867e17ae2cc5dbf6666741f471e7537565112d94960cc7a9c"
     end
   end
 
   on_linux do
     on_intel do
       if Hardware::CPU.is_64_bit?
-        url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.12.1/promptx_Linux_x86_64.tar.gz"
-        sha256 "f83d0476156df712e7a9e14814bae75c9b57d1ab7f0ad00fa2e01bc26ec887bf"
+        url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.12.2/promptx_Linux_x86_64.tar.gz"
+        sha256 "7f7884471ab63b41a96baf81990f0dc12cd806dc272264e20c1c845bb69b8b47"
       end
     end
 
     on_arm do
       if Hardware::CPU.is_64_bit?
-        url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.12.1/promptx_Linux_arm64.tar.gz"
-        sha256 "5b430fa9e62593812af178db03289450d1208875bf3d6c260c8f0c1ed4edc89a"
+        url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.12.2/promptx_Linux_arm64.tar.gz"
+        sha256 "b2170182773b7c589e5648e73545c747a4ec49f6d109ad9bd93f69bdaec9bcae"
       end
     end
   end
