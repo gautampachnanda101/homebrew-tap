@@ -4,32 +4,32 @@
 class Promptx < Formula
   desc "Local-first prompt intelligence connector for AI coding assistants"
   homepage "https://github.com/gautampachnanda101/prompt-detective"
-  version "0.12.3"
+  version "0.12.4"
 
   on_macos do
     on_intel do
-      url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.12.3/promptx_Darwin_x86_64.tar.gz"
-      sha256 "85c5eb8d283be465c3e168567ebf53090501f57795a0c2ff33c6f517eb876f2e"
+      url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.12.4/promptx_Darwin_x86_64.tar.gz"
+      sha256 "a8fa2e671c58f8d41d37a9df102d8596236b6f638dce49ba5649955181761c41"
     end
 
     on_arm do
-      url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.12.3/promptx_Darwin_arm64.tar.gz"
-      sha256 "8791e00ec607cf45c8adf06ad2b03b69c14995efcb722511ab3507a9ab1952b5"
+      url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.12.4/promptx_Darwin_arm64.tar.gz"
+      sha256 "d33d5e59e1b5d9e7749fb278f1a463588aa4a85fd8668622262108866f8592e0"
     end
   end
 
   on_linux do
     on_intel do
       if Hardware::CPU.is_64_bit?
-        url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.12.3/promptx_Linux_x86_64.tar.gz"
-        sha256 "bf896befedcd5c097412156e0a69f0b563c67684f95eda05d640b00eb60052c7"
+        url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.12.4/promptx_Linux_x86_64.tar.gz"
+        sha256 "706cd67c68238f2a2bca398c0bd6a4336bb4e51770aa155060d99567fe59ffac"
       end
     end
 
     on_arm do
       if Hardware::CPU.is_64_bit?
-        url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.12.3/promptx_Linux_arm64.tar.gz"
-        sha256 "b0cf2d4f347f32cebb0112a6905782b2d729bd5285d2755712d3ea6db0167eb3"
+        url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.12.4/promptx_Linux_arm64.tar.gz"
+        sha256 "edcdae94b5d62938da15eb5794328704638ce2b1697d5726f700d7e7aaa99a11"
       end
     end
   end
