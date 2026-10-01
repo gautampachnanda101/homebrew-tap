@@ -4,32 +4,32 @@
 class Promptx < Formula
   desc "Local-first prompt intelligence connector for AI coding assistants"
   homepage "https://github.com/gautampachnanda101/prompt-detective"
-  version "0.10.0"
+  version "0.11.0"
 
   on_macos do
     on_intel do
-      url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.10.0/promptx_Darwin_x86_64.tar.gz"
-      sha256 "3ce0f67c89bbc417986f3ee829a27087e39d736309f2ed3b5e34d9782f76fe64"
+      url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.11.0/promptx_Darwin_x86_64.tar.gz"
+      sha256 "bda70f56e32893e24c4cd0e8514193efb0bea6d8bb4294bcccca4245d8392877"
     end
 
     on_arm do
-      url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.10.0/promptx_Darwin_arm64.tar.gz"
-      sha256 "9d67a033e7755869e5e4d4002dada8f0c1e89d125255ee0af429bbc6e7451c0b"
+      url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.11.0/promptx_Darwin_arm64.tar.gz"
+      sha256 "f721ddd351b8a2c607a35ae238c308cfea5806e26dd13c3097450b5d872ad43f"
     end
   end
 
   on_linux do
     on_intel do
       if Hardware::CPU.is_64_bit?
-        url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.10.0/promptx_Linux_x86_64.tar.gz"
-        sha256 "fd534666236449bdc42283ea917fca64247a6e8310328b441b138dee5834a394"
+        url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.11.0/promptx_Linux_x86_64.tar.gz"
+        sha256 "34ce3f90c101f32f2425e4ee453db1dee6548636c43bbeee47c7e52959a05e73"
       end
     end
 
     on_arm do
       if Hardware::CPU.is_64_bit?
-        url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.10.0/promptx_Linux_arm64.tar.gz"
-        sha256 "7f052726e0cfac37f7dc3642955912f6e3697f6f809c37ad2245f7174ce5320a"
+        url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.11.0/promptx_Linux_arm64.tar.gz"
+        sha256 "6b65c5040554818290685922d972d56d244bebf4f1b45ea91aa7a44ed577fd9e"
       end
     end
   end
