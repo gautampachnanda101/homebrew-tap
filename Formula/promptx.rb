@@ -4,32 +4,32 @@
 class Promptx < Formula
   desc "Local-first prompt intelligence connector for AI coding assistants"
   homepage "https://github.com/gautampachnanda101/prompt-detective"
-  version "0.11.2"
+  version "0.12.0"
 
   on_macos do
     on_intel do
-      url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.11.2/promptx_Darwin_x86_64.tar.gz"
-      sha256 "6a07b00f58e7e6da8a2c8b0b1d197d7d15bfffead64eb6ede47399dfd1a7d56b"
+      url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.12.0/promptx_Darwin_x86_64.tar.gz"
+      sha256 "2833e05a39cf19e66604e88b11c09ce1f8d176780d46f6e6ce65f62156974e14"
     end
 
     on_arm do
-      url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.11.2/promptx_Darwin_arm64.tar.gz"
-      sha256 "4b4cdbe96aca0a3a8558848e6817ad841a7dc09ecb76c04028655914d504d824"
+      url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.12.0/promptx_Darwin_arm64.tar.gz"
+      sha256 "888ce0dd0342c6efe2b4a3a86b0fcbcbe6fa4741c61b33d179d28fe323ef6328"
     end
   end
 
   on_linux do
     on_intel do
       if Hardware::CPU.is_64_bit?
-        url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.11.2/promptx_Linux_x86_64.tar.gz"
-        sha256 "3998d3d8eb190ee824a09cb49825f878b7e6a6f9385f278c5668ad591a8dfcbe"
+        url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.12.0/promptx_Linux_x86_64.tar.gz"
+        sha256 "427b87167776361da7e6a5e9a6d672c5359048dcc3ed99b2b2d6e8906a3adbda"
       end
     end
 
     on_arm do
       if Hardware::CPU.is_64_bit?
-        url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.11.2/promptx_Linux_arm64.tar.gz"
-        sha256 "46a84b10fada99bc4f49ace2bbc4ff595790340a1b0ac0b6765d9fbf692e4940"
+        url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.12.0/promptx_Linux_arm64.tar.gz"
+        sha256 "50a78389a6722a71b4de9e0798bbf79309041c836bef532a124f28bb3e4b12b3"
       end
     end
   end
