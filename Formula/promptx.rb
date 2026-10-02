@@ -4,32 +4,32 @@
 class Promptx < Formula
   desc "Local-first prompt intelligence connector for AI coding assistants"
   homepage "https://github.com/gautampachnanda101/prompt-detective"
-  version "0.12.6"
+  version "0.13.0"
 
   on_macos do
     on_intel do
-      url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.12.6/promptx_Darwin_x86_64.tar.gz"
-      sha256 "902c01d7ffa2f53b56bce071466a276277089a8f9abe6d1b5fbbbc979487a9e5"
+      url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.13.0/promptx_Darwin_x86_64.tar.gz"
+      sha256 "38f01e110355f3c2ce7f2e1b715ba550a9744f4c3582b621d36d82b38e492980"
     end
 
     on_arm do
-      url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.12.6/promptx_Darwin_arm64.tar.gz"
-      sha256 "f8e4597af9673c9b43337d31820bbf76575c679f839df293eeb58d6f083edb71"
+      url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.13.0/promptx_Darwin_arm64.tar.gz"
+      sha256 "b15051ac9f9cfc5c47c9b02faf00e1a6a5e0e0756de1481ce2bc3ab87f9f7117"
     end
   end
 
   on_linux do
     on_intel do
       if Hardware::CPU.is_64_bit?
-        url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.12.6/promptx_Linux_x86_64.tar.gz"
-        sha256 "27972220334e5764541384903f3f229fba2109d2f9420cc69a5e12d41c968322"
+        url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.13.0/promptx_Linux_x86_64.tar.gz"
+        sha256 "d62fb92286583cee7d0debb02291831372c990499ea3ee9badda83938d5e542e"
       end
     end
 
     on_arm do
       if Hardware::CPU.is_64_bit?
-        url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.12.6/promptx_Linux_arm64.tar.gz"
-        sha256 "c7bc8dc06d51f346d527ca21a25f445c032369717fffd61d0a4ef67aaf044627"
+        url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.13.0/promptx_Linux_arm64.tar.gz"
+        sha256 "453bb08f5daf7c7d6d56eacb555d6b4c57e5b09e9ee2428b29f27059c84ee240"
       end
     end
   end
