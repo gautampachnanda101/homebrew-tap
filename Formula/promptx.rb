@@ -4,32 +4,32 @@
 class Promptx < Formula
   desc "Local-first prompt intelligence connector for AI coding assistants"
   homepage "https://github.com/gautampachnanda101/prompt-detective"
-  version "0.13.0"
+  version "0.13.1"
 
   on_macos do
     on_intel do
-      url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.13.0/promptx_Darwin_x86_64.tar.gz"
-      sha256 "38f01e110355f3c2ce7f2e1b715ba550a9744f4c3582b621d36d82b38e492980"
+      url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.13.1/promptx_Darwin_x86_64.tar.gz"
+      sha256 "e3e329edcdafc286848f39bb45f693001c39b4e85f1b0f3385a4b85030460dd2"
     end
 
     on_arm do
-      url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.13.0/promptx_Darwin_arm64.tar.gz"
-      sha256 "b15051ac9f9cfc5c47c9b02faf00e1a6a5e0e0756de1481ce2bc3ab87f9f7117"
+      url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.13.1/promptx_Darwin_arm64.tar.gz"
+      sha256 "a1d7eb0b968aca0d0d375cc7ff9cf489d5d60066fb914d4adf6f91102cf92335"
     end
   end
 
   on_linux do
     on_intel do
       if Hardware::CPU.is_64_bit?
-        url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.13.0/promptx_Linux_x86_64.tar.gz"
-        sha256 "d62fb92286583cee7d0debb02291831372c990499ea3ee9badda83938d5e542e"
+        url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.13.1/promptx_Linux_x86_64.tar.gz"
+        sha256 "a3288a5feb63f539e595032ddfefedead4abf4fc6e7ef28b19877c750f93dac7"
       end
     end
 
     on_arm do
       if Hardware::CPU.is_64_bit?
-        url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.13.0/promptx_Linux_arm64.tar.gz"
-        sha256 "453bb08f5daf7c7d6d56eacb555d6b4c57e5b09e9ee2428b29f27059c84ee240"
+        url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.13.1/promptx_Linux_arm64.tar.gz"
+        sha256 "842a2e48dbf2fda8766eed571ab975a6837739da377344fd814d029a0d1afafa"
       end
     end
   end
