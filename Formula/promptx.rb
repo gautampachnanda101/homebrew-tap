@@ -4,32 +4,32 @@
 class Promptx < Formula
   desc "Local-first prompt intelligence connector for AI coding assistants"
   homepage "https://github.com/gautampachnanda101/prompt-detective"
-  version "0.13.1"
+  version "0.13.2"
 
   on_macos do
     on_intel do
-      url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.13.1/promptx_Darwin_x86_64.tar.gz"
-      sha256 "e3e329edcdafc286848f39bb45f693001c39b4e85f1b0f3385a4b85030460dd2"
+      url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.13.2/promptx_Darwin_x86_64.tar.gz"
+      sha256 "378ba40fac62b1e1ed17794f94898e1cfb27a0ee08af8803ac4dc9ea09a48bef"
     end
 
     on_arm do
-      url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.13.1/promptx_Darwin_arm64.tar.gz"
-      sha256 "a1d7eb0b968aca0d0d375cc7ff9cf489d5d60066fb914d4adf6f91102cf92335"
+      url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.13.2/promptx_Darwin_arm64.tar.gz"
+      sha256 "a4144b99d0f02a958d9781d9fb049f71d9d273b9f7f81d37120e5565eae66fd9"
     end
   end
 
   on_linux do
     on_intel do
       if Hardware::CPU.is_64_bit?
-        url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.13.1/promptx_Linux_x86_64.tar.gz"
-        sha256 "a3288a5feb63f539e595032ddfefedead4abf4fc6e7ef28b19877c750f93dac7"
+        url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.13.2/promptx_Linux_x86_64.tar.gz"
+        sha256 "5d29284f53d704b3b4c47b38e29e1ab419ad703662c31f7cfee328c0312d7ac9"
       end
     end
 
     on_arm do
       if Hardware::CPU.is_64_bit?
-        url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.13.1/promptx_Linux_arm64.tar.gz"
-        sha256 "842a2e48dbf2fda8766eed571ab975a6837739da377344fd814d029a0d1afafa"
+        url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.13.2/promptx_Linux_arm64.tar.gz"
+        sha256 "c12735dc8c1afd92518799bf17c951e091439dbe7b2e6cbe304ebc760077bd61"
       end
     end
   end
