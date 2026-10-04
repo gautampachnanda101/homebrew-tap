@@ -4,32 +4,32 @@
 class Promptx < Formula
   desc "Local-first prompt intelligence connector for AI coding assistants"
   homepage "https://github.com/gautampachnanda101/prompt-detective"
-  version "0.13.8"
+  version "0.13.9"
 
   on_macos do
     on_intel do
-      url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.13.8/promptx_Darwin_x86_64.tar.gz"
-      sha256 "d034e06099087468e8e439091f82c8ed79b15e3020cceffc1de121b26d921206"
+      url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.13.9/promptx_Darwin_x86_64.tar.gz"
+      sha256 "5bacf40d89767d73ffc1129debabc52fe82fea286ed651a46071236429b14cc0"
     end
 
     on_arm do
-      url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.13.8/promptx_Darwin_arm64.tar.gz"
-      sha256 "844e8f923966f07c0d98b7b12c8632c2616e6cd0fd57a4d2e2c1addf67d4c6dd"
+      url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.13.9/promptx_Darwin_arm64.tar.gz"
+      sha256 "e22ee6201cff42fbcb13512ac77890d0eb9d84930385f66d3c4a4338c52b764e"
     end
   end
 
   on_linux do
     on_intel do
       if Hardware::CPU.is_64_bit?
-        url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.13.8/promptx_Linux_x86_64.tar.gz"
-        sha256 "451bc5122a5fcaa22c995de68ab112c1e9d14ce8f768e992ba104047dec3f261"
+        url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.13.9/promptx_Linux_x86_64.tar.gz"
+        sha256 "1cf524ad5d83e95a1c7580809c79e799f38d4473a55c11e85c91f7be517be2dd"
       end
     end
 
     on_arm do
       if Hardware::CPU.is_64_bit?
-        url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.13.8/promptx_Linux_arm64.tar.gz"
-        sha256 "0c06cd7c106571874f930f045ae5ecb4e613a801fd6f4ea0c58429b62159c955"
+        url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.13.9/promptx_Linux_arm64.tar.gz"
+        sha256 "2dd83c7b68b694eb7b1128eb4ccc5ea987e1ab0a2cf92f016bc9f89ca6eb4d54"
       end
     end
   end
