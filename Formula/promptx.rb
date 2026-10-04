@@ -4,32 +4,32 @@
 class Promptx < Formula
   desc "Local-first prompt intelligence connector for AI coding assistants"
   homepage "https://github.com/gautampachnanda101/prompt-detective"
-  version "0.13.10"
+  version "0.13.11"
 
   on_macos do
     on_intel do
-      url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.13.10/promptx_Darwin_x86_64.tar.gz"
-      sha256 "16682f91a7294fd249847f5a3f34ac1216ea4542837583422c3912d785121c1c"
+      url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.13.11/promptx_Darwin_x86_64.tar.gz"
+      sha256 "e0dec9ec3664cf47bb02b8b560b6c5434ac67401f08797456caeac790dbf9ae8"
     end
 
     on_arm do
-      url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.13.10/promptx_Darwin_arm64.tar.gz"
-      sha256 "1e43a8f4dbcad61f9d3e83273bdc8e3aac839a4d4299ed6110a4b7f114812d9b"
+      url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.13.11/promptx_Darwin_arm64.tar.gz"
+      sha256 "3bd022fac140b9a7303d00ea6b5d305a80ff57ae971bfe6e456d89cbb830b4b1"
     end
   end
 
   on_linux do
     on_intel do
       if Hardware::CPU.is_64_bit?
-        url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.13.10/promptx_Linux_x86_64.tar.gz"
-        sha256 "60d3a9cb4e15fb02ada30d191629cd204b9bfd826f81c3ec3df887cb566e26b3"
+        url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.13.11/promptx_Linux_x86_64.tar.gz"
+        sha256 "32e304733d873eaa30907540c308c1ae9fc089f975f1acb017c27e39f14d2905"
       end
     end
 
     on_arm do
       if Hardware::CPU.is_64_bit?
-        url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.13.10/promptx_Linux_arm64.tar.gz"
-        sha256 "95949e4b09d6feea5eb361a3f92c32616f082b7ae549735b8e7496de0fb6e0db"
+        url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.13.11/promptx_Linux_arm64.tar.gz"
+        sha256 "d514a836779d52f9552c39b66ded38fbd54f0533f2612b346402bab73a092722"
       end
     end
   end
