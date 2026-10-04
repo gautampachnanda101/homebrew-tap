@@ -4,32 +4,32 @@
 class Promptx < Formula
   desc "Local-first prompt intelligence connector for AI coding assistants"
   homepage "https://github.com/gautampachnanda101/prompt-detective"
-  version "0.13.7"
+  version "0.13.8"
 
   on_macos do
     on_intel do
-      url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.13.7/promptx_Darwin_x86_64.tar.gz"
-      sha256 "04040a72b314c2571318b916d92639b8cdb874f5bbc192738aa0f644b4d14c0f"
+      url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.13.8/promptx_Darwin_x86_64.tar.gz"
+      sha256 "d034e06099087468e8e439091f82c8ed79b15e3020cceffc1de121b26d921206"
     end
 
     on_arm do
-      url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.13.7/promptx_Darwin_arm64.tar.gz"
-      sha256 "a281852a60c5ee39045cde17358bb86ca405da12f1cffa0bb9237910cef26509"
+      url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.13.8/promptx_Darwin_arm64.tar.gz"
+      sha256 "844e8f923966f07c0d98b7b12c8632c2616e6cd0fd57a4d2e2c1addf67d4c6dd"
     end
   end
 
   on_linux do
     on_intel do
       if Hardware::CPU.is_64_bit?
-        url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.13.7/promptx_Linux_x86_64.tar.gz"
-        sha256 "226e09cb918bc6ed20874665cfa27542239a872daba5708a1072cb309439a0d9"
+        url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.13.8/promptx_Linux_x86_64.tar.gz"
+        sha256 "451bc5122a5fcaa22c995de68ab112c1e9d14ce8f768e992ba104047dec3f261"
       end
     end
 
     on_arm do
       if Hardware::CPU.is_64_bit?
-        url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.13.7/promptx_Linux_arm64.tar.gz"
-        sha256 "0c0703bed3aab57fea58bf88fadabf3781a029be187efff4e388d9b92a01e077"
+        url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.13.8/promptx_Linux_arm64.tar.gz"
+        sha256 "0c06cd7c106571874f930f045ae5ecb4e613a801fd6f4ea0c58429b62159c955"
       end
     end
   end
