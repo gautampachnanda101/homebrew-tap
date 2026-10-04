@@ -4,32 +4,32 @@
 class Promptx < Formula
   desc "Local-first prompt intelligence connector for AI coding assistants"
   homepage "https://github.com/gautampachnanda101/prompt-detective"
-  version "0.13.3"
+  version "0.13.4"
 
   on_macos do
     on_intel do
-      url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.13.3/promptx_Darwin_x86_64.tar.gz"
-      sha256 "9cadca0896e3b4cfc4bd4d7f409d3defeae31cd0c900a74e2da1597d827a40f9"
+      url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.13.4/promptx_Darwin_x86_64.tar.gz"
+      sha256 "ddebbcafe0eb81de77214114fc39d5edfb7417449c555e5d2ad3e58b48a64a1b"
     end
 
     on_arm do
-      url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.13.3/promptx_Darwin_arm64.tar.gz"
-      sha256 "5e3bc5d1ba4cc75b6f82a4b216d233510cdcb85505e52984c6b550d1216945ba"
+      url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.13.4/promptx_Darwin_arm64.tar.gz"
+      sha256 "39e2fe2fa5221b7d1ce86327f0b3688ba9e489d6722e2e79527d006da662efbc"
     end
   end
 
   on_linux do
     on_intel do
       if Hardware::CPU.is_64_bit?
-        url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.13.3/promptx_Linux_x86_64.tar.gz"
-        sha256 "796c152af43c4be575117d86b2a68844deed0771d8f0b728271de2e0789b9b47"
+        url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.13.4/promptx_Linux_x86_64.tar.gz"
+        sha256 "039d66885834fdf75dd66b1d762f3f0f56c86963fa85b06287fe97e04d6bc8a4"
       end
     end
 
     on_arm do
       if Hardware::CPU.is_64_bit?
-        url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.13.3/promptx_Linux_arm64.tar.gz"
-        sha256 "6c8bcc9c4f9a649dba04811751ac2d383038f7da5d69c4f24d52dd24a1f93442"
+        url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.13.4/promptx_Linux_arm64.tar.gz"
+        sha256 "d482b5a401581ca906b91c85dd576da72d4785fb707c49c0ab2bd4df03be33d8"
       end
     end
   end
