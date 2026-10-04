@@ -4,32 +4,32 @@
 class Promptx < Formula
   desc "Local-first prompt intelligence connector for AI coding assistants"
   homepage "https://github.com/gautampachnanda101/prompt-detective"
-  version "0.13.2"
+  version "0.13.3"
 
   on_macos do
     on_intel do
-      url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.13.2/promptx_Darwin_x86_64.tar.gz"
-      sha256 "378ba40fac62b1e1ed17794f94898e1cfb27a0ee08af8803ac4dc9ea09a48bef"
+      url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.13.3/promptx_Darwin_x86_64.tar.gz"
+      sha256 "9cadca0896e3b4cfc4bd4d7f409d3defeae31cd0c900a74e2da1597d827a40f9"
     end
 
     on_arm do
-      url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.13.2/promptx_Darwin_arm64.tar.gz"
-      sha256 "a4144b99d0f02a958d9781d9fb049f71d9d273b9f7f81d37120e5565eae66fd9"
+      url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.13.3/promptx_Darwin_arm64.tar.gz"
+      sha256 "5e3bc5d1ba4cc75b6f82a4b216d233510cdcb85505e52984c6b550d1216945ba"
     end
   end
 
   on_linux do
     on_intel do
       if Hardware::CPU.is_64_bit?
-        url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.13.2/promptx_Linux_x86_64.tar.gz"
-        sha256 "5d29284f53d704b3b4c47b38e29e1ab419ad703662c31f7cfee328c0312d7ac9"
+        url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.13.3/promptx_Linux_x86_64.tar.gz"
+        sha256 "796c152af43c4be575117d86b2a68844deed0771d8f0b728271de2e0789b9b47"
       end
     end
 
     on_arm do
       if Hardware::CPU.is_64_bit?
-        url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.13.2/promptx_Linux_arm64.tar.gz"
-        sha256 "c12735dc8c1afd92518799bf17c951e091439dbe7b2e6cbe304ebc760077bd61"
+        url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.13.3/promptx_Linux_arm64.tar.gz"
+        sha256 "6c8bcc9c4f9a649dba04811751ac2d383038f7da5d69c4f24d52dd24a1f93442"
       end
     end
   end
