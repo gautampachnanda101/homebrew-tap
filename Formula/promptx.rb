@@ -4,32 +4,32 @@
 class Promptx < Formula
   desc "Local-first prompt intelligence connector for AI coding assistants"
   homepage "https://github.com/gautampachnanda101/prompt-detective"
-  version "0.13.6"
+  version "0.13.7"
 
   on_macos do
     on_intel do
-      url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.13.6/promptx_Darwin_x86_64.tar.gz"
-      sha256 "e22c3bb128f7ca4fe3fa126d3f6161b862212f112c8c093a382f2e8209b0094d"
+      url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.13.7/promptx_Darwin_x86_64.tar.gz"
+      sha256 "04040a72b314c2571318b916d92639b8cdb874f5bbc192738aa0f644b4d14c0f"
     end
 
     on_arm do
-      url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.13.6/promptx_Darwin_arm64.tar.gz"
-      sha256 "69e6934d4cec6b88b84bdc96be3a8fe88a99f8a13425edd4913e3398eeef38f9"
+      url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.13.7/promptx_Darwin_arm64.tar.gz"
+      sha256 "a281852a60c5ee39045cde17358bb86ca405da12f1cffa0bb9237910cef26509"
     end
   end
 
   on_linux do
     on_intel do
       if Hardware::CPU.is_64_bit?
-        url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.13.6/promptx_Linux_x86_64.tar.gz"
-        sha256 "c1e351b752acc97425e373331350baf7cda7e7ec904d2162edeb7c6d7f868ab2"
+        url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.13.7/promptx_Linux_x86_64.tar.gz"
+        sha256 "226e09cb918bc6ed20874665cfa27542239a872daba5708a1072cb309439a0d9"
       end
     end
 
     on_arm do
       if Hardware::CPU.is_64_bit?
-        url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.13.6/promptx_Linux_arm64.tar.gz"
-        sha256 "57fbd56bf9d519706b85d1b14ddf6a3f6f49a759083913e97a5b41db466bb6dd"
+        url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.13.7/promptx_Linux_arm64.tar.gz"
+        sha256 "0c0703bed3aab57fea58bf88fadabf3781a029be187efff4e388d9b92a01e077"
       end
     end
   end
