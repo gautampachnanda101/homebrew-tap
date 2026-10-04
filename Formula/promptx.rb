@@ -4,32 +4,32 @@
 class Promptx < Formula
   desc "Local-first prompt intelligence connector for AI coding assistants"
   homepage "https://github.com/gautampachnanda101/prompt-detective"
-  version "0.13.9"
+  version "0.13.10"
 
   on_macos do
     on_intel do
-      url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.13.9/promptx_Darwin_x86_64.tar.gz"
-      sha256 "5bacf40d89767d73ffc1129debabc52fe82fea286ed651a46071236429b14cc0"
+      url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.13.10/promptx_Darwin_x86_64.tar.gz"
+      sha256 "16682f91a7294fd249847f5a3f34ac1216ea4542837583422c3912d785121c1c"
     end
 
     on_arm do
-      url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.13.9/promptx_Darwin_arm64.tar.gz"
-      sha256 "e22ee6201cff42fbcb13512ac77890d0eb9d84930385f66d3c4a4338c52b764e"
+      url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.13.10/promptx_Darwin_arm64.tar.gz"
+      sha256 "1e43a8f4dbcad61f9d3e83273bdc8e3aac839a4d4299ed6110a4b7f114812d9b"
     end
   end
 
   on_linux do
     on_intel do
       if Hardware::CPU.is_64_bit?
-        url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.13.9/promptx_Linux_x86_64.tar.gz"
-        sha256 "1cf524ad5d83e95a1c7580809c79e799f38d4473a55c11e85c91f7be517be2dd"
+        url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.13.10/promptx_Linux_x86_64.tar.gz"
+        sha256 "60d3a9cb4e15fb02ada30d191629cd204b9bfd826f81c3ec3df887cb566e26b3"
       end
     end
 
     on_arm do
       if Hardware::CPU.is_64_bit?
-        url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.13.9/promptx_Linux_arm64.tar.gz"
-        sha256 "2dd83c7b68b694eb7b1128eb4ccc5ea987e1ab0a2cf92f016bc9f89ca6eb4d54"
+        url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.13.10/promptx_Linux_arm64.tar.gz"
+        sha256 "95949e4b09d6feea5eb361a3f92c32616f082b7ae549735b8e7496de0fb6e0db"
       end
     end
   end
