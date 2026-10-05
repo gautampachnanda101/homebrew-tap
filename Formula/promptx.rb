@@ -4,32 +4,32 @@
 class Promptx < Formula
   desc "Local-first prompt intelligence connector for AI coding assistants"
   homepage "https://github.com/gautampachnanda101/prompt-detective"
-  version "0.13.11"
+  version "0.13.12"
 
   on_macos do
     on_intel do
-      url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.13.11/promptx_Darwin_x86_64.tar.gz"
-      sha256 "e0dec9ec3664cf47bb02b8b560b6c5434ac67401f08797456caeac790dbf9ae8"
+      url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.13.12/promptx_Darwin_x86_64.tar.gz"
+      sha256 "43deb3c248b1ac7366f33960db239605b126dbcc8658648d6fee196aa98035cd"
     end
 
     on_arm do
-      url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.13.11/promptx_Darwin_arm64.tar.gz"
-      sha256 "3bd022fac140b9a7303d00ea6b5d305a80ff57ae971bfe6e456d89cbb830b4b1"
+      url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.13.12/promptx_Darwin_arm64.tar.gz"
+      sha256 "3c67820965c64a40b8fc0cae70743be99055e111d9eac8655558891735072ca3"
     end
   end
 
   on_linux do
     on_intel do
       if Hardware::CPU.is_64_bit?
-        url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.13.11/promptx_Linux_x86_64.tar.gz"
-        sha256 "32e304733d873eaa30907540c308c1ae9fc089f975f1acb017c27e39f14d2905"
+        url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.13.12/promptx_Linux_x86_64.tar.gz"
+        sha256 "f2753a9aa3c20c3651e2ba761ccce7e24e3254209755ec0437b2e68668d276c9"
       end
     end
 
     on_arm do
       if Hardware::CPU.is_64_bit?
-        url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.13.11/promptx_Linux_arm64.tar.gz"
-        sha256 "d514a836779d52f9552c39b66ded38fbd54f0533f2612b346402bab73a092722"
+        url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.13.12/promptx_Linux_arm64.tar.gz"
+        sha256 "d706c8d727c43fe9ad307bd43649f935818ccced3a97e9c2ea41b86d501b29ae"
       end
     end
   end
