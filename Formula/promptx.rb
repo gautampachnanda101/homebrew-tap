@@ -4,32 +4,32 @@
 class Promptx < Formula
   desc "Local-first prompt intelligence connector for AI coding assistants"
   homepage "https://github.com/gautampachnanda101/prompt-detective"
-  version "0.13.12"
+  version "0.14.0"
 
   on_macos do
     on_intel do
-      url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.13.12/promptx_Darwin_x86_64.tar.gz"
-      sha256 "43deb3c248b1ac7366f33960db239605b126dbcc8658648d6fee196aa98035cd"
+      url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.14.0/promptx_Darwin_x86_64.tar.gz"
+      sha256 "24dd335cc21b8f91272ff4d3fc13c5fc7dbf4bb346fbd727730f49f36b71fcbd"
     end
 
     on_arm do
-      url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.13.12/promptx_Darwin_arm64.tar.gz"
-      sha256 "3c67820965c64a40b8fc0cae70743be99055e111d9eac8655558891735072ca3"
+      url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.14.0/promptx_Darwin_arm64.tar.gz"
+      sha256 "38f8e5add7d269aa67bfcc90c5af5f98a4c35d6be96b160414a79648c8f678fe"
     end
   end
 
   on_linux do
     on_intel do
       if Hardware::CPU.is_64_bit?
-        url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.13.12/promptx_Linux_x86_64.tar.gz"
-        sha256 "f2753a9aa3c20c3651e2ba761ccce7e24e3254209755ec0437b2e68668d276c9"
+        url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.14.0/promptx_Linux_x86_64.tar.gz"
+        sha256 "d883634fcef823cd558338ef9157aadb828b1ccbc5e8253571af3f0202ef9e5e"
       end
     end
 
     on_arm do
       if Hardware::CPU.is_64_bit?
-        url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.13.12/promptx_Linux_arm64.tar.gz"
-        sha256 "d706c8d727c43fe9ad307bd43649f935818ccced3a97e9c2ea41b86d501b29ae"
+        url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.14.0/promptx_Linux_arm64.tar.gz"
+        sha256 "beae5ce4b71f52d6e6f56dd55646925ae1e13f603ec132b9d1b6b2bc7b69e2dd"
       end
     end
   end
