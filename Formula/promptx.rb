@@ -4,32 +4,32 @@
 class Promptx < Formula
   desc "Local-first prompt intelligence connector for AI coding assistants"
   homepage "https://github.com/gautampachnanda101/prompt-detective"
-  version "0.14.1"
+  version "0.14.2"
 
   on_macos do
     on_intel do
-      url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.14.1/promptx_Darwin_x86_64.tar.gz"
-      sha256 "127f03a686a3ecfce35ab9eeaec492124f550e7faca30cd76ea7064075bb1f74"
+      url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.14.2/promptx_Darwin_x86_64.tar.gz"
+      sha256 "faafed20377016a49f7dda3ebdc5d12927ba5e2ecf9490b3a6d05a1228e94bb9"
     end
 
     on_arm do
-      url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.14.1/promptx_Darwin_arm64.tar.gz"
-      sha256 "d79a700b034d68cc92a2e0e26fad3b90af2de8d89f8bd4da537d32fb7f27402c"
+      url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.14.2/promptx_Darwin_arm64.tar.gz"
+      sha256 "b818846bb80f2c5f730213894650b5544664864f75475a109ae7dd5234c318a5"
     end
   end
 
   on_linux do
     on_intel do
       if Hardware::CPU.is_64_bit?
-        url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.14.1/promptx_Linux_x86_64.tar.gz"
-        sha256 "efff2b2fcdcbed101664c4ca71d5d1e8fe35f33215bf95dcd99e6cd89db4bb9e"
+        url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.14.2/promptx_Linux_x86_64.tar.gz"
+        sha256 "7d9473266003d5272d18ce522a4e69a35f35635a9b622b1edfddb08bf861e7b9"
       end
     end
 
     on_arm do
       if Hardware::CPU.is_64_bit?
-        url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.14.1/promptx_Linux_arm64.tar.gz"
-        sha256 "a49d7281a6516ef03489430c2e3a1810de36c1bf4c11372daf9b6eed199f9719"
+        url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.14.2/promptx_Linux_arm64.tar.gz"
+        sha256 "ee26170c751aaf087e37e3dd0d9247eb5ba383bea3c851578c940a226770334f"
       end
     end
   end
