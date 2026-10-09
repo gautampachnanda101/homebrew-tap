@@ -4,32 +4,32 @@
 class Promptx < Formula
   desc "Local-first prompt intelligence connector for AI coding assistants"
   homepage "https://github.com/gautampachnanda101/prompt-detective"
-  version "0.14.2"
+  version "0.14.3"
 
   on_macos do
     on_intel do
-      url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.14.2/promptx_Darwin_x86_64.tar.gz"
-      sha256 "faafed20377016a49f7dda3ebdc5d12927ba5e2ecf9490b3a6d05a1228e94bb9"
+      url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.14.3/promptx_Darwin_x86_64.tar.gz"
+      sha256 "33e61e12f68a2b4951e5dac16064df60d524b331722533475ded811554a3ab8c"
     end
 
     on_arm do
-      url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.14.2/promptx_Darwin_arm64.tar.gz"
-      sha256 "b818846bb80f2c5f730213894650b5544664864f75475a109ae7dd5234c318a5"
+      url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.14.3/promptx_Darwin_arm64.tar.gz"
+      sha256 "9daeb63b9a5f92c50941b7c4a8041b50195f974fa2b1f0bd0322d7fcd3837444"
     end
   end
 
   on_linux do
     on_intel do
       if Hardware::CPU.is_64_bit?
-        url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.14.2/promptx_Linux_x86_64.tar.gz"
-        sha256 "7d9473266003d5272d18ce522a4e69a35f35635a9b622b1edfddb08bf861e7b9"
+        url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.14.3/promptx_Linux_x86_64.tar.gz"
+        sha256 "3466b677b0bd7d46d72b9cfb4380ae4acc6983232718b561bfe48b0047122750"
       end
     end
 
     on_arm do
       if Hardware::CPU.is_64_bit?
-        url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.14.2/promptx_Linux_arm64.tar.gz"
-        sha256 "ee26170c751aaf087e37e3dd0d9247eb5ba383bea3c851578c940a226770334f"
+        url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/v0.14.3/promptx_Linux_arm64.tar.gz"
+        sha256 "819d8202699df9f46aa1a4b4c34315c17da34ea546f3b4cca5aec144db294a4b"
       end
     end
   end
