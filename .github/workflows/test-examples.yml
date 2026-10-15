@@ -34,7 +34,7 @@ jobs:
           version: 'latest'
 
       - name: Setup Homebrew
-        uses: Homebrew/actions/setup-homebrew@master
+        uses: Homebrew/actions/setup-homebrew@main
 
       - name: Install k3d-local from tap
         run: |
