@@ -45,7 +45,7 @@ Tools that remove repeated setup work from local development.
   <article class="formula-item">
     <p class="formula-number">04</p>
     <h3>kb-genie</h3>
-    <p>Build a local knowledge base with pluggable embeddings and a browser chat interface.</p>
+    <p>Turn your docs into a local knowledge base: cited chat, plus a wiki with flash cards and quizzes.</p>
     <code>brew install kb-genie</code>
     <a href="https://gautampachnanda101.github.io/homebrew-tap/taps/kb-genie/">kb-genie <span aria-hidden="true">-&gt;</span></a>
   </article>

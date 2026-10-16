@@ -9,7 +9,7 @@ This tap provides six packages:
 - **k3d-local** – Local Kubernetes cluster management
 - **promptx** – Prompt intelligence CLI with encrypted memory and web UI
 - **vaultx** – Zero-trust encrypted secrets CLI with web UI
-- **kb-genie** – Local-first knowledge base builder with browser chat
+- **kb-genie** – Local-first knowledge base: cited chat, plus a wiki with flash cards and quizzes
 - **ai-guardrails** – AI development guardrails and workflow templates
 - **vitals** – Local system diagnostics and bottleneck detection
 
