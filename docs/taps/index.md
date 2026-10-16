@@ -35,7 +35,7 @@
 		<p class="catalog-number">04</p>
 		<div>
 			<h2><a href="https://gautampachnanda101.github.io/homebrew-tap/taps/kb-genie/">kb-genie</a></h2>
-			<p>Build a local knowledge base with pluggable embeddings and a browser chat interface.</p>
+			<p>Turn your docs into a local knowledge base: cited chat, plus a wiki with flash cards and quizzes.</p>
 		</div>
 		<pre class="catalog-install"><code>brew install kb-genie
 	kb-genie doctor</code></pre>
