@@ -52,6 +52,7 @@ nav:
     - vaultx: taps/vaultx.md
     - kb-genie: taps/kb-genie.md
     - ai-guardrails: taps/ai-guardrails.md
+    - vitals: https://gautampachnanda101.github.io/vitals/
   - Getting Started: getting-started.md
   - Installation: installation.md
   - Usage: usage.md
