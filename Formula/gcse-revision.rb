@@ -9,22 +9,22 @@ class GcseRevision < Formula
   on_macos do
     on_intel do
       url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/gcse-revision-v0.1.0/gcse-revision_Darwin_x86_64.tar.gz"
-      sha256 "f7dfc9753475aaec7ab7d71a9fd68ad75d0f08319bb83e376359779c080c27a8"
+      sha256 "0a8eb5423a58d8db342b5b76f2c8ffec29c7c37806f3d91644fe6edf1c1cd548"
     end
     on_arm do
       url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/gcse-revision-v0.1.0/gcse-revision_Darwin_arm64.tar.gz"
-      sha256 "60f000f25d13d6a76ba6ec2715be9dffd3237e3eaf9063d628b54fb2c6bf4a50"
+      sha256 "6833f3fcfd7f69561bca5da3396a8da9683cf0e270ba80ad4024be3d470697eb"
     end
   end
 
   on_linux do
     on_intel do
       url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/gcse-revision-v0.1.0/gcse-revision_Linux_x86_64.tar.gz"
-      sha256 "2323b59d7d1709a2d2a86ad0919facfffd6072e2e55226d6a32c9f72e8618ce4"
+      sha256 "09621ea6be9b40a05f83831b15add2a27e81f325bfb2c4aec087c9c4bf804e6e"
     end
     on_arm do
       url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/gcse-revision-v0.1.0/gcse-revision_Linux_arm64.tar.gz"
-      sha256 "fd912e076d1a5fb2e2db7580d7ef06f30a04638dba86978fdbcf865c7bec1e5e"
+      sha256 "391d102c132ade4caed16af2c7a840ea937d6ed03ae8b875be4b66c5644efa13"
     end
   end
 
