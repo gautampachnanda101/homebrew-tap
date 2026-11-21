@@ -4,27 +4,27 @@
 class GcseRevision < Formula
   desc "Offline GCSE revision app with a built-in AI helper"
   homepage "https://github.com/gautampachnanda101/gcse-revision-assistant"
-  version "0.6.2"
+  version "0.7.0"
 
   on_macos do
     on_intel do
-      url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/gcse-revision-v0.6.2/gcse-revision_Darwin_x86_64.tar.gz"
-      sha256 "6268b8b89e02205b9cb3de5364b7c37c297af828b7cb8106e5f94a04aa5f82fd"
+      url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/gcse-revision-v0.7.0/gcse-revision_Darwin_x86_64.tar.gz"
+      sha256 "f65c88fa5a5e036a318ffedbb776f77c763e36baa67ba7225b26aaca30832e69"
     end
     on_arm do
-      url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/gcse-revision-v0.6.2/gcse-revision_Darwin_arm64.tar.gz"
-      sha256 "3d1cef347fef083e87f9102c46bedd1ec14120e34874c3dd7d738f12ed60e488"
+      url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/gcse-revision-v0.7.0/gcse-revision_Darwin_arm64.tar.gz"
+      sha256 "291c2390e61ff0c78c9b4116a1c8b7e56a34f3da3f225e9fbb352472e06758c3"
     end
   end
 
   on_linux do
     on_intel do
-      url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/gcse-revision-v0.6.2/gcse-revision_Linux_x86_64.tar.gz"
-      sha256 "86aa455c980c7b3f159ad4e6a06973a69c52c1960e40a68f1c7b0e4f9958a691"
+      url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/gcse-revision-v0.7.0/gcse-revision_Linux_x86_64.tar.gz"
+      sha256 "d8572a73affc7ce0276ce803e3f20a957c1d6266064f74fed26d01c7695e4c77"
     end
     on_arm do
-      url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/gcse-revision-v0.6.2/gcse-revision_Linux_arm64.tar.gz"
-      sha256 "84de70e8795c8eb1ad25e7c82eaf334ca44d59fe257642a9e204181146e3357a"
+      url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/gcse-revision-v0.7.0/gcse-revision_Linux_arm64.tar.gz"
+      sha256 "ea4945740ac59f9f20b4e4aaef70b286ba3b182c78a308076952634b86739bcd"
     end
   end
 
@@ -33,7 +33,8 @@ class GcseRevision < Formula
   end
 
   def post_install
-    system "#{bin}/gcse-revision", "service", "install"
+    plist = "#{Dir.home}/Library/LaunchAgents/com.gautampachnanda101.gcse-revision.plist"
+    system "#{bin}/gcse-revision", "service", "install" if File.exist?(plist)
   end
 
   def caveats
@@ -46,6 +47,6 @@ class GcseRevision < Formula
   end
 
   test do
-    assert_match "0.6.2", shell_output("#{bin}/gcse-revision version")
+    assert_match "0.7.0", shell_output("#{bin}/gcse-revision version")
   end
 end
