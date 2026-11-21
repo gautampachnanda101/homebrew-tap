@@ -4,27 +4,27 @@
 class GcseRevision < Formula
   desc "Offline GCSE revision app with a built-in AI helper"
   homepage "https://github.com/gautampachnanda101/gcse-revision-assistant"
-  version "0.2.0"
+  version "0.2.1"
 
   on_macos do
     on_intel do
-      url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/gcse-revision-v0.2.0/gcse-revision_Darwin_x86_64.tar.gz"
-      sha256 "798bc98ae6dd26f74a09c593146841877f6d10ee895b253868d554c563d2805e"
+      url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/gcse-revision-v0.2.1/gcse-revision_Darwin_x86_64.tar.gz"
+      sha256 "581ea86e4cf924f50709e5b5290a157db5970414f8e9a64b9e71a3b1d5e76b5f"
     end
     on_arm do
-      url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/gcse-revision-v0.2.0/gcse-revision_Darwin_arm64.tar.gz"
-      sha256 "6f3fc81adfcf50e8a6dc1ae302d30892cf5a38aa44189f53e661aea6e37e8965"
+      url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/gcse-revision-v0.2.1/gcse-revision_Darwin_arm64.tar.gz"
+      sha256 "1864d783a3d25a55c8b809a2ec20c378ce0b72d234382e9674bc62502f1fa491"
     end
   end
 
   on_linux do
     on_intel do
-      url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/gcse-revision-v0.2.0/gcse-revision_Linux_x86_64.tar.gz"
-      sha256 "2e75d0da5ebd087b4e242ff4bcd25d4c111c0d8d70f707115b222bc6e5998292"
+      url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/gcse-revision-v0.2.1/gcse-revision_Linux_x86_64.tar.gz"
+      sha256 "d54395bc1139efeb1498490e9e6c567174e29422d81e3c93c9a67e622ecfb142"
     end
     on_arm do
-      url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/gcse-revision-v0.2.0/gcse-revision_Linux_arm64.tar.gz"
-      sha256 "72f96bb60602583ebeacb5a2cb24bb09f7c303c605348c5421a9e8c376099ee4"
+      url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/gcse-revision-v0.2.1/gcse-revision_Linux_arm64.tar.gz"
+      sha256 "64f66bfed05b6124c367cd570e8c715411a13c29ac2377c81184eb5bbe6d4c96"
     end
   end
 
@@ -42,6 +42,6 @@ class GcseRevision < Formula
   end
 
   test do
-    assert_match "0.2.0", shell_output("#{bin}/gcse-revision version")
+    assert_match "0.2.1", shell_output("#{bin}/gcse-revision version")
   end
 end
