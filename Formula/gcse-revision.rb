@@ -4,40 +4,32 @@
 class GcseRevision < Formula
   desc "Offline GCSE revision app with a built-in AI helper"
   homepage "https://github.com/gautampachnanda101/gcse-revision-assistant"
-  version "0.7.8"
+  version "0.7.9"
 
   on_macos do
     on_intel do
-      url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/gcse-revision-v0.7.8/gcse-revision_Darwin_x86_64.tar.gz"
-      sha256 "fb519ac273607ba0e9f3121d055e7f421e058124d1c5275046247738783ea6ee"
+      url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/gcse-revision-v0.7.9/gcse-revision_Darwin_x86_64.tar.gz"
+      sha256 "8cbf9f5514b7558dbfb09a627f83f322f945cead358bd952ca1daaa99043680a"
     end
     on_arm do
-      url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/gcse-revision-v0.7.8/gcse-revision_Darwin_arm64.tar.gz"
-      sha256 "d578cacc2867d1bec774692505930635113a6cf13a11af117805a4e2afcb48cd"
+      url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/gcse-revision-v0.7.9/gcse-revision_Darwin_arm64.tar.gz"
+      sha256 "d64c7dd61872b92ec04b79587aee2c742003d77c373a2b16a78bb1345b6e6613"
     end
   end
 
   on_linux do
     on_intel do
-      url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/gcse-revision-v0.7.8/gcse-revision_Linux_x86_64.tar.gz"
-      sha256 "951010282267fa405b3a07f1c8ba405a24e8e9e63ed3859eb6415a7d27b2dd44"
+      url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/gcse-revision-v0.7.9/gcse-revision_Linux_x86_64.tar.gz"
+      sha256 "d08e9c1ed45616704f03f2c65339363863a61ca5827d4eae9a8377c74b70594c"
     end
     on_arm do
-      url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/gcse-revision-v0.7.8/gcse-revision_Linux_arm64.tar.gz"
-      sha256 "882e3d9cdf68103170252b5a5005a4cf98415e0884478c3735a91ef575420246"
+      url "https://github.com/gautampachnanda101/homebrew-tap/releases/download/gcse-revision-v0.7.9/gcse-revision_Linux_arm64.tar.gz"
+      sha256 "96a0489a92b2ddb01ce9ef22aebe4658d91ee8e5b806cffe14b91d2824d09959"
     end
   end
 
   def install
     bin.install "gcse-revision"
-  end
-
-  post_install_steps do
-    run "bin/gcse-revision",
-        base: :prefix,
-        args: ["service", "ensure"],
-        writable_paths: ["Library/LaunchAgents", ".config/systemd/user"],
-        writable_base: :home
   end
 
   def caveats
@@ -50,6 +42,6 @@ class GcseRevision < Formula
   end
 
   test do
-    assert_match "0.7.8", shell_output("#{bin}/gcse-revision version")
+    assert_match "0.7.9", shell_output("#{bin}/gcse-revision version")
   end
 end
